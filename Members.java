@@ -65,6 +65,10 @@ public class Members{
    public double getPrice(){
       return price;
    }
+   
+   public String toString(){
+        return "age: " + age + " name: " + name + " Price: "+ price+ "\n";
+   }
 
 
 }
