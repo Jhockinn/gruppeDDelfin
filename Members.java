@@ -4,21 +4,25 @@ import java.time.*;
 
 public class Members{
    //Stamoplysning 
-   private int age = 0; 
+   Random rand = new Random();
+   MainTest main = new MainTest();
+   private int age; 
    private String name; 
    private boolean active; 
    private boolean competitor;
    private LocalTime time;
    private double price; 
    
-   public Members(int age,String name,double price){
+   /*public Members(int age,String name,double price){
       this.age = age;
       this.name = name;
       this.price = price; 
       
-   }
+   }*/
+   
+   // Setters and getters
    public void setAge(int age){
-      this.name = name;
+      this.age = age;
    }
    
    public int getAge(){
@@ -67,8 +71,7 @@ public class Members{
    }
    
    public String toString(){
-        return "age: " + age + " name: " + name + " Price: "+ price+ "\n";
+        return "age: " + age + " name: " + name + " Price: "+ price+ " Competitor: " + competitor +" Active: " + active + "\n";
    }
-
-
+   
 }

@@ -1,8 +1,16 @@
+import java.util.*;
+import java.io.*;
 public class MainTest{
-      static Add AddMemb = new Add();
+      static ArrayList<Members> memberList = new ArrayList<Members>();
   public static void main(String[]args){
-          
+      Competitive competi = new Competitive();
+      Add AddMemb = new Add();
+      Active acti = new Active();
       AddMemb.add();
-      System.out.println(AddMemb.MemberList);
+      competi.compe();
+      acti.active();
+      AddMemb.sort();
+      System.out.println(memberList);
+      
   }
 }
