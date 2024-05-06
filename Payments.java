@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Payments {
+public void Payments {
 
     private static ArrayList<String> latePayments = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
