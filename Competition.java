@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class Competition{
 
 // ArrayLists for youth and senior competitors 
-ArrayList<Members> youthCompetitors = new ArrayList<Members>(); 
-ArrayList<Members> seniorCompetitors = new ArrayList<Members>(); 
+ArrayList<Competitor> youthCompetitors = new ArrayList<Members>(); 
+ArrayList<Competitor> seniorCompetitors = new ArrayList<Members>(); 
 Scanner scan = new Scanner(System.in); 
 
 // Method for adding new competitors 
@@ -65,10 +65,10 @@ for(int i=0; i<MemberList.size(); i++){
    Member member = MemberList.get(i); 
    if(member.isCompetitor() && member.getAge()<18){
       Competitor youthCompetitor = new Competitor(member.getAge(), member.getName(), member.getPrice());
-       youthCompetitors.add(member);
+       youthCompetitors.add(youthCompetitor);
    }else if(member.isCompetitor() && member.getAge()>=18){
       Competitor seniorCompetitor = new Competitor(member.getAge(), member.getName(), member.getPrice()); 
-       seniorCompetitors.add(member);
+       seniorCompetitors.add(seniorCompetitor);
    }else{
    System.out.println("Could not sort competitors");
    } 
@@ -94,4 +94,3 @@ for(int i=0; i<MemberList.size(); i++){
 
 
 
-}
