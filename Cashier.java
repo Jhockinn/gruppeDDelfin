@@ -1,44 +1,37 @@
 import java.util.Scanner;
 
-public class Cashier{
+public class Cashier {
 
-    Payment payment = new Payment(); // file contains methods to modify latepayment people list
+    private Payment payment = new Payment();
 
-/*
-to-do: 
-        import memberlist
-        
-        import kontigent
-        see memberlist
-        see kontigent
+    public void managePayments() {
+        Scanner scanner = new Scanner(System.in);
 
-*/
+        while (true) {
+            System.out.println("\nCashier UI Options:");
+            System.out.println("1: See memberlist");
+            System.out.println("2: Late payments lists");
+            System.out.println("3: Go back to the main menu\n");
 
-    while (true) {
-        System.out.println("\n");
-        System.out.println("Cashier UI Options:");
-        System.out.println("1: See memberlist");
-        System.out.println("2: Late payments acess");
-        System.out.println("3: Go back to the main menu");
-        System.out.println("\n")
+            int choice = scanner.nextInt();
+
+            switch(choice) {
+                case 1: // access memberlist (Niko G + Tobias)
+                    // Add code to access memberlist
+                    break;
+
+                case 2: // late payments 
+                    payment.payments();
+                    break;
+
+                case 3: // go back to the main menu
+                    return;
+
+                default:
+                    System.out.println("Invalid input");
+                    break;
+            }
+        }
     }
-    int choice = scanner.nextInt();
-
-    switch(choice) {
-        case 1: //access memberlist (Niko G + Tobias)
-
-        break;
-
-        case 2: //restance (Kristoffer -- WORK IN PROGRESS
-                Payments.Payments();
-        break;
-
-        case 3: //go back to main menu
-
-        default: 
-        System.out.println("Invalid input");
-        break;
-    }
-
-    }
+}
 
