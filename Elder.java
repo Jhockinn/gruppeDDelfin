@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Elder extends Senior{
-   int age = rand.nextInt(60,100); 
+   /*int age = rand.nextInt(60,100); 
    String name = "Pain";
    double price = rand.nextInt(400,10000);
    
@@ -9,9 +9,9 @@ public class Elder extends Senior{
          setAge(age);
          setName(name);
          setPrice(price); 
-      }
+      }*/
 
-   /*public Elder(int age,String name,double price){
-   super(age,name,price);
-   }*/   
+   public Elder(int age,String name,double price){
+      super(age,name,price);
+   }  
 }

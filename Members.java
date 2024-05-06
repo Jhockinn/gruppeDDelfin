@@ -13,12 +13,12 @@ public class Members{
    private LocalTime time;
    private double price; 
    
-   /*public Members(int age,String name,double price){
+   public Members(int age,String name,double price){
       this.age = age;
       this.name = name;
       this.price = price; 
       
-   }*/
+   }
    
    // Setters and getters
    public void setAge(int age){

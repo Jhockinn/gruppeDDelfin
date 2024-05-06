@@ -7,26 +7,28 @@ public class Add{
     //Adds the diffrent classes to the memberList (arraylist) 
     public void add() {
         for (int x = 0; x <= 100; x++) {
-            /*int age = rand.nextInt(6,18); 
+            int age = rand.nextInt(6,18); 
             String name = "Jeff";
             double price = rand.nextInt(400,10000);
-            main.memberList.add(new Youth(age, name, price));*/
-            main.memberList.add(new Youth());
+            main.memberList.add(new Youth(age, name, price));
+           
+            //main.memberList.add(new Youth());
         }
         for (int x = 0; x <= 100; x++) {
-            /*int age = rand.nextInt(18,60); 
+            int age = rand.nextInt(18,60); 
             String name = "Hey";
             double price = rand.nextInt(400,10000);
             main.memberList.add(new Senior(age,name,price));
-            */
-            main.memberList.add(new Senior());
+            
+            //main.memberList.add(new Senior());
         }
         for (int x = 0; x <= 50; x++) {
-            //int age = rand.nextInt(60,100); 
-            //String name = "Pain";
-            //double price = rand.nextInt(400,10000);
-            //main.memberList.add(new Elder(age,name,price));
-            main.memberList.add(new Elder());
+            int age = rand.nextInt(60,100); 
+            String name = "Pain";
+            double price = rand.nextInt(400,10000);
+            main.memberList.add(new Elder(age,name,price));
+            
+            //main.memberList.add(new Elder());
         }
     }
     //the comparator gives you negative, equal(0) or positive int values 
