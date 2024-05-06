@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Cashier{
 
-    Payment payment = new Payment();
+    Payment payment = new Payment(); // file contains methods to modify latepayment people list
 
 /*
 to-do: 
@@ -11,9 +11,7 @@ to-do:
         import kontigent
         see memberlist
         see kontigent
-        see restance
-            add people to restance list?
-            remove people?
+
 */
 
     while (true) {
