@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class Competition{
 
 // ArrayLists for youth and senior competitors 
-ArrayList<Competitor> youthCompetitors = new ArrayList<Members>(); 
-ArrayList<Competitor> seniorCompetitors = new ArrayList<Members>(); 
+ArrayList<Competitor> youthCompetitors = new ArrayList<Competitor>(); 
+ArrayList<Competitor> seniorCompetitors = new ArrayList<Competitor>(); 
 Scanner scan = new Scanner(System.in); 
 
 // Method for adding new competitors 
@@ -40,8 +40,9 @@ public void addCompetitor(){
 
 // method for showing youth competitors 
 public void showYouthCompetitors(){
+   System.out.println("Junior competitors: "); 
    
-   for(Members competitor : youthCompetitors){
+   for(Competitor competitor : youthCompetitors){
       System.out.print(" Name: " + competitor.getName()); 
       System.out.print(" Age: " + competitor.getAge()); 
       System.out.print(" Disciplines " + competitor.getDiscipline());     
@@ -50,8 +51,9 @@ public void showYouthCompetitors(){
 
 // method for showing senior competitors 
 public void showSeniorCompetitors(){
-  
-   for(Members competitor : seniorCompetitors){
+   System.out.println("Senior competitors: ");
+   
+   for(Competitor competitor : seniorCompetitors){
       System.out.print(" Name: " + competitor.getName()); 
       System.out.print(" Age: " + competitor.getAge()); 
       System.out.print(" Disciplines " + competitor.getDiscipline()); 
@@ -74,6 +76,46 @@ for(int i=0; i<MemberList.size(); i++){
    } 
   }
  }
+ 
+ public void registerTrainingResults(){
+   System.out.println("Here is the list of competitors: "); 
+      showYouthCompetitors(); 
+      showSeniorCompetitors();  
+      
+   System.out.println("For which competitor do you want to sumbit training results? ");
+      String competitorName = scan.next(); 
+      
+   boolean found = false; 
+   for(Competitor competitor : youthCompetitors){
+   if(competitor.getName().equals(competitorName)){
+      found = true; 
+      // kode her 
+      break; 
+      }
+   }
+   
+   if(!found){
+   for(Competitor competitor : seniorCompetitors){
+   if(competitor.getName().equals(competitorName)){
+      found = true; 
+      // kode her 
+      break; 
+      
+      }
+     }
+   } 
+   
+   if(!found){
+   System.out.println("Could not find the competitor");
+   }
+   
+   
+ }
+ 
+ public void registerCompetitionResults(){
+ 
+ }
+ 
 }
 
 /*public void registerSwimmingResults(){
