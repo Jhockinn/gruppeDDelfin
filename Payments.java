@@ -1,51 +1,67 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
-public class Payments{
+public class Payments {
 
-    While (true) {
+    private static ArrayList<String> latePayments = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
 
-    System.out.println("\n");
-    System.out.println("Options:");
-    System.out.println("1: See list of people with missing payments");
-    System.out.println("2: Add people to the list of missing payments");
-    System.out.println("3: Remove people from the list of missing payments");
-    System.out.println("\n");
+    public static void main(String[] args) {
+        while (true) {
 
-    int choice = scanner.nextInt();
+            System.out.println("\nOptions:");
+            System.out.println("1: See list of people with missing payments");
+            System.out.println("2: Add people to the list of missing payments");
+            System.out.println("3: Remove people from the list of missing payments");
+            System.out.println("\n");
 
-    switch (choice) {
-    
-    case 1: // to-do: see list of missing payments people
+            int choice = scanner.nextInt();
 
-    break;
+            switch (choice) {
 
-    case 2: // add people to the list
+                case 1:
+                    getLatePaymentList();
+                    break;
 
-    break;
+                case 2:
+                    addPeopleToLatePaymentList();
+                    break;
 
-    case 3: // remove people from the list
+                case 3:
+                    removePeopleFromLatePaymentList();
+                    break;
 
-    break;
-
-    default:
-    System.out.println("Invalid option");
-    break;
+                default:
+                    System.out.println("Invalid option");
+                    break;
+            }
+        }
     }
+
+    public static void getLatePaymentList() {
+        System.out.println("List of people with missing payments:");
+        for (String person : latePayments) {
+            System.out.println(person);
+        }
     }
-/*
-TO DO: see restance
-        see restance amounts
-        add people to restance
 
+    public static void addPeopleToLatePaymentList() {
+        scanner.nextLine();
+        System.out.println("Enter name of person to add to late payment list:");
+        String person = scanner.nextLine();
+        latePayments.add(person);
+        System.out.println(person + " added to late payment list.");
+    }
 
-
-
-*/
-
-
-
-
-
-
-
+    public static void removePeopleFromLatePaymentList() {
+        scanner.nextLine();
+        System.out.println("Enter name of person to remove from late payment list:");
+        String person = scanner.nextLine();
+        if (latePayments.remove(person)) {
+            System.out.println(person + " removed from late payment list.");
+        } else {
+            System.out.println(person + " is not in the late payment list.");
+        }
+    }
 }
+
