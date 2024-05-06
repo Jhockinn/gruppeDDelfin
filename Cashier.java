@@ -2,8 +2,13 @@ import java.util.Scanner;
 
 public class Cashier{
 
+    Payment payment = new Payment();
+
 /*
 to-do: 
+        import memberlist
+        
+        import kontigent
         see memberlist
         see kontigent
         see restance
