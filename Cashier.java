@@ -30,7 +30,7 @@ to-do:
         break;
 
         case 2: //restance (Kristoffer -- WORK IN PROGRESS
-
+                Payments.Payments();
         break;
 
         case 3: //go back to main menu
