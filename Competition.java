@@ -67,15 +67,17 @@ for(int i=0; i<MemberList.size(); i++){
    Member member = MemberList.get(i); 
    if(member.isCompetitor() && member.getAge()<18){
       Competitor youthCompetitor = new Competitor(member.getAge(), member.getName(), member.getPrice());
+      // competitor.setDiscipline random 
+      // competitor.set time random 
        youthCompetitors.add(youthCompetitor);
    }else if(member.isCompetitor() && member.getAge()>=18){
       Competitor seniorCompetitor = new Competitor(member.getAge(), member.getName(), member.getPrice()); 
        seniorCompetitors.add(seniorCompetitor);
    }else{
    System.out.println("Could not sort competitors");
-   } 
-  }
+  } 
  }
+}
  
  public void registerTrainingResults(){
    System.out.println("Here is the list of competitors: "); 
@@ -87,19 +89,19 @@ for(int i=0; i<MemberList.size(); i++){
       
    boolean found = false; 
    for(Competitor competitor : youthCompetitors){
-   if(competitor.getName().equals(competitorName)){
+      if(competitor.getName().equals(competitorName)){
       found = true; 
       // kode her 
-      break; 
+    break; 
       }
    }
    
    if(!found){
    for(Competitor competitor : seniorCompetitors){
-   if(competitor.getName().equals(competitorName)){
+      if(competitor.getName().equals(competitorName)){
       found = true; 
       // kode her 
-      break; 
+   break; 
       
       }
      }
@@ -107,9 +109,7 @@ for(int i=0; i<MemberList.size(); i++){
    
    if(!found){
    System.out.println("Could not find the competitor");
-   }
-   
-   
+   } 
  }
  
  public void registerCompetitionResults(){
