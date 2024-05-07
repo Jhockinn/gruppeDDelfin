@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Cashier {
 
     private Payments payments = new Payments();
+    private MembershipFee membershipfee = new MembershipFee();
 
     public void managePayments() {
         Scanner scanner = new Scanner(System.in);
@@ -11,7 +12,11 @@ public class Cashier {
             System.out.println("\nCashier UI Options:");
             System.out.println("1: See memberlist");
             System.out.println("2: Late payments lists");
-            System.out.println("3: Go back to the main menu\n");;
+            System.out.println("3: See membership fees");
+            System.out.println("4: Modify membership fees")
+            System.out.println("5: Go back to the main menu");
+            System.out.println("\n");
+           
 
             int choice = scanner.nextInt();
 
@@ -24,7 +29,16 @@ public class Cashier {
                     payment.getLatePaymentList();
                     break;
 
-                case 3: // go back to the main menu
+
+                case 3: // TO-DO: show membership fee
+
+                    break;
+
+                case 4: //TO-DO: modify membership fees
+
+                    break;
+
+                case 5: // go back to the main menu
                     return;
 
                 default:
