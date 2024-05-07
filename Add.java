@@ -2,37 +2,82 @@ import java.util.*;
 import java.io.*;
 
 public class Add{
-    ArrayList<String> nameList = new ArrayList<String>();
+    ArrayList<String> boyNameList = new ArrayList<String>();
+    ArrayList<String> girlNameList = new ArrayList<String>();
     ArrayList<Members> memberList = new ArrayList<Members>();
     Random rand = new Random();
     int RandomName = 0;
+    int count = -1; 
     //Adds the diffrent classes to the memberList (arraylist) 
     public void add() {
-        for (int x = 0; x <= 100; x++) {
-            RandomName = rand.nextInt(185);
-            int age = rand.nextInt(6,18); 
-            String name = nameList.get(RandomName);
-            double price = rand.nextInt(400,10000);
-            memberList.add(new Youth(age, name, price));
+        for (int x = 0; x <= 50; x++) {
+            count++;
+            RandomName = rand.nextInt(100); //Har lavet 2 arrays med pige og drenge navne, det her giver et random nummber til at vælge i dem
+            int age = rand.nextInt(2006,2018); // setAge i Members, tage nuværende år og minuser med fødselsår, og giver en alder. 
+            String name = boyNameList.get(RandomName); // random navn 
+            double price = rand.nextInt(400,10000); // ved ikke helt hvad den skal bruges til endnu xD 
+            memberList.add(new Youth(age, name, price)); // intialisere objekter 
+            memberList.get(count).setAge(age); // ændre alder ud fra setAge metoden. 
+            memberList.get(x).setBoy(true);  //siger om det er en dreng eller ej. 
            
             //memberList.add(new Youth());
         }
-        for (int x = 0; x <= 100; x++) {
-            RandomName = rand.nextInt(185);
-            int age = rand.nextInt(18,60); 
-            String name = nameList.get(RandomName);
+          for (int x = 0; x <= 50; x++) {
+            count++;
+            RandomName = rand.nextInt(100);
+            int age = rand.nextInt(2006,2018);
+            String name = girlNameList.get(RandomName);
+            double price = rand.nextInt(400,10000);
+            memberList.add(new Youth(age, name, price));
+            memberList.get(count).setAge(age);
+            memberList.get(count).setBoy(false);
+           
+            //memberList.add(new Youth());
+        }
+        for (int x = 0; x <= 50; x++) {
+            count++;
+            RandomName = rand.nextInt(100);
+            int age = rand.nextInt(1965,2005); 
+            String name = boyNameList.get(RandomName);
             double price = rand.nextInt(400,10000);
             memberList.add(new Senior(age,name,price));
+            memberList.get(count).setAge(age);
+            memberList.get(count).setBoy(true);
             
             //memberList.add(new Senior());
         }
         for (int x = 0; x <= 50; x++) {
-            RandomName = rand.nextInt(185);
-            int age = rand.nextInt(60,100); 
-            String name = nameList.get(RandomName);
+            count++;
+            RandomName = rand.nextInt(100);
+            int age = rand.nextInt(1965,2005); 
+            String name = girlNameList.get(RandomName);
+            double price = rand.nextInt(400,10000);
+            memberList.add(new Senior(age,name,price));
+            memberList.get(count).setAge(age);
+            memberList.get(count).setBoy(false);
+            
+            //memberList.add(new Senior());
+        }
+        for (int x = 0; x <= 25; x++) {
+            count++;
+            RandomName = rand.nextInt(100);
+            int age = rand.nextInt(1940,1964); 
+            String name = boyNameList.get(RandomName);
             double price = rand.nextInt(400,10000);
             memberList.add(new Elder(age,name,price));
-            
+            memberList.get(count).setAge(age);
+            memberList.get(count).setBoy(true);
+            //memberList.add(new Elder());
+        }
+         for (int x = 0; x <= 25; x++) {
+            count++;
+            RandomName = rand.nextInt(100);
+            int age = rand.nextInt(1940,1964); 
+            String name = girlNameList.get(RandomName);
+            double price = rand.nextInt(400,10000);
+            memberList.add(new Elder(age,name,price));
+            memberList.get(count).setAge(age);
+            memberList.get(count).setBoy(false);
             //memberList.add(new Elder());
         }
     }
@@ -46,44 +91,58 @@ public class Add{
                 }
             });
     }
+    
+    public String chooseGender(Members member){
+         if(member.getBoy() == true){
+            return "Male";
+         }else{
+            return "Female";
+         }
+    }
+    
     public void addNames(){
-    Collections.addAll(nameList, "Sophia", "Liam", "Emma", "Noah", "Olivia",
-            "Ava", "Isabella", "Mia", "Amelia", "Charlotte",
-            "Olga", "Anna", "Maria", "Elijah", "Natalia",
-            "Irina", "Ekaterina", "Sofia", "Tatiana", "Anastasia",
-            "Sophie", "David", "Emma", "Lea", "Julian",
-            "Mia", "Laura", "Sara", "Lina", "Emilia",
-            "Ainhoa", "María", "Lucía", "William", "Marta",
-            "Paula", "Julia", "Andrea", "Alba", "Laura",
-            "Amélie", "Chloé", "Léa", "Manon", "Inès",
-            "Camille", "Ethan", "Lucie", "Louise", "Anna",
-            "Emma", "Sara", "Elin", "Ella", "Maja",
-            "Olivia", "Adam", "Alma", "Ida", "Emilia",
-            "Hannah", "Jack", "Mia", "Sofia", "Anna",
-            "Lea", "Laura", "Ella", "Mila", "Sophie",
-            "Emma", "Léa", "Manon", "Zoé", "Inès",
-            "Chloé", "Luna", "Jade", "Camille", "Julia",
-            "Emma", "Max", "Mia", "Anna", "Ella",
-            "Alma", "Olivia", "Eva", "Ida", "Emilia",
-            "Luisa", "Sophia", "Amelie", "Mia", "Emma",
-            "Hanna", "Luke", "Leonie", "Emilia", "Anna",
-            "Sophie", "Emma", "Lena", "Hannah", "Lea",
-            "Anna", "Mia", "Sara", "Emilia", "Laura",
-            "Elena", "Sophia", "Mia", "Emma", "Olivia",
-            "Sara", "Eva", "Anna", "Luna", "Julia",
-            "Sophie", "Elijah", "Olivia", "Mia", "Ella",
-            "Eva", "Lea", "Lina", "Laura", "Sofia",
-            "Mia", "Theo", "Sophie", "Ella", "Olivia",
-            "Sara", "Emilia", "Anna", "Lena", "Maja",
-            "Alexander", "James", "Benjamin", "Daniel", "Matthew",
-            "Michael", "Ethan", "William", "Alexander", "Daniel",
-            "Matthew", "David", "Joseph", "Carter", "John",
-            "Christopher", "Ryan", "Thomas", "Christian", "Anthony",
-            "Joshua", "Nicholas", "Elijah", "Andrew", "Isaac",
-            "Jonathan", "Samuel", "Tyler", "Lucas", "Gavin",
-            "Nathan", "Brandon", "Jackson", "Dylan", "Caleb",
-            "Logan", "Luke", "Mason", "Evan", "Jack",
-            "Justin", "Jordan", "Jason", "Aaron", "Jeremiah",
-            "Henry");
+    // boys names add to arraylist
+    Collections.addAll(boyNameList, "Jacob", "Michael", "Ethan", "Alexander", "William", 
+    "James", "Daniel", "Benjamin", "Christopher", "Matthew", 
+    "Andrew", "Joseph", "Logan", "David", "Anthony", 
+    "Joshua", "Samuel", "John", "Ryan", "Nathan", 
+    "Jonathan", "Christian", "Liam", "Dylan", "Nicholas", 
+    "Gabriel", "Brandon", "Tyler", "Gavin", "Evan", 
+    "Luke", "Isaac", "Isaiah", "Owen", "Carter", 
+    "Caleb", "Wyatt", "Henry", "Jack", "Sebastian", 
+    "Jaxon", "Julian", "Levi", "Zachary", "Austin", 
+    "Connor", "Elijah", "Hunter", "Cameron", "Thomas", 
+    "Jordan", "Aaron", "Oliver", "Aiden", "Mason", 
+    "Charles", "Eli", "Adam", "Colton", "Landon", 
+    "Adrian", "Sean", "Justin", "Bryan", "Carson", 
+    "Nolan", "Brian", "Kevin", "Blake", "Jeremy", 
+    "Timothy", "Marcus", "Jaden", "Brayden", "Dominic", 
+    "Xavier", "Parker", "Chase", "Collin", "Jesse", 
+    "Tristan", "Kaden", "Kyle", "Antonio", "Miguel", 
+    "Gage", "Alejandro", "Steven", "Hudson", "Riley", 
+    "Edward", "Joel", "Alan", "Joey", "Maxwell", 
+    "Ryder", "Cooper", "Eric", "Ashton", "Trevor");
+    //girl names added to arraylist
+    Collections.addAll(girlNameList,"Emma", "Olivia", "Ava", "Isabella", "Sophia", 
+    "Mia", "Charlotte", "Amelia", "Harper", "Evelyn", 
+    "Abigail", "Emily", "Elizabeth", "Mila", "Ella", 
+    "Avery", "Sofia", "Camila", "Aria", "Scarlett", 
+    "Victoria", "Madison", "Luna", "Grace", "Chloe", 
+    "Penelope", "Layla", "Riley", "Zoey", "Nora", 
+    "Lily", "Eleanor", "Hannah", "Lillian", "Addison", 
+    "Aubrey", "Ellie", "Stella", "Natalie", "Zoe", 
+    "Leah", "Hazel", "Violet", "Aurora", "Savannah", 
+    "Audrey", "Brooklyn", "Bella", "Claire", "Skylar", 
+    "Lucy", "Paisley", "Everly", "Anna", "Caroline", 
+    "Nova", "Genesis", "Emilia", "Kennedy", "Samantha", 
+    "Maya", "Willow", "Kinsley", "Naomi", "Aaliyah", 
+    "Elena", "Sarah", "Ariana", "Allison", "Gabriella", 
+    "Alice", "Madelyn", "Cora", "Ruby", "Eva", 
+    "Serenity", "Autumn", "Adeline", "Hailey", "Gianna", 
+    "Valentina", "Isla", "Eliana", "Quinn", "Neveah", 
+    "Ivy", "Sadie", "Piper", "Lydia", "Alexa", 
+    "Josephine", "Emery", "Julia", "Delilah", "Arianna", 
+    "Vivian", "Kaylee", "Sophie", "Brielle", "Madeline"
+    );
          }
 }
