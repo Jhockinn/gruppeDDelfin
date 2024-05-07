@@ -11,7 +11,7 @@ public class Cashier {
             System.out.println("\nCashier UI Options:");
             System.out.println("1: See memberlist");
             System.out.println("2: Late payments lists");
-            System.out.println("3: Go back to the main menu\n");
+            System.out.println("3: Go back to the main menu\n");;
 
             int choice = scanner.nextInt();
 
