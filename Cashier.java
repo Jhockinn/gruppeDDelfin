@@ -29,7 +29,6 @@ public class Cashier {
                     payment.getLatePaymentList();
                     break;
 
-
                 case 3: // TO-DO: show membership fee
 
                     break;
