@@ -1,7 +1,6 @@
 import java.util.*;
 import java.io.*;
 public class MainTest{
-      static ArrayList<Members> memberList = new ArrayList<Members>();
   public static void main(String[]args){
       Competitive competi = new Competitive();
       Add AddMemb = new Add();
@@ -9,10 +8,10 @@ public class MainTest{
       Login login = new Login();
       AddMemb.addNames();
       AddMemb.add();
-      competi.compe();
-      acti.active();
+      competi.compe(AddMemb.memberList);
+      acti.active(AddMemb.memberList);
       AddMemb.sort();
-      System.out.println(memberList);
+      System.out.println(AddMemb.memberList);
       //login.login();
       
   }

@@ -1,6 +1,9 @@
 import java.util.*;
 public class Login{
       Scanner scan = new Scanner(System.in);
+      Trainer trainer = new Trainer();
+      Chairman chairman = new Chairman();
+      Cashier cashier = new Cashier();
       //logins for diffrent users. 
       String chairUser = "Chairman";
       String chairPass = "TheBoss";
@@ -28,7 +31,9 @@ public class Login{
       password = scan.nextLine();
          if(username.equals(chairUser) && password.equals(chairPass)){
             do{
-            System.out.println("Welcome Chairman");
+            //chairman.//set metode fra chairman her. 
+            
+            /*System.out.println("Welcome Chairman");
             System.out.println("What would you like to do?");
             System.out.println("");
             System.out.println("");
@@ -51,12 +56,14 @@ public class Login{
                
                default: 
                break;
-               }//Switch
+               }//Switch*/
             }while(true);
          }
          if(username.equals(cashUser) && password.equals(cashPass)){
             do{
-            System.out.println("Welcome Chashier");
+            //cashier.//set metode fra cashier her. 
+            
+            /*System.out.println("Welcome Chashier");
             System.out.println("What would you like to do?");
             System.out.println("");
             System.out.println("");
@@ -79,12 +86,14 @@ public class Login{
                
                default: 
                break;
-               }//Switch
+               }//Switch*/
             }while(true);
          }
         if(username.equals(trainUser) && password.equals(trainPass)){
             do{
-            System.out.println("Welcome Trainer");
+            //trainer.//set metode fra træner her. 
+            
+            /*System.out.println("Welcome Trainer");
             System.out.println("What would you like to do?");
             System.out.println("");
             System.out.println("");
@@ -107,7 +116,7 @@ public class Login{
                
                default: 
                break;
-               }//Switch
+               }//Switch*/
             }while(true);
          }
          else{

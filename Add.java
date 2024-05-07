@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Add{
     ArrayList<String> nameList = new ArrayList<String>();
-    MainTest main = new MainTest();
+    ArrayList<Members> memberList = new ArrayList<Members>();
     Random rand = new Random();
     int RandomName = 0;
     //Adds the diffrent classes to the memberList (arraylist) 
@@ -13,33 +13,33 @@ public class Add{
             int age = rand.nextInt(6,18); 
             String name = nameList.get(RandomName);
             double price = rand.nextInt(400,10000);
-            main.memberList.add(new Youth(age, name, price));
+            memberList.add(new Youth(age, name, price));
            
-            //main.memberList.add(new Youth());
+            //memberList.add(new Youth());
         }
         for (int x = 0; x <= 100; x++) {
             RandomName = rand.nextInt(185);
             int age = rand.nextInt(18,60); 
             String name = nameList.get(RandomName);
             double price = rand.nextInt(400,10000);
-            main.memberList.add(new Senior(age,name,price));
+            memberList.add(new Senior(age,name,price));
             
-            //main.memberList.add(new Senior());
+            //memberList.add(new Senior());
         }
         for (int x = 0; x <= 50; x++) {
             RandomName = rand.nextInt(185);
             int age = rand.nextInt(60,100); 
             String name = nameList.get(RandomName);
             double price = rand.nextInt(400,10000);
-            main.memberList.add(new Elder(age,name,price));
+            memberList.add(new Elder(age,name,price));
             
-            //main.memberList.add(new Elder());
+            //memberList.add(new Elder());
         }
     }
     //the comparator gives you negative, equal(0) or positive int values 
     //which indicates to the collection.sort where to arrange the given type in the list 
     public void sort(){
-    Collections.sort(main.memberList, new Comparator<Members>() {
+    Collections.sort(memberList, new Comparator<Members>() {
                 @Override
                 public int compare(Members p1, Members p2) {
                     return p1.getAge() - p2.getAge();
