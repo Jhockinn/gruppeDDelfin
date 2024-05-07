@@ -20,8 +20,8 @@ public class Cashier {
                     // Add code to access memberlist
                     break;
 
-                case 2: // late payments 
-                    payment.payments();
+                case 2: // late payments is a list of people with missing payments
+                    payment.getLatePaymentList();
                     break;
 
                 case 3: // go back to the main menu
