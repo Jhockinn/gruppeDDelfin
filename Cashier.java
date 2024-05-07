@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Cashier {
 
-    private Payment payment = new Payment();
+    private Payments payments = new Payments();
 
     public void managePayments() {
         Scanner scanner = new Scanner(System.in);
