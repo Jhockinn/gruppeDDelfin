@@ -6,7 +6,6 @@ public void Payments {
     private static ArrayList<String> latePayments = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
         while (true) {
 
             System.out.println("\nOptions:");
@@ -41,7 +40,7 @@ public void Payments {
     public static void getLatePaymentList() {
         System.out.println("List of people with missing payments:");
         for (String person : latePayments) {
-            System.out.println(person);
+            System.out.println(person + " ,");
         }
     }
 
@@ -63,5 +62,5 @@ public void Payments {
             System.out.println(person + " is not in the late payment list.");
         }
     }
-}
+
 
