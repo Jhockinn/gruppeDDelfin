@@ -4,7 +4,8 @@ public class Competitor{
 
 String name; 
 int age; 
-ArrayList<String> discipline; 
+ArrayList<String> discipline = new ArrayList<String>(); 
+private ArrayList<TrainingResult> trainingResult = new ArrayList<TrainingResult>(); 
 
    public Competitor(int age,String name, ArrayList<String> discipline){
       this.age = age; 
@@ -17,8 +18,20 @@ ArrayList<String> discipline;
       this.name=name; 
      
    }
+   
+   public void addTrainingResult(String discipline, int length, double time){
+   TrainingResult result = new TrainingResult(discipline, length, time);
+   trainingResult.add(result); 
+   
+   
+   }
+   
 
-   // getters & setters 
+// getters & setters
+   public ArrayList<TrainingResult> getTrainingResult(){
+   return trainingResult;
+   }
+    
    public void setAge(int age){
       this.age = age;
    }
@@ -44,4 +57,5 @@ ArrayList<String> discipline;
    public ArrayList<String> getDiscipline() {
       return discipline; 
    }
+   
 }

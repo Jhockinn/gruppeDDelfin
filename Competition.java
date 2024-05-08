@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Competition{
 
 // ArrayLists for youth and senior competitors 
-ArrayList<Competitor> youthCompetitors = new ArrayList<Competitor>(); 
-ArrayList<Competitor> seniorCompetitors = new ArrayList<Competitor>(); 
+public ArrayList<Competitor> youthCompetitors = new ArrayList<Competitor>(); 
+public ArrayList<Competitor> seniorCompetitors = new ArrayList<Competitor>(); 
 // ArratList for memberList
 ArrayList<Members> memberList = new ArrayList<Members>();
 
@@ -49,8 +49,9 @@ public void showYouthCompetitors(){
    for(Competitor competitor : youthCompetitors){
       System.out.print(" Name: " + competitor.getName()); 
       System.out.print(" Age: " + competitor.getAge()); 
-      System.out.print(" Disciplines " + competitor.getDiscipline());
-      System.out.println("The best time for : " + competitor.getDiscipline() + " is: ");   
+      System.out.println(" Disciplines " + competitor.getDiscipline());
+      System.out.println(); 
+      
    }
 }
 
@@ -61,8 +62,8 @@ public void showSeniorCompetitors(){
    for(Competitor competitor : seniorCompetitors){
       System.out.print(" Name: " + competitor.getName()); 
       System.out.print(" Age: " + competitor.getAge()); 
-      System.out.print(" Disciplines " + competitor.getDiscipline()); 
-      System.out.println("The best time for : " + competitor.getDiscipline() + " is: ");   
+      System.out.print(" Disciplines " + competitor.getDiscipline());  
+       System.out.println(); 
    }
 }
 
@@ -88,42 +89,7 @@ for(int i=0; i<memberList.size(); i++){
  }
 }
  
- public void registerTrainingResults(){
-   System.out.println("Here is the list of competitors: "); 
-      showYouthCompetitors(); 
-      showSeniorCompetitors();  
-        
-   System.out.println("For which competitor do you want to sumbit training results? ");
-      String competitorName = scan.next(); 
-      
-   boolean found = false; 
-      for(Competitor competitor : youthCompetitors){
-         if(competitor.getName().equals(competitorName)){
-         found = true; 
-           // System.out.println("    
-      break; 
-      }
-   }
-   
-   if(!found){
-   for(Competitor competitor : seniorCompetitors){
-      if(competitor.getName().equals(competitorName)){
-      found = true; 
-      // kode her 
-   break; 
-      
-      }
-     }
-   } 
-   
-   if(!found){
-   System.out.println("Could not find the competitor");
-   } 
- }
  
- public void registerCompetitionResults(){
- 
- }
  
 }
 

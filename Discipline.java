@@ -8,7 +8,8 @@ private static Random ran = new Random();
  public enum Disciplines{
    FREESTYLE, BUTTERFLY, BACKSTROKE, BREASTSTROKE, CRAWL
    }
- 
+   
+ // method for gettting a random discipline from the discipline enum
  public ArrayList<String> getRandomDiscipline(){
    ArrayList <String> disciplineList = new ArrayList<>(); // creates an arrayList so that the enum can be converted to a String of the ArrayList
    Disciplines[] disciplines = Disciplines.values(); // gets all the values from the enum
