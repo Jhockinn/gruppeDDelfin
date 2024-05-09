@@ -1,13 +1,14 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public void Payments {
+public class Payments {
 
     private static ArrayList<String> latePayments = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
+    // Constructor
+    public Payments() {
         while (true) {
-
             System.out.println("\nOptions:");
             System.out.println("1: See list of people with missing payments");
             System.out.println("2: Add people to the list of missing payments");
@@ -17,19 +18,15 @@ public void Payments {
             int choice = scanner.nextInt();
 
             switch (choice) {
-
                 case 1:
                     getLatePaymentList();
                     break;
-
                 case 2:
                     addPeopleToLatePaymentList();
                     break;
-
                 case 3:
                     removePeopleFromLatePaymentList();
                     break;
-
                 default:
                     System.out.println("Invalid option");
                     break;
@@ -40,7 +37,7 @@ public void Payments {
     public static void getLatePaymentList() {
         System.out.println("List of people with missing payments:");
         for (String person : latePayments) {
-            System.out.println(person + " ,");
+            System.out.println(person + " , ");
         }
     }
 
@@ -62,5 +59,8 @@ public void Payments {
             System.out.println(person + " is not in the late payment list.");
         }
     }
+}
+
+
 
 

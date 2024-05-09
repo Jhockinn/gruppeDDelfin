@@ -13,11 +13,10 @@ public class Cashier {
             System.out.println("1: See memberlist");
             System.out.println("2: Late payments lists");
             System.out.println("3: See membership fees");
-            System.out.println("4: Modify membership fees")
+            System.out.println("4: Modify membership fees");
             System.out.println("5: Go back to the main menu");
             System.out.println("\n");
            
-
             int choice = scanner.nextInt();
 
             switch(choice) {
@@ -26,11 +25,11 @@ public class Cashier {
                     break;
 
                 case 2: // late payments is a list of people with missing payments
-                    payment.getLatePaymentList();
+                    payments.getLatePaymentList(); // Corrected variable name to "payments"
                     break;
 
                 case 3: // TO-DO: show membership fee
-
+                     membershipfee.ShowMembershipFee();
                     break;
 
                 case 4: //TO-DO: modify membership fees
