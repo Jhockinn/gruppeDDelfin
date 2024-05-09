@@ -10,7 +10,7 @@ public class Youth extends Members{
          setPrice(price); 
       }*/
           
-      public Youth(int age,String name,double price){
-         super(age,name,price);
+      public Youth(int age,String name){
+         super(age,name);
       } 
 }

@@ -11,7 +11,7 @@ public class Elder extends Senior{
          setPrice(price); 
       }*/
 
-   public Elder(int age,String name,double price){
-      super(age,name,price);
+   public Elder(int age,String name){
+      super(age,name);
    }  
 }

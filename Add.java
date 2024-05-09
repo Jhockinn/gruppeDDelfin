@@ -132,7 +132,7 @@ public class Add{
         } 
         int price = 1000;
         if(!memberExists){
-           memberList.add(new Members(memberAge, memberName, price));
+           memberList.add(new Members(memberAge, memberName));
         }
       }
     
@@ -143,8 +143,8 @@ public class Add{
             RandomName = rand.nextInt(100); //Har lavet 2 arrays med pige og drenge navne, det her giver et random nummber til at vælge i dem
             int age = rand.nextInt(2006,2018); // setAge i Members, tage nuværende år og minuser med fødselsår, og giver en alder. 
             String name = boyNameList.get(RandomName); // random navn 
-            double price = rand.nextInt(400,10000); // ved ikke helt hvad den skal bruges til endnu xD 
-            memberList.add(new Youth(age, name, price)); // intialisere objekter 
+            memberList.add(new Youth(age, name)); // intialisere objekter 
+            memberList.get(x).setPrice(rand.nextInt(400,10000)); // ved ikke helt hvad den skal bruges til endnu xD 
             memberList.get(memberList.size()-1).setAge(age); // ændre alder ud fra setAge metoden. 
             memberList.get(x).setGender(true);  //siger om det er en dreng eller ej. 
             memberList.get(x).setID(memberList.size()+1);
@@ -155,8 +155,8 @@ public class Add{
             RandomName = rand.nextInt(87);
             int age = rand.nextInt(2006,2018);
             String name = girlNameList.get(RandomName);
-            double price = rand.nextInt(400,10000);
-            memberList.add(new Youth(age, name, price));
+            memberList.add(new Youth(age, name));
+            memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
             memberList.get(memberList.size()-1).setAge(age);
             memberList.get(memberList.size()-1).setGender(false);
             memberList.get(memberList.size()-1).setID(memberList.size()+1);
@@ -167,9 +167,9 @@ public class Add{
             RandomName = rand.nextInt(100);
             int age = rand.nextInt(1965,2005); 
             String name = boyNameList.get(RandomName);
-            double price = rand.nextInt(400,10000);
-            memberList.add(new Senior(age,name,price));
+            memberList.add(new Senior(age,name));
             memberList.get(memberList.size()-1).setAge(age);
+            memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
             memberList.get(memberList.size()-1).setGender(true);
             memberList.get(memberList.size()-1).setID(memberList.size()+1);
             //memberList.add(new Senior());
@@ -179,8 +179,8 @@ public class Add{
             RandomName = rand.nextInt(87);
             int age = rand.nextInt(1965,2005); 
             String name = girlNameList.get(RandomName);
-            double price = rand.nextInt(400,10000);
-            memberList.add(new Senior(age,name,price));
+            memberList.add(new Senior(age,name));
+            memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
             memberList.get(memberList.size()-1).setAge(age);
             memberList.get(memberList.size()-1).setGender(false);
             memberList.get(memberList.size()-1).setID(memberList.size()+1);
@@ -191,8 +191,8 @@ public class Add{
             RandomName = rand.nextInt(100);
             int age = rand.nextInt(1940,1964); 
             String name = boyNameList.get(RandomName);
-            double price = rand.nextInt(400,10000);
-            memberList.add(new Elder(age,name,price));
+            memberList.add(new Elder(age,name));
+            memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
             memberList.get(memberList.size()-1).setAge(age);
             memberList.get(memberList.size()-1).setGender(true);
             memberList.get(memberList.size()-1).setID(memberList.size()+1);
@@ -203,8 +203,8 @@ public class Add{
             RandomName = rand.nextInt(87);
             int age = rand.nextInt(1940,1964); 
             String name = girlNameList.get(RandomName);
-            double price = rand.nextInt(400,10000);
-            memberList.add(new Elder(age,name,price));
+            memberList.add(new Elder(age,name));
+            memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
             memberList.get(memberList.size()-1).setAge(age);
             memberList.get(memberList.size()-1).setGender(false);
             memberList.get(memberList.size()-1).setID(memberList.size()+1);

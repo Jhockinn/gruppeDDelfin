@@ -13,12 +13,13 @@ public class Members{
    private LocalTime time;
    private double price; 
    private boolean gender;
+   private String discipline; 
    public int ID;
-   private int year = LocalDate.now().getYear();   
-   public Members(int age,String name,double price){
+   private int year = LocalDate.now().getYear(); 
+     
+   public Members(int age,String name){
       this.age = age;
       this.name = name;
-      this.price = price; 
       
    }
    
@@ -86,9 +87,14 @@ public class Members{
    public void setID(int ID){
       this.ID = ID;
    }
-   
+   public String getDiscipline(){
+      return discipline;
+   }
+   public void setDiscipline(String discipline){
+      this.discipline = discipline;
+   }
    public String toString(){
-        return "[" + "ID" + ID + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Name: " + name + ", Price: "+ price+ ", Competitor: " + competitor +", Active: " + active +" ]" + "\n";
+        return "[" + "ID" + ID + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Name: " + name + ", Price: "+ price+ ", Competitor: " + competitor + " Discipline: " + discipline+ ", Active: " + active +" ]" + "\n";
    }
    
 }
