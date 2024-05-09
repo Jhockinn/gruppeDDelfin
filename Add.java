@@ -16,74 +16,15 @@ public class Add{
     String compe;
     String active;
     // add member to list. 
-    /*public void addMember(){
-       String choice;
-       String compe;
-       String active;
-       System.out.println("Write first name");
-       String name = scan.nextLine();
-       do{
-       System.out.println("Write gender male or female");
-       choice = scan.nextLine();
-         if(choice.equals("male") || choice.equals("female")){
-            if(choice.equals("male")){
-               gender = true;
-            }
-            else{
-               gender = false; 
-            }
-         }else{
-            System.out.println("Please try to write it again");
-         }
-       }while(!choice.equals("male") && !choice.equals("female"));
-       System.out.println("Write birthyear");
-       int age = scan.nextInt();
-       System.out.println("Write money added to account");
-       int price = scan.nextInt();
-       do{
-       System.out.println("are you regular or competitive");
-       scan.nextLine();
-       compe = scan.nextLine();
-          if(compe.equals("regular") || compe.equals("competitive")){
-            if(compe.equals("competitive")){
-               competitive = true;
-            }
-            else{
-               competitive = false; 
-            }
-         }else{
-         System.out.println("Sorry, wrong input try again!");
-         }
-       }while(!compe.equals("regular") && !compe.equals("competitive"));
-       
-       do{
-       System.out.println("are you active or passive");
-       active = scan.nextLine();
-        if(active.equals("active") || active.equals("passive")){
-            if(active.equals("active")){
-               acti = true;
-            }
-            else{
-               acti = false; 
-            }
-         }else{
-         System.out.println("Sorry, wrong input try again!");
-         }
-       }while(!active.equals("active") && !active.equals("passive"));
-
-       memberList.add(new Members(age, name, price));
-       memberList.get(memberList.size()-1).setAge(age);
-       memberList.get(memberList.size()-1).setBoy(gender);
-       memberList.get(memberList.size()-1).setCompetitor(competitive);
-       memberList.get(memberList.size()-1).setActive(acti);
-    
-    }*/
     public void addNewMember() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter the name of the new member:");
-        String memberName = scanner.nextLine();
-
+        String name = scanner.nextLine();
+         
+        System.out.println("Enter the year of birth");
+        int memberAge = Integer.parseInt(scanner.nextLine());
+        
         do{
           System.out.println("Write gender male or female");
           choice = scan.nextLine();
@@ -98,6 +39,7 @@ public class Add{
             System.out.println("Please try to write it again");
          }
        }while(!choice.equals("male") && !choice.equals("female"));
+       
        do{
        System.out.println("are you regular or competitive");
        compe = scan.nextLine();
@@ -112,16 +54,27 @@ public class Add{
          System.out.println("Sorry, wrong input try again!");
          }
        }while(!compe.equals("regular") && !compe.equals("competitive"));
-
-
-        System.out.println("Enter the age of the member:");
-        int memberAge = Integer.parseInt(scanner.nextLine());
+        
+        do{
+           System.out.println("are you active or passive");
+           active = scan.nextLine();
+        if(active.equals("active") || active.equals("passive")){
+            if(active.equals("active")){
+               acti = true;
+            }
+            else{
+               acti = false; 
+            }
+         }else{
+         System.out.println("Sorry, wrong input try again!");
+         }
+       }while(!active.equals("active") && !active.equals("passive"));
 
         // Check if the member already exists
         boolean memberExists = false;
         int ID = memberList.size()+1;
         for (Members member : memberList) {
-            if (member.getName().equalsIgnoreCase(memberName) &&
+            if (member.getName().equalsIgnoreCase(name) &&
                 member.getAge() == memberAge &&
                 member.getGender() == gender &&
                 member.getCompetitor() == competitive) {
@@ -131,7 +84,11 @@ public class Add{
             }
         } 
         if(!memberExists){
-           memberList.add(new Members(memberAge, memberName));
+           memberList.add(new Members(memberAge, name));
+           memberList.get(memberList.size()-1).setAge(memberAge);
+           memberList.get(memberList.size()-1).setGender(gender);
+           memberList.get(memberList.size()-1).setCompetitor(competitive);
+           memberList.get(memberList.size()-1).setActive(acti);
         }
       }
     
