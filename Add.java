@@ -130,7 +130,6 @@ public class Add{
                 break;
             }
         } 
-        int price = 1000;
         if(!memberExists){
            memberList.add(new Members(memberAge, memberName));
         }
