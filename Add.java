@@ -119,6 +119,7 @@ public class Add{
 
         // Check if the member already exists
         boolean memberExists = false;
+        int ID = memberList.size()+1;
         for (Members member : memberList) {
             if (member.getName().equalsIgnoreCase(memberName) &&
                 member.getAge() == memberAge &&
@@ -146,7 +147,7 @@ public class Add{
             memberList.add(new Youth(age, name, price)); // intialisere objekter 
             memberList.get(memberList.size()-1).setAge(age); // ændre alder ud fra setAge metoden. 
             memberList.get(x).setGender(true);  //siger om det er en dreng eller ej. 
-           
+            memberList.get(x).setID(memberList.size()+1);
             //memberList.add(new Youth());
         }
           for (int x = 0; x <= 50; x++) {
@@ -158,7 +159,7 @@ public class Add{
             memberList.add(new Youth(age, name, price));
             memberList.get(memberList.size()-1).setAge(age);
             memberList.get(memberList.size()-1).setGender(false);
-           
+            memberList.get(memberList.size()-1).setID(memberList.size()+1);
             //memberList.add(new Youth());
         }
         for (int x = 0; x <= 50; x++) {
@@ -170,7 +171,7 @@ public class Add{
             memberList.add(new Senior(age,name,price));
             memberList.get(memberList.size()-1).setAge(age);
             memberList.get(memberList.size()-1).setGender(true);
-            
+            memberList.get(memberList.size()-1).setID(memberList.size()+1);
             //memberList.add(new Senior());
         }
         for (int x = 0; x <= 50; x++) {
@@ -182,7 +183,7 @@ public class Add{
             memberList.add(new Senior(age,name,price));
             memberList.get(memberList.size()-1).setAge(age);
             memberList.get(memberList.size()-1).setGender(false);
-            
+            memberList.get(memberList.size()-1).setID(memberList.size()+1);
             //memberList.add(new Senior());
         }
         for (int x = 0; x <= 25; x++) {
@@ -194,6 +195,7 @@ public class Add{
             memberList.add(new Elder(age,name,price));
             memberList.get(memberList.size()-1).setAge(age);
             memberList.get(memberList.size()-1).setGender(true);
+            memberList.get(memberList.size()-1).setID(memberList.size()+1);
             //memberList.add(new Elder());
         }
          for (int x = 0; x <= 25; x++) {
@@ -205,6 +207,7 @@ public class Add{
             memberList.add(new Elder(age,name,price));
             memberList.get(memberList.size()-1).setAge(age);
             memberList.get(memberList.size()-1).setGender(false);
+            memberList.get(memberList.size()-1).setID(memberList.size()+1);
             //memberList.add(new Elder());
         }
     }

@@ -13,7 +13,7 @@ public class Members{
    private LocalTime time;
    private double price; 
    private boolean gender;
-   public int id = 0;
+   public int ID;
    private int year = LocalDate.now().getYear();   
    public Members(int age,String name,double price){
       this.age = age;
@@ -79,10 +79,16 @@ public class Members{
       this.gender = gender;
    }
    
+   public int getID(){
+      return ID;
+   }
    
+   public void setID(int ID){
+      this.ID = ID;
+   }
    
    public String toString(){
-        return "[" + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Name: " + name + ", Price: "+ price+ ", Competitor: " + competitor +", Active: " + active +" ]" + "\n";
+        return "[" + "ID" + ID + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Name: " + name + ", Price: "+ price+ ", Competitor: " + competitor +", Active: " + active +" ]" + "\n";
    }
    
 }

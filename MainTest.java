@@ -10,7 +10,7 @@ public class MainTest{
       AddMemb.add();
       competi.compe(AddMemb.memberList);
       acti.active(AddMemb.memberList);
-      AddMemb.sort();
+      //AddMemb.sort();
       System.out.println(AddMemb.memberList);
       AddMemb.addNewMember();
       System.out.println(AddMemb.memberList);
