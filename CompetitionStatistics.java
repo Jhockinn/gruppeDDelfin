@@ -6,6 +6,8 @@ Scanner scan = new Scanner(System.in);
 
 Competition competition; 
 
+// hva så mor 
+
 public CompetitionStatistics(Competition competition){
 this.competition = competition; 
 }
