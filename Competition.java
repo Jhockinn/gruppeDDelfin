@@ -62,7 +62,7 @@ public void showSeniorCompetitors(){
    for(Competitor competitor : seniorCompetitors){
       System.out.print(" Name: " + competitor.getName()); 
       System.out.print(" Age: " + competitor.getAge()); 
-      System.out.print(" Disciplines " + competitor.getDiscipline());  
+      System.out.print(" Disciplines " + competitor.getDiscipline());  // trainingresult.getTime(); 
        System.out.println(); 
    }
 }
@@ -74,6 +74,8 @@ for(int i=0; i<memberList.size(); i++){
    Members member = memberList.get(i); 
    if(member.getCompetitor() && member.getAge()<18){ // get og is competitor? 
       Competitor youthCompetitor = new Competitor(member.getAge(), member.getName()); // creates a competitor with age and name
+      // new date object 
+      // youthCompetitor.setDate(date.getRandomDate()); 
       Discipline discipline = new Discipline();
          youthCompetitor.setDiscipline(discipline.getRandomDiscipline());  // gives the competitor a random discipline 
          youthCompetitors.add(youthCompetitor); // adds the competitor to the arrayList
@@ -87,9 +89,6 @@ for(int i=0; i<memberList.size(); i++){
    System.out.println("Could not sort competitors");
   } 
  }
-}
- 
- 
- 
+} 
 }
 

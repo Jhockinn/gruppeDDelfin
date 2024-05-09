@@ -52,6 +52,7 @@ public void registerTrainingResults(){
    int length = scan.nextInt(); 
    System.out.println(discipline + " - Please add the time of the discipline (minutes , seconds): "); 
    double time = scan.nextDouble(); 
+   // dato 
    competitor.addTrainingResult(discipline, length, time);
    System.out.println("The competitor : " + competitor.getName()); 
    System.out.println("The discipline: " + competitor.getDiscipline()); 

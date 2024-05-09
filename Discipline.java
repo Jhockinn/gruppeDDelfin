@@ -6,7 +6,7 @@ public class Discipline{
 private static Random ran = new Random(); 
 
  public enum Disciplines{
-   FREESTYLE, BUTTERFLY, BACKSTROKE, BREASTSTROKE, CRAWL
+   FREESTYLE, BUTTERFLY, BACKSTROKE, BREASTSTROKE
    }
    
  // method for gettting a random discipline from the discipline enum
