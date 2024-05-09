@@ -16,21 +16,28 @@ public class Login{
       
       String username;
       String password;
+      String close;
      
    public void login(){
       do{
       System.out.println("Welcome to the system");
-      System.out.println("login or stop?");
-      String close = scan.nextLine();
-      if(close.equals("stop")){
-      break;
-      }
+      do{
+         System.out.println("Would you like to login or close? type in login or close so select.");
+         close = scan.nextLine();
+            if(close.equals("close")){
+               break;
+            }
+            if(!close.equals("close") || !close.equals("login")){
+               System.out.println("Wrong input please try again");
+            }
+      }while(!close.equals("close") && !close.equals("login"));
       System.out.println("Type in username: ");
       username = scan.nextLine();
       System.out.println("Type in password: ");
       password = scan.nextLine();
          if(username.equals(chairUser) && password.equals(chairPass)){
             do{
+            System.out.println("Good job buddy");
             //chairman.//set metode fra chairman her. 
             
             /*System.out.println("Welcome Chairman");

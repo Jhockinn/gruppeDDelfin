@@ -12,7 +12,8 @@ public class Members{
    private boolean competitor;
    private LocalTime time;
    private double price; 
-   private boolean boy;
+   private boolean gender;
+   public int id = 0;
    private int year = LocalDate.now().getYear();   
    public Members(int age,String name,double price){
       this.age = age;
@@ -70,18 +71,18 @@ public class Members{
    public double getPrice(){
       return price;
    }
-   public boolean getBoy(){
-      return boy;
+   public boolean getGender(){
+      return gender;
    }
    
-   public void setBoy(boolean boy){
-      this.boy = boy;
+   public void setGender(boolean boy){
+      this.gender = gender;
    }
    
    
    
    public String toString(){
-        return "age: " + age + " gender: " + main.chooseGender(this) + " name: " + name + " Price: "+ price+ " Competitor: " + competitor +" Active: " + active + "\n";
+        return "[" + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Name: " + name + ", Price: "+ price+ ", Competitor: " + competitor +", Active: " + active +" ]" + "\n";
    }
    
 }
