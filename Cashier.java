@@ -27,7 +27,7 @@ public class Cashier {
 
                 case 2:
                     // late payments is a list of people with missing payments
-                    payments.getLatePaymentList();
+                    payments.getLatePaymentList(); //TO-DO: print the updated late payment lists
                     break;
 
                 case 3:
