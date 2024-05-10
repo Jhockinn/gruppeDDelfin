@@ -5,7 +5,7 @@ import java.time.*;
 public class Members{
    //Stamoplysning 
    Random rand = new Random();
-   Add main = new Add();
+   Chairman main = new Chairman();
    private int age; 
    private String name; 
    private boolean active; 
@@ -15,7 +15,7 @@ public class Members{
    private boolean gender;
    private String discipline; 
    public int ID;
-   private int year = LocalDate.now().getYear(); 
+   int year = LocalDate.now().getYear(); 
      
    public Members(int age,String name){
       this.age = age;
@@ -76,7 +76,7 @@ public class Members{
       return gender;
    }
    
-   public void setGender(boolean boy){
+   public void setGender(boolean gender){
       this.gender = gender;
    }
    
@@ -94,7 +94,7 @@ public class Members{
       this.discipline = discipline;
    }
    public String toString(){
-        return "[" + "ID" + ID + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Name: " + name + ", Price: "+ price+ ", Competitor: " + competitor + " Discipline: " + discipline+ ", Active: " + active +" ]" + "\n";
+        return "[" + " ID: " + ID + ", Name: " + name + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Wallet: "+ price+ ", Competitor: " + competitor + " Discipline: " + discipline+ ", Active: " + active +" ]" + "\n";
    }
    
 }

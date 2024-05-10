@@ -15,16 +15,19 @@ public class Add{
     String choice;
     String compe;
     String active;
+    String disci;
+    String discipline;
+    String name1;
     // add member to list. 
     public void addNewMember() {
         Scanner scanner = new Scanner(System.in);
-
+        //name
         System.out.println("Enter the name of the new member:");
         String name = scanner.nextLine();
-         
+        //age 
         System.out.println("Enter the year of birth");
         int memberAge = Integer.parseInt(scanner.nextLine());
-        
+        //gender
         do{
           System.out.println("Write gender male or female");
           choice = scan.nextLine();
@@ -40,6 +43,7 @@ public class Add{
          }
        }while(!choice.equals("male") && !choice.equals("female"));
        
+       //Competitor
        do{
        System.out.println("are you regular or competitive");
        compe = scan.nextLine();
@@ -55,6 +59,7 @@ public class Add{
          }
        }while(!compe.equals("regular") && !compe.equals("competitive"));
         
+        //active
         do{
            System.out.println("are you active or passive");
            active = scan.nextLine();
@@ -69,13 +74,38 @@ public class Add{
          System.out.println("Sorry, wrong input try again!");
          }
        }while(!active.equals("active") && !active.equals("passive"));
+       
+       if(competitive == true){
+       do{
+           System.out.println("Choose Discipline");
+           System.out.println("Butterfly, Freestyle, Backstroke, Breaststroke");
+           disci = scan.nextLine();
+        if(disci.equals("Butterfly") || disci.equals("Freestyle")|| disci.equals("Backstroke")|| disci.equals("Breaststroke")){
+            if(disci.equals("Freestyle")){
+               discipline = "Freestyle";
+            }
+            if(disci.equals("Backstroke")){
+               discipline = "Backstroke";
+            }
+            if(disci.equals("Breaststroke")){
+               discipline = "Breaststroke";
+            }
+            else{
+               discipline = "Butterfly"; 
+            }
+         }else{
+         System.out.println("Sorry, wrong input try again!");
+         }
+       }while(!disci.equals("Butterfly") && !disci.equals("Freestyle") && !disci.equals("Backstroke")&& !disci.equals("Breaststroke"));
+       
+       }
+
 
         // Check if the member already exists
         boolean memberExists = false;
-        int ID = memberList.size()+1;
         for (Members member : memberList) {
             if (member.getName().equalsIgnoreCase(name) &&
-                member.getAge() == memberAge &&
+                member.getAge() == member.year-memberAge &&
                 member.getGender() == gender &&
                 member.getCompetitor() == competitive) {
                 memberExists = true;
@@ -83,89 +113,66 @@ public class Add{
                 break;
             }
         } 
+        //Creates member if member doesnt exist.
         if(!memberExists){
            memberList.add(new Members(memberAge, name));
+           memberList.get(memberList.size()-1).setID(memberList.size());
+           memberList.get(memberList.size()-1).setDiscipline(discipline);
            memberList.get(memberList.size()-1).setAge(memberAge);
            memberList.get(memberList.size()-1).setGender(gender);
            memberList.get(memberList.size()-1).setCompetitor(competitive);
            memberList.get(memberList.size()-1).setActive(acti);
+           memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
         }
       }
     
     //Adds the diffrent classes to the memberList (arraylist) 
-    public void add() {
-        for (int x = 0; x <= 50; x++) {
-            count++;
-            RandomName = rand.nextInt(100); //Har lavet 2 arrays med pige og drenge navne, det her giver et random nummber til at vælge i dem
-            int age = rand.nextInt(2006,2018); // setAge i Members, tage nuværende år og minuser med fødselsår, og giver en alder. 
-            String name = boyNameList.get(RandomName); // random navn 
-            memberList.add(new Youth(age, name)); // intialisere objekter 
-            memberList.get(x).setPrice(rand.nextInt(400,10000)); // ved ikke helt hvad den skal bruges til endnu xD 
-            memberList.get(memberList.size()-1).setAge(age); // ændre alder ud fra setAge metoden. 
-            memberList.get(x).setGender(true);  //siger om det er en dreng eller ej. 
-            memberList.get(x).setID(memberList.size()+1);
-            //memberList.add(new Youth());
-        }
-          for (int x = 0; x <= 50; x++) {
-            count++;
-            RandomName = rand.nextInt(87);
-            int age = rand.nextInt(2006,2018);
-            String name = girlNameList.get(RandomName);
-            memberList.add(new Youth(age, name));
-            memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
-            memberList.get(memberList.size()-1).setAge(age);
-            memberList.get(memberList.size()-1).setGender(false);
-            memberList.get(memberList.size()-1).setID(memberList.size()+1);
-            //memberList.add(new Youth());
-        }
-        for (int x = 0; x <= 50; x++) {
-            count++;
-            RandomName = rand.nextInt(100);
-            int age = rand.nextInt(1965,2005); 
-            String name = boyNameList.get(RandomName);
-            memberList.add(new Senior(age,name));
-            memberList.get(memberList.size()-1).setAge(age);
-            memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
-            memberList.get(memberList.size()-1).setGender(true);
-            memberList.get(memberList.size()-1).setID(memberList.size()+1);
-            //memberList.add(new Senior());
-        }
-        for (int x = 0; x <= 50; x++) {
-            count++;
-            RandomName = rand.nextInt(87);
-            int age = rand.nextInt(1965,2005); 
-            String name = girlNameList.get(RandomName);
-            memberList.add(new Senior(age,name));
-            memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
-            memberList.get(memberList.size()-1).setAge(age);
-            memberList.get(memberList.size()-1).setGender(false);
-            memberList.get(memberList.size()-1).setID(memberList.size()+1);
-            //memberList.add(new Senior());
-        }
-        for (int x = 0; x <= 25; x++) {
-            count++;
-            RandomName = rand.nextInt(100);
-            int age = rand.nextInt(1940,1964); 
-            String name = boyNameList.get(RandomName);
-            memberList.add(new Elder(age,name));
-            memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
-            memberList.get(memberList.size()-1).setAge(age);
-            memberList.get(memberList.size()-1).setGender(true);
-            memberList.get(memberList.size()-1).setID(memberList.size()+1);
-            //memberList.add(new Elder());
-        }
-         for (int x = 0; x <= 25; x++) {
-            count++;
-            RandomName = rand.nextInt(87);
-            int age = rand.nextInt(1940,1964); 
-            String name = girlNameList.get(RandomName);
-            memberList.add(new Elder(age,name));
-            memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
-            memberList.get(memberList.size()-1).setAge(age);
-            memberList.get(memberList.size()-1).setGender(false);
-            memberList.get(memberList.size()-1).setID(memberList.size()+1);
-            //memberList.add(new Elder());
-        }
+    
+    public void add(){
+        
+        for(int x = 0; x <=100;x++){
+            int rando = rand.nextInt(2)+1;
+               if(rando == 1){
+                  name1 = boyNameList.get(rand.nextInt(100));
+               }
+               else{
+                  name1= girlNameList.get(rand.nextInt(87));
+               }
+         int age = rand.nextInt(2006,2018); 
+         memberList.add(new Elder(age,name1));
+         memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
+         memberList.get(memberList.size()-1).setAge(age);
+         memberList.get(memberList.size()-1).setID(memberList.size());
+            if(boyNameList.contains(name1)){
+               memberList.get(memberList.size()-1).setGender(true);
+            }
+            else{
+               memberList.get(memberList.size()-1).setGender(false);   
+            }
+     
+       }
+
+       for(int x = 0; x <=148;x++){
+            int rando = rand.nextInt(2)+1;
+               if(rando == 1){
+                  name1 = boyNameList.get(rand.nextInt(100));
+               }
+               else{
+                  name1= girlNameList.get(rand.nextInt(87));
+               }
+         int age = rand.nextInt(1940,2005); 
+         memberList.add(new Elder(age,name1));
+         memberList.get(memberList.size()-1).setPrice(rand.nextInt(400,10000));
+         memberList.get(memberList.size()-1).setAge(age);
+         memberList.get(memberList.size()-1).setID(memberList.size());
+            if(boyNameList.contains(name1)){
+               memberList.get(memberList.size()-1).setGender(true);
+            }
+            else{
+               memberList.get(memberList.size()-1).setGender(false);   
+            }
+     
+       }
     }
     //the comparator gives you negative, equal(0) or positive int values 
     //which indicates to the collection.sort where to arrange the given type in the list 
