@@ -61,17 +61,40 @@ public class Payments {
         
     }
 
-    public static void removePeopleFromLatePaymentList() {
-        scanner.nextLine();
-        System.out.println("Enter name of person to remove from late payment list:");
-        String person = scanner.nextLine();
-        if (latePayments.remove(person)) {
-            System.out.println(person + " removed from late payment list.");
-        } else {
-            System.out.println(person + " is not in the late payment list.");
-        }
-    }
+public static void removePeopleFromLatePaymentList() {
+    scanner.nextLine();
+    System.out.println("Enter name of person to remove from late payment list:");
+    String person = scanner.nextLine();
     
+    // Debugging: Print the list before removal
+    System.out.println("List before removal: " + latePayments);
+    
+    if (latePayments.remove(person)) {
+        System.out.println(person + " removed from late payment list.");
+        
+        // Debugging: Print the list after removal
+        System.out.println("List after removal: " + latePayments);
+        
+        // Update the file after successful removal
+        updateLatePaymentFile();
+    } else {
+        System.out.println(person + " is not in the late payment list.");
+    }
+}
+
+// Update the late payment file after removing a person
+public static void updateLatePaymentFile() {
+    try (FileWriter writer = new FileWriter("late_payment_people.txt")) {
+        for (String person : latePayments) {
+            writer.write(person + "\n");
+        }
+        System.out.println("Late payment people list updated in the file.");
+    } catch (IOException e) {
+        System.out.println("An error occurred while updating the late payment list in the file: " + e.getMessage());
+        e.printStackTrace();
+    }
+}
+       
     //see late payment people list inside UI
 public void showLatePaymentPeople() {
     System.out.println("List of people with missing payments:");
