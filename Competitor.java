@@ -6,6 +6,7 @@ String name;
 int age; 
 ArrayList<String> discipline = new ArrayList<String>(); 
 private ArrayList<TrainingResult> trainingResult = new ArrayList<TrainingResult>(); 
+private ArrayList<CompetitionResult> competitionResult = new ArrayList<CompetitionResult>(); 
 
    public Competitor(int age,String name, ArrayList<String> discipline){
       this.age = age; 
@@ -22,7 +23,11 @@ private ArrayList<TrainingResult> trainingResult = new ArrayList<TrainingResult>
    public void addTrainingResult(String discipline, int length, double time){
    TrainingResult result = new TrainingResult(discipline, length, time);
    trainingResult.add(result); 
+   }
    
+   public void addCompetitionResult(String discipline, int length, double time, int placement, String location){
+   CompetitionResult result = new CompetitionResult(discipline, length, time, placement, location); 
+   competitionResult.add(result); 
    
    }
    
