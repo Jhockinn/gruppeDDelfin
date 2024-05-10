@@ -9,8 +9,9 @@ public class Youth extends Members{
          setName(name);
          setPrice(price); 
       }*/
-          
+      //boolean youth;
       public Youth(int age,String name){
          super(age,name);
+         //youth = true;
       } 
 }

@@ -3,10 +3,11 @@ import java.io.*;
 public class MainTest{
   public static void main(String[]args){
       Competitive competi = new Competitive();
-      Add AddMemb = new Add();
+      Chairman AddMemb = new Chairman();
       Active acti = new Active();
       Login login = new Login();
       AddMemb.addNames();
+      //AddMemb.add();
       AddMemb.add();
       competi.compe(AddMemb.memberList);
       acti.active(AddMemb.memberList);
