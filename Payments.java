@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Payments {
 
@@ -47,6 +49,16 @@ public class Payments {
         String person = scanner.nextLine();
         latePayments.add(person);
         System.out.println(person + " added to late payment list.");
+        
+       try (FileWriter writer = new FileWriter("late_payment_people.txt", true)) {
+            writer.write(person + "\n");
+            System.out.println("Late payment person added to the list in the notepad.");
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing late payment person to the notepad: " + e.getMessage());
+            e.printStackTrace();
+        }
+        
+        
     }
 
     public static void removePeopleFromLatePaymentList() {
@@ -57,6 +69,28 @@ public class Payments {
             System.out.println(person + " removed from late payment list.");
         } else {
             System.out.println(person + " is not in the late payment list.");
+        }
+    }
+    
+    //see late payment people list inside UI
+public void showLatePaymentPeople() {
+    System.out.println("List of people with missing payments:");
+    for (String person : latePayments) {
+        System.out.println(person + " , ");
+    }
+}
+ 
+      // write names to a notepad
+    public static void printLatePaymentPeopleToFile(String latePaymentFile) {
+        try (FileWriter writer = new FileWriter(latePaymentFile)) {
+            writer.write("Late payment people list:\n");
+            for (String person : latePayments) {
+                writer.write(person + "\n");
+            }
+            System.out.println("Late payment people list written to file: " + latePaymentFile);
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing late payment people to the file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
