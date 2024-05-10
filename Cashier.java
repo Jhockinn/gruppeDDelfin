@@ -1,9 +1,15 @@
 import java.util.Scanner;
 
 public class Cashier {
-
+    // Declare Payments and MembershipFee as fields of the Cashier class
     private Payments payments = new Payments();
     private MembershipFee membershipfee = new MembershipFee();
+
+    public static void main(String[] args) {
+        // Create a Cashier instance to access the managePayments method
+        Cashier cashier = new Cashier();
+        cashier.managePayments();
+    }
 
     public void managePayments() {
         Scanner scanner = new Scanner(System.in);
@@ -19,29 +25,29 @@ public class Cashier {
 
             int choice = scanner.nextInt();
 
-            switch(choice) {
+            switch (choice) {
                 case 1:
-                    // access memberlist (Niko G + Tobias)
+                    // Access memberlist (Niko G + Tobias)
                     // Add code to access memberlist
                     break;
 
                 case 2:
-                    // late payments is a list of people with missing payments
-                    payments.getLatePaymentList(); //see late payment list inside UI
+                    // Late payments is a list of people with missing payments
+                    payments.getLatePaymentList(); // See late payment list inside UI
                     break;
 
                 case 3:
-                    // membership fees
-                    membershipfee.ShowMembershipFee(); //see fees inside UI
-                    membershipfee.printMembershipFeetoFile("membership_fees.txt"); //print fees to a notepad file
+                    // Membership fees
+                    membershipfee.showMembershipFee(); // See fees inside UI
+                    membershipfee.printMembershipFeetoFile("membership_fees.txt"); // Print fees to a notepad file
                     break;
 
                 case 4:
-                    // TO-DO: modify membership fees
+                    // TO-DO: Modify membership fees
                     break;
 
                 case 5:
-                    // go back to the main menu
+                    // Go back to the main menu
                     return;
 
                 default:
@@ -51,5 +57,6 @@ public class Cashier {
         }
     }
 }
+
 
 

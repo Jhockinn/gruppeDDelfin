@@ -56,9 +56,7 @@ public class Payments {
         } catch (IOException e) {
             System.out.println("An error occurred while writing late payment person to the notepad: " + e.getMessage());
             e.printStackTrace();
-        }
-        
-        
+        }   
     }
 
 public static void removePeopleFromLatePaymentList() {
