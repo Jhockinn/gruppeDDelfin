@@ -7,7 +7,6 @@
     Random rand = new Random();
     Scanner scan = new Scanner(System.in);
     int RandomName = 0;
-    int count = -1;
     boolean gender;
     boolean competitive;
     boolean acti;
@@ -17,7 +16,6 @@
     String disci;
     String discipline;
     String name1;
-    File file; 
     // Add member to list
     public void addNewMember() {
         Scanner scanner = new Scanner(System.in);

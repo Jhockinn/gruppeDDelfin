@@ -9,13 +9,14 @@ public class MainTest{
       AddMemb.addNames();
       //AddMemb.add();
       AddMemb.add();
-      competi.compe(AddMemb.memberList);
       acti.active(AddMemb.memberList);
+      //competi.compe(AddMemb.memberList);
       //AddMemb.sort();
-      System.out.println(AddMemb.memberList);
-      AddMemb.addNewMember();
-      System.out.println(AddMemb.memberList);
+      //System.out.println(AddMemb.memberList);
+      //AddMemb.addNewMember();
+      //System.out.println(AddMemb.memberList);
       //login.login();
+      competi.fileOrder(AddMemb.memberList);
       
   }
 }
