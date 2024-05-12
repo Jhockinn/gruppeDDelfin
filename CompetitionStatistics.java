@@ -24,7 +24,8 @@ this.competition = competition;
    for(Competitor competitor : competition.youthCompetitors){
        if(competitor.getName().equals(competitorName)){
        found = true; 
-       submitTrainingResults(competitor);    
+       submitTrainingResults(competitor);   
+    
        break; 
       }
    }
@@ -83,16 +84,21 @@ this.competition = competition;
  System.out.println("Enter the training results for " + competitor.getName() + " for each discipline"); 
  
  for(String discipline : competitor.getDiscipline()){
-   System.out.println(discipline + " - Please add the length of the disciplinec (meters): "); 
+   System.out.println(discipline + " - Please add the length of the disciplinec [meters]: "); 
    int length = scan.nextInt(); 
-   System.out.println(discipline + " - Please add the time of the discipline (minutes , seconds): "); 
+   System.out.println(discipline + " - Please add the time of the discipline [minutes,seconds]: "); 
    double time = scan.nextDouble(); 
-   // dato 
-   competitor.addTrainingResult(discipline, length, time);
+   
+   TrainingResult trainingResult = new TrainingResult(discipline, length, time); 
+   competitor.addTrainingResult(trainingResult);
+    
+  
+   System.out.println("Training Results: "); 
+   System.out.println(); 
    System.out.println("The competitor : " + competitor.getName()); 
-   System.out.println("The discipline: " + competitor.getDiscipline()); 
-   System.out.println("Length: " + length); 
-   System.out.println("Time: " + time);
+   System.out.println("The discipline: " + discipline); 
+   System.out.println("Length: " + length + " meters"); 
+   System.out.println("Time: " + time + " minutes");
    }
  } 
  
@@ -109,15 +115,147 @@ this.competition = competition;
    int placement = scan.nextInt(); 
    System.out.println("Please add the location of the competition: "); 
    String location = scan.next(); 
-   // dato 
-   competitor.addCompetitionResult(discipline, length, time, placement, location);
+   
+   CompetitionResult competitionResult = new CompetitionResult(discipline, length, time, placement, location); 
+   competitor.addCompetitionResult(competitionResult); 
+  
+  
+   System.out.println("Competition Results: "); 
+   System.out.println(); 
    System.out.println("The competitor : " + competitor.getName()); 
-   System.out.println("The discipline: " + competitor.getDiscipline()); 
-   System.out.println("Length: " + length); 
-   System.out.println("Time: " + time);
-   System.out.println("Placement: " + placement); 
+   System.out.println("The discipline: " + discipline); 
+   System.out.println("Length: " + length + " meters"); 
+   System.out.println("Time: " + time + " minutes");
+   System.out.println("Placement: " + placement + "'th place"); 
    System.out.println("Location: " + location); 
    
    }
   }
+ 
+ // method for printing out youth competitor training results
+ public void showYouthTrainingResults(){ 
+ System.out.println("For which competitor do you want to see training results?"); 
+ 
+ String competitorName = scan.next();
+ 
+ boolean found = false; 
+   for(Competitor competitor : competition.youthCompetitors){
+      if(competitor.getName().equals(competitorName)){
+      found = true; 
+      System.out.println("Training Results: "); 
+      System.out.println(); 
+      System.out.println("The competitor : " + competitor.getName()); 
+      
+      if(competitor.getTrainingResults() != null){
+      for(TrainingResult trainingResult : competitor.getTrainingResults()){
+      System.out.println("The discipline: " + trainingResult.getDiscipline()); 
+      System.out.println("Length: " + trainingResult.getLength() + " meters"); 
+      System.out.println("Time: " + trainingResult.getTime() + " minutes"); 
+      }
+
+      }else{
+      System.out.println("No training result"); 
+      }  
+     
+      break;     
+      }
+   }
+ }
+ 
+  // method for printing out senior competitor training results
+  public void showSeniorTrainingResults(){ 
+  System.out.println("For which competitor do you want to see training results?"); 
+  
+  String competitorName = scan.next();
+ 
+  boolean found = false; 
+   for(Competitor competitor : competition.seniorCompetitors){
+      if(competitor.getName().equals(competitorName)){
+      found = true; 
+      System.out.println("Training Results: "); 
+      System.out.println(); 
+      System.out.println("The competitor : " + competitor.getName()); 
+      
+      if(competitor.getTrainingResults() != null){
+      for(TrainingResult trainingResult : competitor.getTrainingResults()){
+      System.out.println("The discipline: " + trainingResult.getDiscipline()); 
+      System.out.println("Length: " + trainingResult.getLength() + " meters"); 
+      System.out.println("Time: " + trainingResult.getTime() + " minutes"); 
+      }
+
+      }else{
+      System.out.println("No training result"); 
+      }  
+     
+      break;     
+      }
+   }
+ }
+  
+  public void showYouthCompetitionResults(){ 
+  System.out.println("For which competitor do you want to see competition results?"); 
+ 
+  String competitorName = scan.next();
+ 
+  boolean found = false; 
+   for(Competitor competitor : competition.youthCompetitors){
+      if(competitor.getName().equals(competitorName)){
+      found = true; 
+      System.out.println("Competition Results: "); 
+      System.out.println(); 
+      System.out.println("The competitor : " + competitor.getName()); 
+      
+      if(competitor.getCompetitionResults() != null){
+      for(CompetitionResult competitionResult : competitor.getCompetitionResults()){
+      System.out.println("The discipline: " + competitionResult.getDiscipline()); 
+      System.out.println("Length: " + competitionResult.getLength() + " meters"); 
+      System.out.println("Time: " + competitionResult.getTime() + " minutes");
+      System.out.println("Placement: " + competitionResult.getPlacement() + " place"); 
+      System.out.println("Location: " + competitionResult.getLocation());  
+      }
+
+      }else{
+      System.out.println("No training result"); 
+      }  
+     
+      break;     
+      }
+   }
+ } 
+ 
+  public void showSeniorCompetitionResults(){ 
+  System.out.println("For which competitor do you want to see competition results?"); 
+ 
+  String competitorName = scan.next();
+ 
+  boolean found = false; 
+   for(Competitor competitor : competition.seniorCompetitors){
+      if(competitor.getName().equals(competitorName)){
+      found = true; 
+      System.out.println("Competition Results: "); 
+      System.out.println(); 
+      System.out.println("The competitor : " + competitor.getName()); 
+      
+      if(competitor.getCompetitionResults() != null){
+      for(CompetitionResult competitionResult : competitor.getCompetitionResults()){
+      System.out.println("The discipline: " + competitionResult.getDiscipline()); 
+      System.out.println("Length: " + competitionResult.getLength() + " meters"); 
+      System.out.println("Time: " + competitionResult.getTime() + " minutes");
+      System.out.println("Placement: " + competitionResult.getPlacement() + " place"); 
+      System.out.println("Location: " + competitionResult.getLocation());  
+      }
+
+      }else{
+      System.out.println("No training result"); 
+      }  
+     
+      break;     
+      }
+   }
+ } 
+  
 }
+  
+  
+
+
