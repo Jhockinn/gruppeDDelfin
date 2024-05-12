@@ -143,7 +143,7 @@ public class Add{
             RandomName = rand.nextInt(100); //Har lavet 2 arrays med pige og drenge navne, det her giver et random nummber til at vælge i dem
             int age = rand.nextInt(2006,2018); // setAge i Members, tage nuværende år og minuser med fødselsår, og giver en alder. 
             String name = boyNameList.get(RandomName); // random navn 
-            memberList.add(new Youth(age, name)); // intialisere objekter 
+            memberList.add(new Youth(age,name)); // intialisere objekter 
             memberList.get(x).setPrice(rand.nextInt(400,10000)); // ved ikke helt hvad den skal bruges til endnu xD 
             memberList.get(memberList.size()-1).setAge(age); // ændre alder ud fra setAge metoden. 
             memberList.get(x).setGender(true);  //siger om det er en dreng eller ej. 

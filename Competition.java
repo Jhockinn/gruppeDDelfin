@@ -7,7 +7,8 @@ public class Competition{
 // ArrayLists for youth and senior competitors 
 public ArrayList<Competitor> youthCompetitors = new ArrayList<Competitor>(); 
 public ArrayList<Competitor> seniorCompetitors = new ArrayList<Competitor>(); 
-// ArratList for memberList
+
+// ArrayList for memberList
 ArrayList<Members> memberList = new ArrayList<Members>();
 
 // Scanner & random
@@ -68,14 +69,12 @@ public void showSeniorCompetitors(){
 }
 
 // method for sorting members from memberList to a competitorList
-public void sortCompetitors(){
+public void sortCompetitors(){ // (Members memberList)
 
 for(int i=0; i<memberList.size(); i++){
    Members member = memberList.get(i); 
    if(member.getCompetitor() && member.getAge()<18){ // get og is competitor? 
       Competitor youthCompetitor = new Competitor(member.getAge(), member.getName()); // creates a competitor with age and name
-      // new date object 
-      // youthCompetitor.setDate(date.getRandomDate()); 
       Discipline discipline = new Discipline();
          youthCompetitor.setDiscipline(discipline.getRandomDiscipline());  // gives the competitor a random discipline 
          youthCompetitors.add(youthCompetitor); // adds the competitor to the arrayList
