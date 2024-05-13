@@ -4,7 +4,7 @@ public class Memberlists{
    static ArrayList<Members>memberList=new ArrayList<Members>();
            
    //creates a file and if the file already exists do nothing   
-   /*public void createFiles() {
+   public void createFiles() {
     try {
         File memberListFile = new File("MemberList.txt");
         File competitionFile = new File("Competition.txt");
@@ -37,7 +37,7 @@ public class Memberlists{
            FileWriter writer = new FileWriter("MemberList.txt", false); // false to overwrite existing content
            writer.write("ID|  Member's name   |  Age   |  Gender  |  MemberType\n");
          for (Members member : memberList) {
-            writer.write(member.getName() + " | " + member.getAge() + " | " + member.getGender() + " | " + member.getCompetitor() + "\n");
+            writer.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + member.getGender() + " | " + member.getActive() + " | " + member.getCompetitor() + "\n");
            }
            writer.close();
            System.out.println("Member list has been successfully updated.");
@@ -50,8 +50,7 @@ public class Memberlists{
          try{
             FileWriter myWriter = new FileWriter("MemberList.txt", true);
             Members member = memberList.get(memberList.size()-1);
-            myWriter.write(member.getID()+" | "+member.getName()+" | "+member.getPrice()+" |  "+member.getCompetitor()+"\n");
-            myWriter.close();
+            myWriter.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + member.getGender() + " | " + member.getActive() + " | " + member.getCompetitor() + "\n");            myWriter.close();
             System.out.println("Member added to the club");
          
          } catch(IOException e){
@@ -106,8 +105,8 @@ public class Memberlists{
             System.out.println("Error reading data from file.");
             e.printStackTrace();
         }
-    }*/
-   public void createFiles() {
+    }
+   /*public void createFiles() {
         try {
             File memberListFile = new File("MemberList.txt");
             File competitionFile = new File("Competition.txt");
@@ -160,7 +159,7 @@ public class Memberlists{
                 String discipline = tokens[4].trim();
                 boolean active = Boolean.parseBoolean(tokens[5].trim());
 
-                memberList.add(new Members(age, name/*, gender/*, competitor, discipline, active*/));
+                memberList.add(new Members(age, name/*, gender/*, competitor, discipline, active));
             }
             System.out.println("Member list loaded successfully.");
         } catch (FileNotFoundException e) {
@@ -170,7 +169,7 @@ public class Memberlists{
             System.out.println("Error reading data from file.");
             e.printStackTrace();
         }
-    }
+    }*/
     public void Combine(){
     createFiles();
     writeToList();
