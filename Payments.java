@@ -5,8 +5,13 @@ import java.io.IOException;
 
 public class Payments {
 
+    private Cashier cashier; 
     private static ArrayList<String> latePayments = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
+    
+        public Payments(Cashier cashier) {
+        this.cashier = cashier;
+          }
 
     // Constructor
     public Payments() {
@@ -15,6 +20,7 @@ public class Payments {
             System.out.println("1: See list of people with missing payments");
             System.out.println("2: Add people to the list of missing payments");
             System.out.println("3: Remove people from the list of missing payments");
+            System.out.println("4: Go back to the main cashier menu");
             System.out.println("\n");
 
             int choice = scanner.nextInt();
@@ -29,6 +35,10 @@ public class Payments {
                 case 3:
                     removePeopleFromLatePaymentList();
                     break;
+                case 4:
+                   /*  Cashier cashier = new Cashier();
+                     cashier.managePayments(); */
+                     return;
                 default:
                     System.out.println("Invalid option");
                     break;
