@@ -7,7 +7,7 @@ trainer.TrainerUi();
 
 /* Huskeliste
 - få dato på 
-- lav et overblik over 5 bedste svømmere for hver disciplin 
+- lav et overblik over 5 bedste svømmere for hver disciplin + length
 - match CompetitorList med memberList
 */
    }

@@ -12,7 +12,6 @@ this.competition = competition;
 
  // method for registering training results for youth and senior competitors 
  public void registerTrainingResults(){
-   System.out.println(); 
    System.out.println("Here is the list of competitors: "); 
       competition.showYouthCompetitors(); 
       competition.showSeniorCompetitors();  
@@ -25,7 +24,6 @@ this.competition = competition;
        if(competitor.getName().equals(competitorName)){
        found = true; 
        submitTrainingResults(competitor);   
-    
        break; 
       }
    }
@@ -47,11 +45,9 @@ this.competition = competition;
  
  // method for registering competition results for youth and senior competitors 
  public void registerCompetitionResults(){
-   System.out.println(); 
    System.out.println("Here is the list of competitors: "); 
       competition.showYouthCompetitors(); 
       competition.showSeniorCompetitors();  
-        
       System.out.println("For which competitor do you want to sumbit competition results? ");
          String competitorName = scan.next(); 
       
@@ -75,7 +71,7 @@ this.competition = competition;
    } 
    
    if(!found){
-      System.out.println("Could not find the competitor");
+      System.out.println("Could not find the com40petitor");
    }  
  }
  
@@ -84,14 +80,15 @@ this.competition = competition;
  System.out.println("Enter the training results for " + competitor.getName() + " for each discipline"); 
  
  for(String discipline : competitor.getDiscipline()){
-   System.out.println(discipline + " - Please add the length of the disciplinec [meters]: "); 
+   System.out.println(discipline + " - Please add the length of the disciplinec [meters]: ");
+   System.out.println("You can choose between [50], [100], [200], [400]");  
    int length = scan.nextInt(); 
+   if(length == 50 || length == 100 || length == 200 || length == 400){
    System.out.println(discipline + " - Please add the time of the discipline [minutes,seconds]: "); 
-   double time = scan.nextDouble(); 
+   double time = scan.nextDouble();
    
    TrainingResult trainingResult = new TrainingResult(discipline, length, time); 
    competitor.addTrainingResult(trainingResult);
-    
   
    System.out.println("Training Results: "); 
    System.out.println(); 
@@ -99,6 +96,9 @@ this.competition = competition;
    System.out.println("The discipline: " + discipline); 
    System.out.println("Length: " + length + " meters"); 
    System.out.println("Time: " + time + " minutes");
+   }else{
+   System.out.println("Invalid input - try to enter training results again"); 
+   }
    }
  } 
  
@@ -108,7 +108,9 @@ this.competition = competition;
 
  for(String discipline : competitor.getDiscipline()){
    System.out.println(discipline + " - Please add the length of the disciplinec [meters]: "); 
+   System.out.println("You can choose between [50], [100], [200], [400] meter");  
    int length = scan.nextInt(); 
+   if(length == 50 || length == 100 || length == 200 || length == 400){
    System.out.println(discipline + " - Please add the time of the discipline [minutes,seconds]: "); 
    double time = scan.nextDouble(); 
    System.out.println("Please add placement for the competitor: "); 
@@ -126,9 +128,11 @@ this.competition = competition;
    System.out.println("The discipline: " + discipline); 
    System.out.println("Length: " + length + " meters"); 
    System.out.println("Time: " + time + " minutes");
-   System.out.println("Placement: " + placement + "'th place"); 
+   System.out.println("Placement: " + placement + " place"); 
    System.out.println("Location: " + location); 
-   
+   }else{
+   System.out.println("Invalid input - try to enter training results again"); 
+   }
    }
   }
  
@@ -176,7 +180,7 @@ this.competition = competition;
       System.out.println(); 
       System.out.println("The competitor : " + competitor.getName()); 
       
-      if(competitor.getTrainingResults() != null){
+      if(competitor.getTrainingResults()!= null){
       for(TrainingResult trainingResult : competitor.getTrainingResults()){
       System.out.println("The discipline: " + trainingResult.getDiscipline()); 
       System.out.println("Length: " + trainingResult.getLength() + " meters"); 
@@ -215,7 +219,7 @@ this.competition = competition;
       }
 
       }else{
-      System.out.println("No training result"); 
+      System.out.println("No result"); 
       }  
      
       break;     
@@ -246,7 +250,7 @@ this.competition = competition;
       }
 
       }else{
-      System.out.println("No training result"); 
+      System.out.println("No result"); 
       }  
      
       break;     

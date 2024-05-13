@@ -13,10 +13,10 @@ Active acti = new Active();
 AddMemb.addNames();
 AddMemb.add();
 competi.compe(AddMemb.memberList);
-acti.active(AddMemb.memberList);
-System.out.println(AddMemb.memberList);
-
+acti.active(AddMemb.memberList); 
+System.out.println(AddMemb.memberList);  
 competition.sortCompetitors(); 
+System.out.println(competition.youthCompetitors); 
 
 Scanner scan = new Scanner(System.in);
 
@@ -68,6 +68,7 @@ while(true){
          }
        break; 
      case 8: 
+       competition.showTopFiveSwimmersForAllDisciplines(); 
      break;
      default: 
       System.out.println("Invalid input");  

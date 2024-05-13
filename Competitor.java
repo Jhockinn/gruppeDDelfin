@@ -6,7 +6,6 @@ private String name;
 private int age; 
 private List<TrainingResult> trainingResults; // list to save training results
 private List<CompetitionResult> competitionResults; // list to save competition results
-private List<String> disciplines;
 private ArrayList<String> discipline = new ArrayList<String>(); // list to add new disciplines in Competition
 
    // being used in the competition class
@@ -15,21 +14,18 @@ private ArrayList<String> discipline = new ArrayList<String>(); // list to add n
       this.name = name;  
       this.discipline = discipline; 
       this.trainingResults = new ArrayList<>(); 
-   }
-   
-   // being used in the competitionStatistics class 
-   public Competitor(int age, String name, List <String> disciplines){
-      this.age = age; 
-      this.name = name;  
-      this.disciplines = disciplines; 
-      this.trainingResults = new ArrayList<>(); 
       this.competitionResults = new ArrayList<>(); 
+     
    }
    
    public Competitor(int age,String name){
       this.age=age; 
       this.name=name; 
      
+   }
+   
+   public Competitor(){
+   
    }
    
    // method for adding training results to a list 
@@ -47,10 +43,6 @@ private ArrayList<String> discipline = new ArrayList<String>(); // list to add n
    }
   
    // getters & setters
-   public List<String> getDisciplines(){
-   return disciplines; 
-   }    
-   
    public List<TrainingResult> getTrainingResults(){
    return trainingResults;
    }
@@ -84,3 +76,4 @@ private ArrayList<String> discipline = new ArrayList<String>(); // list to add n
    }
    
 }
+
