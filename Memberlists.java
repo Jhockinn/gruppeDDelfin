@@ -1,10 +1,9 @@
 import java.util.*;
 import java.io.*;
 public class Memberlists{
-   //static ArrayList<Members>memberList=new ArrayList<Members>();
-   //creates a file and if the file already exists do nothing 
-   ArrayList<Members> memberList = new ArrayList<Members>();  
    static Chairman chair = new Chairman();
+   ArrayList<Members> memberList = new ArrayList<Members>();  
+   //creates a file and if the file already exists do nothing 
    public void createFiles() {
     try {
         File memberListFile = new File("MemberList.txt");
