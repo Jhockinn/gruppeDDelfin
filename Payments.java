@@ -44,19 +44,25 @@ public class Payments {
         }
     }
 
-    public static void getLatePaymentList() {
-        System.out.println("List of people with missing payments:");
-        for (String person : latePayments) {
-            System.out.println(person);
-        }
+public static void getLatePaymentList() {
+    System.out.println("List of people with missing payments:");
+    for (int i = 0; i < latePayments.size(); i += 2) {
+        String person = latePayments.get(i);
+        String ID = latePayments.get(i + 1);
+        System.out.println(person + " (ID: " + ID + ")");
     }
+}
 
     public static void addPeopleToLatePaymentList() {
         scanner.nextLine();
         System.out.println("Enter name of person to add to late payment list:");
         String person = scanner.nextLine();
+        System.out.println("Enter membeship ID of the person");
+        int ID = Integer.parseInt(scanner.nextLine());
         latePayments.add(person);
-        System.out.println(person + " added to late payment list.");
+        latePayments.add(String.valueOf(ID));
+      
+        System.out.println(person + " (ID: " + ID + ") added to late payment list.");
         
        try (FileWriter writer = new FileWriter("late_payment_people.txt", true)) {
             writer.write(person + "\n");
@@ -77,6 +83,13 @@ public static void removePeopleFromLatePaymentList() {
     
     if (latePayments.remove(person)) {
         System.out.println(person + " removed from late payment list.");
+        
+        // Remove the associated ID
+        if (latePayments.remove(person)) {
+            System.out.println("ID removed.");
+        } else {
+            System.out.println("Associated ID not found.");
+        }
         
         // Debugging: Print the list after removal
         System.out.println("List after removal: " + latePayments);
