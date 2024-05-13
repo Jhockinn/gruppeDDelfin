@@ -98,32 +98,7 @@ public class Login{
          }
         if(username.equals(trainUser) && password.equals(trainPass)){
             do{
-            //trainer.//set metode fra træner her. 
-            
-            /*System.out.println("Welcome Trainer");
-            System.out.println("What would you like to do?");
-            System.out.println("");
-            System.out.println("");
-            System.out.println("");
-            System.out.println("");
-            int input = scan.nextInt();
-               
-               switch(input){
-               case 1:
-               break; 
-               
-               case 2: 
-               break;
-               
-               case 3: 
-               break;
-               
-               case 4:
-               break; 
-               
-               default: 
-               break;
-               }//Switch*/
+            //trainer.TrainerUi()
             }while(true);
          }
          else{

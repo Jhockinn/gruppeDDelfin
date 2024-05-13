@@ -6,6 +6,7 @@ public class Members{
    //Stamoplysning 
    Random rand = new Random();
    Chairman main = new Chairman();
+   private boolean restance;
    private int age; 
    private String name; 
    private boolean active; 
@@ -93,8 +94,23 @@ public class Members{
    public void setDiscipline(String discipline){
       this.discipline = discipline;
    }
-   public String toString(){
-        return "[" + " ID: " + ID + ", Name: " + name + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Wallet: "+ price+ ", Competitor: " + competitor + " Discipline: " + discipline+ ", Active: " + active +" ]" + "\n";
+   public void setRestance(boolean restance){
+      this.restance = restance;
    }
-   
-}
+   public boolean getRestance(){
+      return restance;
+   }
+   public String toString(){
+        return "[" + " ID: " + ID + ", Name: " + name + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Restance "+ restance + ", Competitor: " + competitor + " Discipline: " + discipline+ ", Active: " + active +" ]" + "\n";
+   }
+   public void restan(int memberPrice){
+       
+      if(price > memberPrice){
+         setRestance(false); 
+      }
+      else{
+         setRestance(true);
+      }
+   }
+ }  
+

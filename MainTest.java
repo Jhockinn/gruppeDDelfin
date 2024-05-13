@@ -12,11 +12,11 @@ public class MainTest{
       acti.active(AddMemb.memberList);
       //competi.compe(AddMemb.memberList);
       //AddMemb.sort();
-      //System.out.println(AddMemb.memberList);
-      //AddMemb.addNewMember();
-      //System.out.println(AddMemb.memberList);
+      System.out.println(AddMemb.memberList);
+      AddMemb.addNewMember();
+      System.out.println(AddMemb.memberList);
       //login.login();
-      competi.fileOrder(AddMemb.memberList);
+      //competi.fileOrder(AddMemb.memberList);
       
   }
 }

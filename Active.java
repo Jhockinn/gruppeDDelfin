@@ -24,6 +24,15 @@ public class Active{
                 members.setCompetitor(true);
                  members.setDiscipline(compet.disci.get(random2));
             }
+            
+            if(members.getActive() == false){
+               if(members.getPrice() > 500){
+                  members.setRestance(false);
+               }
+               else{
+                  members.setRestance(true);
+               }
+            }
       }
    }
 }
