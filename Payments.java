@@ -36,8 +36,6 @@ public class Payments {
                     removePeopleFromLatePaymentList();
                     break;
                 case 4:
-                   /*  Cashier cashier = new Cashier();
-                     cashier.managePayments(); */
                      return;
                 default:
                     System.out.println("Invalid option");
@@ -49,7 +47,7 @@ public class Payments {
     public static void getLatePaymentList() {
         System.out.println("List of people with missing payments:");
         for (String person : latePayments) {
-            System.out.println(person + " , ");
+            System.out.println(person);
         }
     }
 

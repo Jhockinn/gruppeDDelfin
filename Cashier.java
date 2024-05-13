@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Cashier {
     // Declare MembershipFee as a field of the Cashier class
@@ -17,33 +19,48 @@ public class Cashier {
         while (true) {
             System.out.println("\nCashier UI Options:");
             System.out.println("1: See memberlist");
-            System.out.println("2: Late payments lists");
+            System.out.println("2: Payment page");
             System.out.println("3: See membership fees and print to a file");
-            System.out.println("4: Go back to the main menu");
+            System.out.println("4: Cashier logout");
             System.out.println("\n");
 
             int choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
-                    // Access memberlist (Niko G + Tobias)
-                    // Add code to access memberlist
+                    String filePath = "MemberList.txt";
+
+                    try {
+                        File file = new File(filePath);
+                        Scanner fileScanner = new Scanner(file); // Create a new scanner for file reading
+
+                        System.out.println("Member List:");
+                        while (fileScanner.hasNextLine()) {
+                            String member = fileScanner.nextLine();
+                            System.out.println(member);
+                        }
+
+                        fileScanner.close(); // Close the file scanner after use
+                    } catch (FileNotFoundException e) {
+                        System.err.println("File not found: " + filePath);
+                        e.printStackTrace();
+                    }
                     break;
 
                 case 2:
                     // Late payments is a list of people with missing payments
-                    payments.getLatePaymentList(); // See late payment list inside UI
+                    Payments paymentUI = new Payments();
                     break;
 
                 case 3:
-                    // Membership fees
-                    membershipfee.showMembershipFee(); // See fees inside UI
-                    membershipfee.printMembershipFeetoFile("membership_fees.txt"); // Print fees to a notepad file
-                    break;
+                  MembershipFee membershipFees = new MembershipFee();
+                  membershipFees.showMembershipFee(); // See fees inside UI
+                  membershipFees.printMembershipFeetoFile("membership_fees.txt");
+                break;
 
                 case 4:
-                    // Go back to the main menu
                     // call main method
+                    
                     return;
 
                 default:
@@ -53,6 +70,8 @@ public class Cashier {
         }
     }
 }
+
+
 
 
 
