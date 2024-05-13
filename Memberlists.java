@@ -1,9 +1,10 @@
 import java.util.*;
 import java.io.*;
 public class Memberlists{
-   static ArrayList<Members>memberList=new ArrayList<Members>();
-           
-   //creates a file and if the file already exists do nothing   
+   //static ArrayList<Members>memberList=new ArrayList<Members>();
+   //creates a file and if the file already exists do nothing 
+   ArrayList<Members> memberList = new ArrayList<Members>();  
+   static Chairman chair = new Chairman();
    public void createFiles() {
     try {
         File memberListFile = new File("MemberList.txt");
@@ -32,11 +33,11 @@ public class Memberlists{
         e.printStackTrace();
     }
 }      //funktion til at adde en nyt medlem til klubben
-      public void writeToList() {
+      /*public void writeToList() {
          try {
            FileWriter writer = new FileWriter("MemberList.txt", false); // false to overwrite existing content
            writer.write("ID|  Member's name   |  Age   |  Gender  |  MemberType\n");
-         for (Members member : memberList) {
+         for (Members member : chair.memberList) {
             writer.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + member.getGender() + " | " + member.getActive() + " | " + member.getCompetitor() + "\n");
            }
            writer.close();
@@ -45,12 +46,12 @@ public class Memberlists{
            System.out.println("An error occurred while writing to the file.");
            e.printStackTrace();
        }
-   }      
-      public static void AddtoList(){
+   }*/      
+      public void AddtoList(ArrayList<Members> list){
          try{
             FileWriter myWriter = new FileWriter("MemberList.txt", true);
-            Members member = memberList.get(memberList.size()-1);
-            myWriter.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + member.getGender() + " | " + member.getActive() + " | " + member.getCompetitor() + "\n");            myWriter.close();
+            Members member = list.get(list.size()-1);
+            myWriter.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + chair.chooseGender(member) + " | " + member.getActive() + " | " + member.getCompetitor() + "\n");            myWriter.close();
             System.out.println("Member added to the club");
          
          } catch(IOException e){
@@ -128,15 +129,16 @@ public class Memberlists{
             System.out.println("File already exists: " + file.getName());
         }
     }
-
+    */
     // Write member list to file
-    public void writeToList() {
+    public void writeToList(ArrayList<Members> list) {
         try (FileWriter writer = new FileWriter("MemberList.txt")) {
-            writer.write("Age|Name|Gender|Competitor|Discipline|Active\n");
-            for (Members member : memberList) {
-                writer.write(member.getAge() + "|" + member.getName() + "|" +
-                             member.getGender() + "|" + member.getCompetitor() + "|" +
-                             member.getDiscipline() + "|" + member.getActive() + "\n");
+            writer.write("ID| Name  |  Age   |  Gender   |  Active   |  Competitor  |  Discipline  \n");
+            for (Members member : list) {
+                writer.write(
+                       member.getID()+ " | " + member.getName() + " | " +   
+                       member.getAge() + " | " + chair.chooseGender(member) +  " | " + 
+                       member.getActive() + " | " + member.getCompetitor() + " | " + member.getDiscipline() + "\n");
             }
             System.out.println("Member list has been successfully updated.");
         } catch (IOException e) {
@@ -144,7 +146,7 @@ public class Memberlists{
             e.printStackTrace();
         }
     }
-
+      /*
     // Load member list from file
     public void loadList() {
         try (Scanner scanner = new Scanner(new File("MemberList.txt"))) {
@@ -172,7 +174,7 @@ public class Memberlists{
     }*/
     public void Combine(){
     createFiles();
-    writeToList();
+    //writeToList();
     loadList();
     }     
 }
