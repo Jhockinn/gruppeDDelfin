@@ -97,7 +97,7 @@ public static void updateLatePaymentFile() {
 public void showLatePaymentPeople() {
     System.out.println("List of people with missing payments:");
     for (String person : latePayments) {
-        System.out.println(person + " , ");
+        System.out.println(person);
     }
 }
  
