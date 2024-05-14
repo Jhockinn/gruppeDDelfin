@@ -7,6 +7,7 @@
     ArrayList<Members> memberList = new ArrayList<Members>();
     Random rand = new Random();
     Scanner scan = new Scanner(System.in);
+    int age; 
     int RandomName = 0;
     boolean gender;
     boolean competitive;
@@ -98,6 +99,8 @@
             memberList.get(memberList.size() - 1).setCompetitor(competitive);
             memberList.get(memberList.size() - 1).setActive(acti);
             memberList.get(memberList.size() - 1).setPrice(rand.nextInt(400, 10000));
+            memberList.get(memberList.size() - 1).restan(res());
+            unac(memberList.get(memberList.size() - 1));
             lists.AddtoList(memberList);
             //writer(memberList.get(memberList.size()-1));
         }
@@ -174,6 +177,27 @@
             return "Female";
          }
     }
+    public int res(){
+         if(age<18){
+         return 1000;
+         }
+         if(age>18 && age<60){
+         return 1600;
+         }
+         else{
+         return 1200; 
+         }
+    }
+    public void unac(Members member){
+    if(member.getActive() == false){
+               if(member.getPrice() > 500){
+                  member.setRestance(false);
+               }
+               else{
+                  member.setRestance(true);
+               }
+            }
+    } 
     
     public void addNames(){
     // boys names add to arraylist
