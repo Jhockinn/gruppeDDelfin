@@ -60,7 +60,6 @@ public class Cashier {
 
                 case 4:
                     System.exit(0);
-                    
                     return;
 
                 default:
