@@ -59,7 +59,7 @@ public class Cashier {
                 break;
 
                 case 4:
-                    // call main method
+                    System.exit(0);
                     
                     return;
 
