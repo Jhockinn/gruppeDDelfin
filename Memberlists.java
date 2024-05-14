@@ -8,7 +8,7 @@ public class Memberlists{
     try {
         File memberListFile = new File("MemberList.txt");
         File competitionFile = new File("Competition.txt");
-        File restanceFile = new File("Restance.txt");
+        File late_payment_peopleFile = new File("late_payment_people.txt");
 
         if (memberListFile.createNewFile()) {
             System.out.println("File Created: " + memberListFile.getName());
@@ -22,10 +22,10 @@ public class Memberlists{
             System.out.println("File already exists: " + competitionFile.getName());
         }
 
-        if (restanceFile.createNewFile()) {
-            System.out.println("File Created: " + restanceFile.getName());
+        if (late_payment_peopleFile.createNewFile()) {
+            System.out.println("File Created: " + late_payment_peopleFile.getName());
         } else {
-            System.out.println("File already exists: " + restanceFile.getName());
+            System.out.println("File already exists: " + late_payment_peopleFile.getName());
         }
     } catch (IOException e) {
         System.out.println("An error occurred while creating the file.");
@@ -50,7 +50,8 @@ public class Memberlists{
          try{
             FileWriter myWriter = new FileWriter("MemberList.txt", true);
             Members member = list.get(list.size()-1);
-            myWriter.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + chair.chooseGender(member) + " | " + member.getActive() + " | " + member.getCompetitor() + "\n");            myWriter.close();
+            myWriter.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + chair.chooseGender(member) + " | " + member.getActive() + " | " + member.getCompetitor() + " | " + member.getDiscipline()+"\n");            
+            myWriter.close();
             System.out.println("Member added to the club");
          
          } catch(IOException e){
@@ -78,22 +79,38 @@ public class Memberlists{
         try {
             File file = new File("MemberList.txt");
             Scanner scanner = new Scanner(file);
+            
+            if(scanner.hasNextLine()){
+               scanner.nextLine();
+            }
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] tokens = line.split("\\|");
+                if(tokens.length>=7){
+                
+                   // Trim and parse data from file
+                   String name = tokens[1].trim();
+                   int age = Integer.parseInt(tokens[2].trim());
+                   String gender = tokens[3].trim();
+                   boolean active = Boolean.parseBoolean(tokens[4].trim());
+                   boolean competitive = Boolean.parseBoolean(tokens[5].trim());
+                   String discipline = tokens[6].trim();
+                   // Create a new Members object with parsed data and add it to memberList
+                   Members newMember = new Members(age, name);
+                   if(!"null".equals(discipline)){
+                     newMember.setDiscipline(discipline);
+                   }
+                   newMember.setID(memberList.size()+1);
+                   newMember.setDiscipline(discipline);
+                   newMember.setGender("Male".equals(gender)); // Compare strings with equals()
+                   newMember.setCompetitor(competitive);
+                   newMember.setActive(active);
+                   memberList.add(newMember);
 
-                // Trim and parse data from file
-                int age = Integer.parseInt(tokens[1].trim());
-                String gender = tokens[2].trim();
-                String name = tokens[3].trim();
-                String competitor = tokens[4].trim();
-                String discipline = tokens[5].trim();
-                String active = tokens[6].trim();
-
-                // Create a new Members object with parsed data and add it to memberList
-                double price= 1000;
-                memberList.add(new Members(age, name));
+                } else {
+                  System.out.println("incomplete data in line" + line);
+                }
             }
 
             scanner.close();
@@ -101,7 +118,10 @@ public class Memberlists{
         } catch (FileNotFoundException e) {
             System.out.println("File not found.");
             e.printStackTrace();
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+        } catch (NumberFormatException e) {
+            System.out.println("Error parsing age.");
+            e.printStackTrace();
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Error reading data from file.");
             e.printStackTrace();
         }

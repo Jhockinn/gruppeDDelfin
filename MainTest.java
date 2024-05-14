@@ -8,18 +8,20 @@ public class MainTest{
       Login login = new Login();
       Memberlists lists = new Memberlists();
       lists.createFiles();
-      AddMemb.addNames();
+      //AddMemb.addNames();
       //AddMemb.add();
-      AddMemb.add();
-      acti.active(AddMemb.memberList);
-      lists.writeToList(AddMemb.memberList);
+      //AddMemb.add();
+      //acti.active(AddMemb.memberList);
+      //lists.writeToList(AddMemb.memberList);
       //competi.compe(AddMemb.memberList);
       //AddMemb.sort();
       //System.out.println(AddMemb.memberList);
-      AddMemb.addNewMember();
+      //AddMemb.addNewMember();
       //System.out.println(AddMemb.memberList);
       //login.login();
       //competi.fileOrder(AddMemb.memberList);
-      
+      //lists.loadList();
+      //System.out.println(lists.memberList);
+      //lists.viewList();   
   }
 }
