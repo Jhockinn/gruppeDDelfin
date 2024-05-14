@@ -18,47 +18,27 @@ public class Cashier {
 
         while (true) {
             System.out.println("\nCashier UI Options:");
-            System.out.println("1: See memberlist");
-            System.out.println("2: Payment page");
-            System.out.println("3: See membership fees and print to a file");
-            System.out.println("4: Cashier logout");
+            System.out.println("1: Payment page");
+            System.out.println("2: See membership fees and print to a file");
+            System.out.println("3: Cashier logout");
             System.out.println("\n");
 
             int choice = scanner.nextInt();
 
             switch (choice) {
+
                 case 1:
-                    String filePath = "MemberList.txt";
-
-                    try {
-                        File file = new File(filePath);
-                        Scanner fileScanner = new Scanner(file); // Create a new scanner for file reading
-
-                        System.out.println("Member List:");
-                        while (fileScanner.hasNextLine()) {
-                            String member = fileScanner.nextLine();
-                            System.out.println(member);
-                        }
-
-                        fileScanner.close(); // Close the file scanner after use
-                    } catch (FileNotFoundException e) {
-                        System.err.println("File not found: " + filePath);
-                        e.printStackTrace();
-                    }
-                    break;
-
-                case 2:
                     // Late payments is a list of people with missing payments
                     Payments paymentUI = new Payments();
                     break;
 
-                case 3:
+                case 2:
                   MembershipFee membershipFees = new MembershipFee();
                   membershipFees.showMembershipFee(); // See fees inside UI
                   membershipFees.printMembershipFeetoFile("membership_fees.txt");
                 break;
 
-                case 4:
+                case 3:
                     System.exit(0);
                     return;
 

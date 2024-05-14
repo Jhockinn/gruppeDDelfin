@@ -19,27 +19,48 @@ public class Payments {
     public Payments() {
         while (true) {
             System.out.println("\nOptions:");
-            System.out.println("1: See list of people with missing payments in the current runtime");
-            System.out.println("2: Read the whole list");
-            System.out.println("3: Add people to the list of missing payments");
-            System.out.println("4: Remove people from the list of missing payments");
+            System.out.println("1: Read the whole list of people with missing payments");
+            System.out.println("2: Add people to the list of missing payments");
+            System.out.println("3: Remove people from the list of missing payments");
+            System.out.println("4: Read the memberlist");
             System.out.println("5: Go back to the main cashier menu");
             System.out.println("\n");
 
             int choice = scanner.nextInt();
 
             switch (choice) {
-                case 1:
-                    getLatePaymentList();
-                    break;
-                case 2:  
+
+                case 1:  
                     readLatePaymentPeopleFromNotepad();
                     break;
-                case 3:
+                case 2:
                     addPeopleToLatePaymentList();
                     break;
-                case 4:
+                case 3:
+                    scanner.nextLine(); 
+                    System.out.println("Enter name of person to remove from late payment list:");
+                    String personToRemove = scanner.nextLine();
                     removePeopleFromLatePaymentList();
+                    removePeopleFromNotepad(personToRemove);
+                    break;
+                case 4:    
+                   String filePath = "MemberList.txt";
+
+                    try {
+                        File file = new File(filePath);
+                        Scanner fileScanner = new Scanner(file); // Create a new scanner for file reading
+
+                        System.out.println("Member List:");
+                        while (fileScanner.hasNextLine()) {
+                            String member = fileScanner.nextLine();
+                            System.out.println(member);
+                        }
+
+                        fileScanner.close(); // Close the file scanner after use
+                    } catch (FileNotFoundException e) {
+                        System.err.println("File not found: " + filePath);
+                        e.printStackTrace();
+                    }
                     break;
                 case 5:
                     return;
@@ -50,15 +71,17 @@ public class Payments {
         }
     }
 
+/*       NOT WORKING AS INTENDED -- VERSION 2 OR FINE POLISH
+            show late payment people inside UI
     public static void getLatePaymentList() {
-        System.out.println("List of people with missing payments:");
+        System.out.println("List of people with missing payments in currnt runetime:");
         for (int i = 0; i < latePayments.size(); i += 2) {
             String person = latePayments.get(i);
             String ID = latePayments.get(i + 1);
             System.out.println(person + " (ID: " + ID + ")");
         }
     }
-
+*/
     public static void addPeopleToLatePaymentList() {
         scanner.nextLine();
         System.out.println("Enter name of person to add to late payment list:");
