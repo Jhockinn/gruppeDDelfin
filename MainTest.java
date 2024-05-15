@@ -6,16 +6,22 @@ public class MainTest{
       Chairman AddMemb = new Chairman();
       Active acti = new Active();
       Login login = new Login();
-      AddMemb.addNames();
+      Memberlists lists = new Memberlists();
+      lists.createFiles();
+      //AddMemb.addNames();
       //AddMemb.add();
-      AddMemb.add();
-      competi.compe(AddMemb.memberList);
-      acti.active(AddMemb.memberList);
+      //AddMemb.add();
+      //acti.active(AddMemb.memberList);
+      //lists.writeToList(AddMemb.memberList);
+      //competi.compe(AddMemb.memberList);
       //AddMemb.sort();
-      System.out.println(AddMemb.memberList);
-      AddMemb.addNewMember();
-      System.out.println(AddMemb.memberList);
+      //System.out.println(AddMemb.memberList);
+      //AddMemb.addNewMember();
+      //System.out.println(AddMemb.memberList);
       //login.login();
-      
+      //competi.fileOrder(AddMemb.memberList);
+      //lists.loadList();
+      //System.out.println(lists.memberList);
+      //lists.viewList();   
   }
 }

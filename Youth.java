@@ -10,8 +10,10 @@ public class Youth extends Members{
          setPrice(price); 
       }*/
       //boolean youth;
+      int memberPrice = 1000;
       public Youth(int age,String name){
          super(age,name);
-         //youth = true;
+         setPrice(rand.nextInt(400, 10000));
+         super.restan(memberPrice);
       } 
 }

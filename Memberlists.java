@@ -1,14 +1,14 @@
 import java.util.*;
 import java.io.*;
 public class Memberlists{
-   static ArrayList<Members>memberList=new ArrayList<Members>();
-           
-   //creates a file and if the file already exists do nothing   
-   /*public void createFiles() {
+   static Chairman chair = new Chairman();
+   ArrayList<Members> memberList = new ArrayList<Members>();  
+   //creates a file and if the file already exists do nothing 
+   public void createFiles() {
     try {
         File memberListFile = new File("MemberList.txt");
         File competitionFile = new File("Competition.txt");
-        File restanceFile = new File("Restance.txt");
+        File late_payment_peopleFile = new File("late_payment_people.txt");
 
         if (memberListFile.createNewFile()) {
             System.out.println("File Created: " + memberListFile.getName());
@@ -22,35 +22,21 @@ public class Memberlists{
             System.out.println("File already exists: " + competitionFile.getName());
         }
 
-        if (restanceFile.createNewFile()) {
-            System.out.println("File Created: " + restanceFile.getName());
+        if (late_payment_peopleFile.createNewFile()) {
+            System.out.println("File Created: " + late_payment_peopleFile.getName());
         } else {
-            System.out.println("File already exists: " + restanceFile.getName());
+            System.out.println("File already exists: " + late_payment_peopleFile.getName());
         }
     } catch (IOException e) {
         System.out.println("An error occurred while creating the file.");
         e.printStackTrace();
     }
-}      //funktion til at adde en nyt medlem til klubben
-      public void writeToList() {
-         try {
-           FileWriter writer = new FileWriter("MemberList.txt", false); // false to overwrite existing content
-           writer.write("ID|  Member's name   |  Age   |  Gender  |  MemberType\n");
-         for (Members member : memberList) {
-            writer.write(member.getName() + " | " + member.getAge() + " | " + member.getGender() + " | " + member.getCompetitor() + "\n");
-           }
-           writer.close();
-           System.out.println("Member list has been successfully updated.");
-       } catch (IOException e) {
-           System.out.println("An error occurred while writing to the file.");
-           e.printStackTrace();
-       }
-   }      
-      public static void AddtoList(){
+}    
+      public void AddtoList(ArrayList<Members> list){
          try{
             FileWriter myWriter = new FileWriter("MemberList.txt", true);
-            Members member = memberList.get(memberList.size()-1);
-            myWriter.write(member.getID()+" | "+member.getName()+" | "+member.getPrice()+" |  "+member.getCompetitor()+"\n");
+            Members member = list.get(list.size()-1);
+            myWriter.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + chair.chooseGender(member) + " | " + member.getActive() + " | " + member.getCompetitor() + " | " + member.getDiscipline()+"\n");            
             myWriter.close();
             System.out.println("Member added to the club");
          
@@ -79,22 +65,40 @@ public class Memberlists{
         try {
             File file = new File("MemberList.txt");
             Scanner scanner = new Scanner(file);
+            
+            if(scanner.hasNextLine()){
+               scanner.nextLine();
+            }
 
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] tokens = line.split("\\|");
+                if(tokens.length>=8){
+                
+                   // Trim and parse data from file
+                   String name = tokens[1].trim();
+                   int age = Integer.parseInt(tokens[2].trim());
+                   String gender = tokens[3].trim();
+                   boolean restance = Boolean.parseBoolean(tokens[4].trim());
+                   boolean active = Boolean.parseBoolean(tokens[5].trim());
+                   boolean competitive = Boolean.parseBoolean(tokens[6].trim());
+                   String discipline = tokens[7].trim();
+                   // Create a new Members object with parsed data and add it to memberList
+                   Members newMember = new Members(age, name);
+                   if(!"null".equals(discipline)){
+                     newMember.setDiscipline(discipline);
+                   }
+                   newMember.setID(memberList.size()+1);
+                   newMember.setDiscipline(discipline);
+                   newMember.setGender("Male".equals(gender)); // Compare strings with equals()
+                   newMember.setCompetitor(competitive);
+                   newMember.setActive(active);
+                   newMember.setRestance(restance);
+                   memberList.add(newMember);
 
-                // Trim and parse data from file
-                int age = Integer.parseInt(tokens[1].trim());
-                String gender = tokens[2].trim();
-                String name = tokens[3].trim();
-                String competitor = tokens[4].trim();
-                String discipline = tokens[5].trim();
-                String active = tokens[6].trim();
-
-                // Create a new Members object with parsed data and add it to memberList
-                double price= 1000;
-                memberList.add(new Members(age, name));
+                } else {
+                  System.out.println("incomplete data in line" + line);
+                }
             }
 
             scanner.close();
@@ -102,42 +106,24 @@ public class Memberlists{
         } catch (FileNotFoundException e) {
             System.out.println("File not found.");
             e.printStackTrace();
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+        } catch (NumberFormatException e) {
+            System.out.println("Error parsing age.");
+            e.printStackTrace();
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Error reading data from file.");
             e.printStackTrace();
         }
-    }*/
-   public void createFiles() {
-        try {
-            File memberListFile = new File("MemberList.txt");
-            File competitionFile = new File("Competition.txt");
-            File restanceFile = new File("Restance.txt");
-
-            createFile(memberListFile);
-            createFile(competitionFile);
-            createFile(restanceFile);
-        } catch (IOException e) {
-            System.out.println("An error occurred while creating files.");
-            e.printStackTrace();
-        }
     }
-
-    private void createFile(File file) throws IOException {
-        if (file.createNewFile()) {
-            System.out.println("File Created: " + file.getName());
-        } else {
-            System.out.println("File already exists: " + file.getName());
-        }
-    }
-
+    
     // Write member list to file
-    public void writeToList() {
+    public void writeToList(ArrayList<Members> list) {
         try (FileWriter writer = new FileWriter("MemberList.txt")) {
-            writer.write("Age|Name|Gender|Competitor|Discipline|Active\n");
-            for (Members member : memberList) {
-                writer.write(member.getAge() + "|" + member.getName() + "|" +
-                             member.getGender() + "|" + member.getCompetitor() + "|" +
-                             member.getDiscipline() + "|" + member.getActive() + "\n");
+            writer.write("ID| Name  |  Age   |  Gender   |  Restance  |  Active   |  Competitor  |  Discipline  \n");
+            for (Members member : list) {
+                writer.write(
+                       member.getID()+ " | " + member.getName() + " | " +   
+                       member.getAge() + " | " + chair.chooseGender(member) +  " | " + member.getRestance() + " | " +
+                       member.getActive() + " | " + member.getCompetitor() + " | " + member.getDiscipline() + "\n");
             }
             System.out.println("Member list has been successfully updated.");
         } catch (IOException e) {
@@ -145,35 +131,10 @@ public class Memberlists{
             e.printStackTrace();
         }
     }
-
-    // Load member list from file
-    public void loadList() {
-        try (Scanner scanner = new Scanner(new File("MemberList.txt"))) {
-            scanner.nextLine(); // Skip header
-            while (scanner.hasNextLine()) {
-                String[] tokens = scanner.nextLine().split("\\|");
-
-                int age = Integer.parseInt(tokens[0].trim());
-                String name = tokens[1].trim();
-                String gender = tokens[2].trim();
-                boolean competitor = Boolean.parseBoolean(tokens[3].trim());
-                String discipline = tokens[4].trim();
-                boolean active = Boolean.parseBoolean(tokens[5].trim());
-
-                memberList.add(new Members(age, name/*, gender/*, competitor, discipline, active*/));
-            }
-            System.out.println("Member list loaded successfully.");
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
-            e.printStackTrace();
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            System.out.println("Error reading data from file.");
-            e.printStackTrace();
-        }
-    }
+    
     public void Combine(){
     createFiles();
-    writeToList();
+    //writeToList();
     loadList();
     }     
 }
