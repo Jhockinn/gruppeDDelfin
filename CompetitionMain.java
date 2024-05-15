@@ -7,7 +7,8 @@ trainer.TrainerUi();
 
 /* Huskeliste
 - få dato på 
-- lav et overblik over 5 bedste svømmere for hver disciplin + length
+- Lav seperat metode til hver disciplin for top 5 
+- Få koden integreret med freestyle
 - match CompetitorList med memberList
 */
    }

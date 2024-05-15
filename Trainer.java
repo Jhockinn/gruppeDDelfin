@@ -68,7 +68,20 @@ while(true){
          }
        break; 
      case 8: 
-       competition.showTopFiveSwimmersForAllDisciplines(); 
+       System.out.println("Do you want to see a top five for for Freestyle [1], Butterfly [2], Backstroke [3] or Breaststroke [4]");
+       int topFive = scan.nextInt(); 
+         if(topFive == 1){
+         competition.showTopFiveSwimmersForFreestyle(); 
+         }
+         if(topFive == 2){
+         competition.showTopFiveSwimmersForButterfly(); 
+         }
+         if(topFive == 3){
+         competition.showTopFiveSwimmersForBackstroke(); 
+         }
+         if(topFive == 4){
+         competition.showTopFiveSwimmersForBreaststroke(); 
+         }
      break;
      default: 
       System.out.println("Invalid input");  
