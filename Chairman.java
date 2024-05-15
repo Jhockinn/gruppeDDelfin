@@ -2,6 +2,7 @@
   import java.io.*;
   public class Chairman{
     Memberlists lists = new Memberlists();
+    static Competition com = new Competition();
     ArrayList<String> boyNameList = new ArrayList<String>();
     ArrayList<String> girlNameList = new ArrayList<String>();
     ArrayList<Members> memberList = new ArrayList<Members>();
@@ -18,6 +19,12 @@
     String disci;
     String discipline;
     String name1;
+    
+    
+    public Chairman() {
+        // Initialize ArrayLists
+        memberList = new ArrayList<>();
+    }
     // Add member to list
     public void addNewMember() {
         Scanner scanner = new Scanner(System.in);
@@ -91,23 +98,28 @@
 
         // Creates member if member doesn't exist.
         if (!memberExists) {
-            memberList.add(new Members(memberAge, name));
-            memberList.get(memberList.size() - 1).setID(memberList.size());
-            memberList.get(memberList.size() - 1).setDiscipline(discipline);
-            memberList.get(memberList.size() - 1).setAge(memberAge);
-            memberList.get(memberList.size() - 1).setGender(gender);
-            memberList.get(memberList.size() - 1).setCompetitor(competitive);
-            memberList.get(memberList.size() - 1).setActive(acti);
-            memberList.get(memberList.size() - 1).setPrice(rand.nextInt(400, 10000));
-            memberList.get(memberList.size() - 1).restan(res());
-            unac(memberList.get(memberList.size() - 1));
-            lists.AddtoList(memberList);
+            lists.memberList.add(new Members(memberAge, name));
+            lists.memberList.get(lists.memberList.size() - 1).setID(lists.memberList.size());
+            lists.memberList.get(lists.memberList.size() - 1).setDiscipline(discipline);
+            lists.memberList.get(lists.memberList.size() - 1).setAge(memberAge);
+            lists.memberList.get(lists.memberList.size() - 1).setGender(gender);
+            lists.memberList.get(lists.memberList.size() - 1).setCompetitor(competitive);
+            lists.memberList.get(lists.memberList.size() - 1).setActive(acti);
+            lists.memberList.get(lists.memberList.size() - 1).setPrice(rand.nextInt(400, 10000));
+            lists.memberList.get(lists.memberList.size() - 1).restan(res());
+            unac(lists.memberList.get(lists.memberList.size() - 1));
+            lists.AddtoList(lists.memberList);
+            
             //writer(memberList.get(memberList.size()-1));
         }
     }
 
     // Adds different classes to the memberList (ArrayList)
     public void add() {
+      if(lists.memberList.size()>1){
+      //lists.loadList();
+      }
+      else{
         for (int x = 0; x <= 100; x++) {
             int rando = rand.nextInt(2) + 1;
             if (rando == 1) {
@@ -156,11 +168,28 @@
             memberList.get(memberList.size()-1).setID(memberList.size());
             memberList.get(memberList.size()-1).setGender(boyNameList.contains(name1));
             //writer(memberList.get(memberList.size()-1));
+            
          
         }
-      //lists.writeToList();
+      //activ.active(memberList);
+      //lists.writeToList(memberList);
+     
     }
-
+    
+   } 
+   public void add2(){
+    for(Members members : memberList){
+         if(members.getAge()<18 && members.getCompetitor() == true){
+            com.youthCompetitors.add(new Competitor(members.getAge(), members.getName(), members.getDiscipline()));
+            
+         }
+         if(members.getAge()>18 && members.getCompetitor() == true){
+            com.seniorCompetitors.add(new Competitor(members.getAge(), members.getName(), members.getDiscipline()));
+        }
+         
+      }
+      com.showYouthCompetitors();
+   }
     // Comparator for sorting by age
     public void sort() {
         Collections.sort(memberList, new Comparator<Members>() {

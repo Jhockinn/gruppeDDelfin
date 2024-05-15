@@ -3,17 +3,23 @@ import java.util.Random;
 import java.util.Scanner; 
 
 public class Competition{
-
+static Chairman chair = new Chairman();
+static Members mem = new Members(1,"n");
 // ArrayLists for youth and senior competitors 
 public ArrayList<Competitor> youthCompetitors = new ArrayList<Competitor>(); 
 public ArrayList<Competitor> seniorCompetitors = new ArrayList<Competitor>(); 
 // ArratList for memberList
-ArrayList<Members> memberList = new ArrayList<Members>();
-
+//ArrayList<Members> memberList = new ArrayList<Members>();
+String discipline;
 // Scanner & random
 Scanner scan = new Scanner(System.in); 
 Random ran = new Random(); 
 
+    public Competition() {
+        // Initialize ArrayLists
+        youthCompetitors = new ArrayList<>();
+        seniorCompetitors = new ArrayList<>();
+    }
 // Method for adding new competitors 
 public void addCompetitor(){
    System.out.println("What is the members name?"); 
@@ -23,15 +29,15 @@ public void addCompetitor(){
    System.out.println("How many swimming disciplines does the member participate in?"); 
    int choice = scan.nextInt(); 
    
-   ArrayList<String> disciplines = new ArrayList<String>(); 
+   //ArrayList<String> disciplines = new ArrayList<String>(); 
    
    for(int i=0; i<choice; i++){
    System.out.println("Enter the swimming disciplines one at a time: ");
-   String discipline = scan.next();  
-   disciplines.add(discipline);
+   discipline = scan.next();  
+   //disciplines.add(discipline);
    }
    
-   Competitor competitor = new Competitor(age,name,disciplines);
+   Competitor competitor = new Competitor(age,name,discipline);
    
    if(competitor.getAge() < 18){
       youthCompetitors.add(competitor); 
@@ -67,7 +73,7 @@ public void showSeniorCompetitors(){
    }
 }
 
-// method for sorting members from memberList to a competitorList
+/* method for sorting members from memberList to a competitorList
 public void sortCompetitors(){
 
 for(int i=0; i<memberList.size(); i++){
@@ -89,6 +95,6 @@ for(int i=0; i<memberList.size(); i++){
    System.out.println("Could not sort competitors");
   } 
  }
-} 
+} */
 }
 

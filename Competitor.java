@@ -1,13 +1,13 @@
 import java.util.*;
 
 public class Competitor{
-
+String discipline;
 String name; 
 int age; 
-ArrayList<String> discipline = new ArrayList<String>(); 
+//ArrayList<String> discipline = new ArrayList<String>(); 
 private ArrayList<TrainingResult> trainingResult = new ArrayList<TrainingResult>(); 
 
-   public Competitor(int age,String name, ArrayList<String> discipline){
+   public Competitor(int age,String name,String discipline){
       this.age = age; 
       this.name = name;  
       this.discipline = discipline; 
@@ -50,12 +50,14 @@ private ArrayList<TrainingResult> trainingResult = new ArrayList<TrainingResult>
    }
 
  
-   public void setDiscipline(ArrayList<String> discipline){
+   public void setDiscipline(String discipline){
       this.discipline = discipline;  
    }
 
-   public ArrayList<String> getDiscipline() {
+   public String getDiscipline() {
       return discipline; 
    }
-   
+   public String toString(){
+      return "[" + " ID: " + age + ", Name: " + name + " Age: " + discipline + ", Gender: \n";
+   }
 }

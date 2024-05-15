@@ -36,7 +36,7 @@ public class Memberlists{
          try{
             FileWriter myWriter = new FileWriter("MemberList.txt", true);
             Members member = list.get(list.size()-1);
-            myWriter.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + chair.chooseGender(member) + " | " + member.getActive() + " | " + member.getCompetitor() + " | " + member.getDiscipline()+"\n");            
+            myWriter.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + chair.chooseGender(member) + " | " + member.getRestance() +" | " + member.getActive() + " | " + member.getCompetitor() + " | " + member.getDiscipline()+"\n");            
             myWriter.close();
             System.out.println("Member added to the club");
          
@@ -49,6 +49,8 @@ public class Memberlists{
          try {
             File myObj = new File("MemberList.txt");
             Scanner myReader = new Scanner(myObj);
+           
+            
             while (myReader.hasNextLine()){
                String menuData = myReader.nextLine();
                System.out.println(menuData);   
