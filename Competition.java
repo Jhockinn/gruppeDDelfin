@@ -33,7 +33,7 @@ public void addCompetitor(){
    String discipline = scan.next().toLowerCase();  
    discipline = discipline.substring(0,1).toUpperCase() + discipline.substring(1);
    if(discipline.equalsIgnoreCase("Freestyle") || discipline.equalsIgnoreCase("Butterfly") || 
-   discipline.equalsIgnoreCase("Backstroke") || discipline.equalsIgnoreCase("Backstroke")){
+   discipline.equalsIgnoreCase("Backstroke") || discipline.equalsIgnoreCase("Breastroke")){
    disciplines.add(discipline);
     }else{
    System.out.println("Invalid input - please try to enter the swimming discipline again"); 
@@ -105,15 +105,16 @@ for(int i=0; i<memberList.size(); i++){
 
 // method for finding top five swimmers for a discipline
 public ArrayList<Competitor> findTopFiveSwimmers(ArrayList<String> disciplines){
-ArrayList<Competitor> allCompetitors = new ArrayList<>(); 
+ArrayList<Competitor> allCompetitors = new ArrayList<>(); // creates a new arraylist with both senior and youth competitors 
    allCompetitors.addAll(youthCompetitors); 
    allCompetitors.addAll(seniorCompetitors); 
    
-   ArrayList<Competitor> topFive = new ArrayList<>(); 
+   ArrayList<Competitor> topFive = new ArrayList<>(); // arraylist for top five 
+   
    for(Competitor competitor : allCompetitors){
-   for(String discipline : disciplines){
+   for(String discipline : disciplines){ // takes a top five from each discipline
       if(competitor.getCompetitionResults() != null){
-      for(CompetitionResult result : competitor.getCompetitionResults()){
+      for(CompetitionResult result : competitor.getCompetitionResults()){ // looks at the competition result from the competitionResult class 
          if(result.getDiscipline().equals(discipline)){ 
          topFive.add(competitor); 
          break; 
@@ -123,23 +124,34 @@ ArrayList<Competitor> allCompetitors = new ArrayList<>();
      }
    }
    
-   //comparing two competitors regarding to time 
+   ArrayList<Integer> lengths = new ArrayList<>(); 
+   lengths.add(50);
+   lengths.add(100);
+   lengths.add(200); 
+   lengths.add(400); 
+   
+   for(String discipline : disciplines){
+      for(int length : lengths){
+   
    Collections.sort(topFive, (c1, c2) -> {
-      double time1 = getBestTime(c1, disciplines.get(0)); 
-      double time2 = getBestTime(c2, disciplines.get(0)); 
+      double time1 = getBestTime(c1, discipline, length); 
+      double time2 = getBestTime(c2, discipline, length); 
       return Double.compare(time1, time2); 
    }); 
    
-   ArrayList<Competitor> topFiveArrayList = new ArrayList<>(topFive.subList(0, Math.min(5, topFive.size())));
+    }
+   }
    
+   ArrayList<Competitor> topFiveArrayList = new ArrayList<>(topFive.subList(0, Math.min(5, topFive.size())));
    return topFiveArrayList;
-}  
+  
+   }
    
    // method for finding a competitors best time for a discipline
-   private double getBestTime(Competitor competitor, String discipline){
+   private double getBestTime(Competitor competitor, String discipline, int length){
    double bestTime = Double.MAX_VALUE; 
       for(CompetitionResult result : competitor.getCompetitionResults()){
-      if(result.getDiscipline().equals(discipline) && result.getTime() < bestTime){
+      if(result.getDiscipline().equals(discipline) && result.getLength() == length && result.getTime() < bestTime){
          bestTime = result.getTime(); 
       }
    }
@@ -147,8 +159,340 @@ ArrayList<Competitor> allCompetitors = new ArrayList<>();
    
    }
    
- // showing top five swimmers for the freestyle discipline 
+   // showing top five swimmers for the freestyle discipline 
+   public void showTopFiveSwimmersForFreestyle(){
+   
+   // ArrayLists for disciplines
+   ArrayList<String> Freestyle = new ArrayList<>(); 
+   Freestyle.add("Freestyle"); 
+
+   // ArrayLists for lengths 
+   ArrayList<Integer> halvtreds = new ArrayList<>(); 
+   halvtreds.add(50); 
+   ArrayList<Integer> hundrede = new ArrayList<>(); 
+   hundrede.add(100); 
+   ArrayList<Integer> tohundrede = new ArrayList<>(); 
+   tohundrede.add(200); 
+   
+   ArrayList<Competitor> topFiveSwimmersFreestyle = findTopFiveSwimmers(Freestyle); 
+    
+   System.out.println("The five best swimmers for Freestyle are ");
+   
+   Collections.sort(topFiveSwimmersFreestyle, (swimmer1, swimmer2) -> {
+      double time50_1 = getBestTime(swimmer1, "Freestyle", 50);
+      double time50_2 = getBestTime(swimmer2, "Freestyle", 50);
+      return Double.compare(time50_1, time50_2);
+   });
+   
+   int placement = 1;  
+   for(Competitor swimmer : topFiveSwimmersFreestyle) {
+      for(int length : halvtreds){
+         double bestTime50 = getBestTime(swimmer, "Freestyle", length);
+         if(bestTime50 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Freestyle with length: " + length + " is "  + bestTime50); 
+         System.out.println(); 
+        }
+      }
+     }
+     
+    Collections.sort(topFiveSwimmersFreestyle, (swimmer1, swimmer2) -> {
+      double time100_1 = getBestTime(swimmer1, "Freestyle", 100);
+      double time100_2 = getBestTime(swimmer2, "Freestyle", 100);
+      return Double.compare(time100_1, time100_2);
+   });
+   
+      placement = 1;  
+      for(Competitor swimmer : topFiveSwimmersFreestyle) {
+      for(int length : hundrede){
+         double bestTime100 = getBestTime(swimmer, "Freestyle", length);
+         if(bestTime100 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Freestyle with length: " + length + " is "  + bestTime100); 
+         System.out.println();
+        } 
+      }
+     }
+     
+     Collections.sort(topFiveSwimmersFreestyle, (swimmer1, swimmer2) -> {
+      double time200_1 = getBestTime(swimmer1, "Freestyle", 200);
+      double time200_2 = getBestTime(swimmer2, "Freestyle", 200);
+      return Double.compare(time200_1, time200_2);
+   });
+   
+      placement = 1;  
+      for(Competitor swimmer : topFiveSwimmersFreestyle) {
+      for(int length : tohundrede){
+         double bestTime200 = getBestTime(swimmer, "Freestyle", length);
+         if(bestTime200 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Freestyle with length: " + length + " is "  + bestTime200); 
+         System.out.println();
+        } 
+      }
+     }
+   }
+   
+   // showing top five swimmers for the butterfly discipline 
+   public void showTopFiveSwimmersForButterfly(){
+   // ArrayLists for disciplines
+   ArrayList<String> Butterfly = new ArrayList<>(); 
+   Butterfly.add("Butterfly"); 
+
+   // ArrayLists for lengths 
+   ArrayList<Integer> halvtreds = new ArrayList<>(); 
+   halvtreds.add(50); 
+   ArrayList<Integer> hundrede = new ArrayList<>(); 
+   hundrede.add(100); 
+   ArrayList<Integer> tohundrede = new ArrayList<>(); 
+   tohundrede.add(200); 
+   
+   ArrayList<Competitor> topFiveSwimmersButterfly = findTopFiveSwimmers(Butterfly); 
+    
+   System.out.println("The five best swimmers for Butterfly are ");
+   
+   Collections.sort(topFiveSwimmersButterfly, (swimmer1, swimmer2) -> {
+      double time50_1 = getBestTime(swimmer1, "Butterfly", 50);
+      double time50_2 = getBestTime(swimmer2, "Butterfly", 50);
+      return Double.compare(time50_1, time50_2);
+   });
+   
+   int placement = 1;  
+   for(Competitor swimmer : topFiveSwimmersButterfly) {
+      for(int length : halvtreds){
+         double bestTime50 = getBestTime(swimmer, "Butterfly", length);
+         if(bestTime50 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Butterfly with length: " + length + " is "  + bestTime50); 
+         System.out.println(); 
+        }
+      }
+     }
+     
+    Collections.sort(topFiveSwimmersButterfly, (swimmer1, swimmer2) -> {
+      double time100_1 = getBestTime(swimmer1, "Butterfly", 100);
+      double time100_2 = getBestTime(swimmer2, "Butterfly", 100);
+      return Double.compare(time100_1, time100_2);
+   });
+   
+      placement = 1;  
+      for(Competitor swimmer : topFiveSwimmersButterfly) {
+      for(int length : hundrede){
+         double bestTime100 = getBestTime(swimmer, "Butterfly", length);
+         if(bestTime100 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Butterfly with length: " + length + " is "  + bestTime100); 
+         System.out.println();
+        } 
+      }
+     }
+     
+     Collections.sort(topFiveSwimmersButterfly, (swimmer1, swimmer2) -> {
+      double time200_1 = getBestTime(swimmer1, "Butterfly", 200);
+      double time200_2 = getBestTime(swimmer2, "Butterfly", 200);
+      return Double.compare(time200_1, time200_2);
+   });
+   
+      placement = 1;  
+      for(Competitor swimmer : topFiveSwimmersButterfly) {
+      for(int length : tohundrede){
+         double bestTime200 = getBestTime(swimmer, "Butterfly", length);
+         if(bestTime200 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Butterfly with length: " + length + " is "  + bestTime200); 
+         System.out.println();
+        } 
+      }
+     }
+   }
+   
+   // showing top five swimmers for the Backstroke discipline 
+   public void showTopFiveSwimmersForBackstroke(){
+   // ArrayLists for disciplines
+   ArrayList<String> Backstroke = new ArrayList<>(); 
+   Backstroke.add("Backstroke"); 
+ 
+   // ArrayLists for lengths 
+   ArrayList<Integer> halvtreds = new ArrayList<>(); 
+   halvtreds.add(50); 
+   ArrayList<Integer> hundrede = new ArrayList<>(); 
+   hundrede.add(100); 
+   ArrayList<Integer> tohundrede = new ArrayList<>(); 
+   tohundrede.add(200); 
+   
+   ArrayList<Competitor> topFiveSwimmersBackstroke = findTopFiveSwimmers(Backstroke);
+    
+   System.out.println("The five best swimmers for Backstroke are ");
+   
+   Collections.sort(topFiveSwimmersBackstroke, (swimmer1, swimmer2) -> {
+      double time50_1 = getBestTime(swimmer1, "Backstroke", 50);
+      double time50_2 = getBestTime(swimmer2, "Backstroke", 50);
+      return Double.compare(time50_1, time50_2);
+   });
+   
+   int placement = 1;  
+   for(Competitor swimmer : topFiveSwimmersBackstroke) {
+      for(int length : halvtreds){
+         double bestTime50 = getBestTime(swimmer, "Backstroke", length);
+         if(bestTime50 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Backstroke with length: " + length + " is "  + bestTime50); 
+         System.out.println(); 
+        }
+      }
+     }
+     
+    Collections.sort(topFiveSwimmersBackstroke, (swimmer1, swimmer2) -> {
+      double time100_1 = getBestTime(swimmer1, "Backstroke", 100);
+      double time100_2 = getBestTime(swimmer2, "Backstroke", 100);
+      return Double.compare(time100_1, time100_2);
+   });
+   
+      placement = 1;  
+      for(Competitor swimmer : topFiveSwimmersBackstroke) {
+      for(int length : hundrede){
+         double bestTime100 = getBestTime(swimmer, "Backstroke", length);
+         if(bestTime100 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Backstroke with length: " + length + " is "  + bestTime100); 
+         System.out.println();
+        } 
+      }
+     }
+     
+     Collections.sort(topFiveSwimmersBackstroke, (swimmer1, swimmer2) -> {
+      double time200_1 = getBestTime(swimmer1, "Backstroke", 200);
+      double time200_2 = getBestTime(swimmer2, "Backstroke", 200);
+      return Double.compare(time200_1, time200_2);
+   });
+   
+      placement = 1;  
+      for(Competitor swimmer : topFiveSwimmersBackstroke) {
+      for(int length : tohundrede){
+         double bestTime200 = getBestTime(swimmer, "Backstroke", length);
+         if(bestTime200 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Backstroke with length: " + length + " is "  + bestTime200); 
+         System.out.println();
+        } 
+      }
+     }
+   }
+   
+   // showing top five swimmers for the Breaststroke discipline 
+   public void showTopFiveSwimmersForBreaststroke(){
+   // ArrayLists for disciplines
+   ArrayList<String> Breaststroke = new ArrayList<>(); 
+   Breaststroke.add("Breaststroke"); 
+   
+   // ArrayLists for lengths 
+   ArrayList<Integer> halvtreds = new ArrayList<>(); 
+   halvtreds.add(50); 
+   ArrayList<Integer> hundrede = new ArrayList<>(); 
+   hundrede.add(100); 
+   ArrayList<Integer> tohundrede = new ArrayList<>(); 
+   tohundrede.add(200); 
+   
+   ArrayList<Competitor> topFiveSwimmersBreaststroke = findTopFiveSwimmers(Breaststroke); 
+    
+   System.out.println("The five best swimmers for Breaststroke are ");
+   
+   Collections.sort(topFiveSwimmersBreaststroke, (swimmer1, swimmer2) -> {
+      double time50_1 = getBestTime(swimmer1, "Breaststroke", 50);
+      double time50_2 = getBestTime(swimmer2, "Breaststroke", 50);
+      return Double.compare(time50_1, time50_2);
+   });
+   
+   int placement = 1;  
+   for(Competitor swimmer : topFiveSwimmersBreaststroke) {
+      for(int length : halvtreds){
+         double bestTime50 = getBestTime(swimmer, "Breaststroke", length);
+         if(bestTime50 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Breaststroke with length: " + length + " is "  + bestTime50); 
+         System.out.println(); 
+        }
+      }
+     }
+     
+    Collections.sort(topFiveSwimmersBreaststroke, (swimmer1, swimmer2) -> {
+      double time100_1 = getBestTime(swimmer1, "Breaststroke", 100);
+      double time100_2 = getBestTime(swimmer2, "Breaststroke", 100);
+      return Double.compare(time100_1, time100_2);
+   });
+   
+      placement = 1;  
+      for(Competitor swimmer : topFiveSwimmersBreaststroke) {
+      for(int length : hundrede){
+         double bestTime100 = getBestTime(swimmer, "Breaststroke", length);
+         if(bestTime100 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Breaststroke with length: " + length + " is "  + bestTime100); 
+         System.out.println();
+        } 
+      }
+     }
+     
+     Collections.sort(topFiveSwimmersBreaststroke, (swimmer1, swimmer2) -> {
+      double time200_1 = getBestTime(swimmer1, "Breaststroke", 200);
+      double time200_2 = getBestTime(swimmer2, "Breaststroke", 200);
+      return Double.compare(time200_1, time200_2);
+   });
+   
+      placement = 1;  
+      for(Competitor swimmer : topFiveSwimmersBreaststroke) {
+      for(int length : tohundrede){
+         double bestTime200 = getBestTime(swimmer, "Breaststroke", length);
+         if(bestTime200 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Breaststroke with length: " + length + " is "  + bestTime200); 
+         System.out.println();
+        } 
+      }
+     }
+   }
+  }
+   
+/* // showing top five swimmers for the freestyle discipline 
    public void showTopFiveSwimmersForAllDisciplines(){
+   
+   // ArrayLists for disciplines
    ArrayList<String> Freestyle = new ArrayList<>(); 
    Freestyle.add("Freestyle"); 
    ArrayList<String> Butterfly = new ArrayList<>(); 
@@ -158,23 +502,88 @@ ArrayList<Competitor> allCompetitors = new ArrayList<>();
    ArrayList<String> Breaststroke = new ArrayList<>(); 
    Breaststroke.add("Breaststroke"); 
    
+   // ArrayLists for lengths 
+   ArrayList<Integer> halvtreds = new ArrayList<>(); 
+   halvtreds.add(50); 
+   ArrayList<Integer> hundrede = new ArrayList<>(); 
+   hundrede.add(100); 
+   ArrayList<Integer> tohundrede = new ArrayList<>(); 
+   tohundrede.add(200); 
+   
    ArrayList<Competitor> topFiveSwimmersFreestyle = findTopFiveSwimmers(Freestyle); 
    ArrayList<Competitor> topFiveSwimmersButterfly = findTopFiveSwimmers(Butterfly); 
    ArrayList<Competitor> topFiveSwimmersBackstroke = findTopFiveSwimmers(Backstroke); 
    ArrayList<Competitor> topFiveSwimmersBreaststroke = findTopFiveSwimmers(Breaststroke); 
+    
+   System.out.println("The five best swimmers for Freestyle are ");
    
-   System.out.println("The five best swimmers for Freestyle are "); 
-   for(int i = 0; i< topFiveSwimmersFreestyle.size(); i++){
-      Competitor swimmer = topFiveSwimmersFreestyle.get(i);   
-      System.out.print("Placement " + (i + 1));
-      System.out.print("|| Name: " + swimmer.getName());
-      System.out.print("|| Age: " + swimmer.getAge());
-      System.out.println(); 
-      for(String discipline : Freestyle){
-      System.out.println("Best time for the discipline " + discipline + " is: " + getBestTime(swimmer, discipline)); 
-      System.out.println(); 
-   } 
-  }
+   Collections.sort(topFiveSwimmersFreestyle, (swimmer1, swimmer2) -> {
+      double time50_1 = getBestTime(swimmer1, "Freestyle", 50);
+      double time50_2 = getBestTime(swimmer2, "Freestyle", 50);
+      return Double.compare(time50_1, time50_2);
+   });
+   
+   int placement = 1;  
+   for(Competitor swimmer : topFiveSwimmersFreestyle) {
+      for(int length : halvtreds){
+         double bestTime50 = getBestTime(swimmer, "Freestyle", length);
+         if(bestTime50 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Freestyle with length: " + length + " is "  + bestTime50); 
+         System.out.println(); 
+        }
+      }
+     }
+     
+    Collections.sort(topFiveSwimmersFreestyle, (swimmer1, swimmer2) -> {
+      double time100_1 = getBestTime(swimmer1, "Freestyle", 100);
+      double time100_2 = getBestTime(swimmer2, "Freestyle", 100);
+      return Double.compare(time100_1, time100_2);
+   });
+   
+      placement = 1;  
+      for(Competitor swimmer : topFiveSwimmersFreestyle) {
+      for(int length : hundrede){
+         double bestTime100 = getBestTime(swimmer, "Freestyle", length);
+         if(bestTime100 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Freestyle with length: " + length + " is "  + bestTime100); 
+         System.out.println();
+        } 
+      }
+     }
+     
+     Collections.sort(topFiveSwimmersFreestyle, (swimmer1, swimmer2) -> {
+      double time200_1 = getBestTime(swimmer1, "Freestyle", 200);
+      double time200_2 = getBestTime(swimmer2, "Freestyle", 200);
+      return Double.compare(time200_1, time200_2);
+   });
+   
+      placement = 1;  
+      for(Competitor swimmer : topFiveSwimmersFreestyle) {
+      for(int length : tohundrede){
+         double bestTime200 = getBestTime(swimmer, "Freestyle", length);
+         if(bestTime200 != Double.MAX_VALUE) {
+          System.out.print("Placement " + placement++);
+          System.out.print("|| Name: " + swimmer.getName());
+          System.out.print("|| Age: " + swimmer.getAge());
+          System.out.println(); 
+         System.out.println("Best time for the discipline Freestyle with length: " + length + " is "  + bestTime200); 
+         System.out.println();
+        } 
+      }
+     }
+     
+     
+     
+     
+     
   
   System.out.println("The five best swimmers for Butterfly are ");
    for(int i = 0; i< topFiveSwimmersButterfly.size(); i++){
@@ -184,8 +593,10 @@ ArrayList<Competitor> allCompetitors = new ArrayList<>();
       System.out.print("|| Age: " + swimmer.getAge());
       System.out.println(); 
       for(String discipline : Butterfly){
-      System.out.println("Best time for the discipline " + discipline + " is: " + getBestTime(swimmer, discipline)); 
+      for(int length : CompetitionResult.ALLOWED_LENGTHS){
+      System.out.println("Best time for the discipline " + discipline + " with length: " + length + " is "  + getBestTime(swimmer, discipline, length)); 
       System.out.println(); 
+    }
    } 
   }
   
@@ -197,8 +608,10 @@ ArrayList<Competitor> allCompetitors = new ArrayList<>();
       System.out.print("|| Age: " + swimmer.getAge());
       System.out.println(); 
       for(String discipline : Backstroke){
-      System.out.println("Best time for the discipline " + discipline + " is: " + getBestTime(swimmer, discipline)); 
+      for(int length : CompetitionResult.ALLOWED_LENGTHS){
+      System.out.println("Best time for the discipline " + discipline + " with length: " + length + " is "  + getBestTime(swimmer, discipline, length)); 
       System.out.println(); 
+    }
    } 
   }
   
@@ -210,13 +623,20 @@ ArrayList<Competitor> allCompetitors = new ArrayList<>();
       System.out.print("|| Age: " + swimmer.getAge());
       System.out.println(); 
       for(String discipline : Breaststroke){
-      System.out.println("Best time for the discipline " + discipline + " is: " + getBestTime(swimmer, discipline)); 
+      for(int length : CompetitionResult.ALLOWED_LENGTHS){
+      System.out.println("Best time for the discipline " + discipline + " with length: " + length + " is "  + getBestTime(swimmer, discipline, length)); 
       System.out.println(); 
+    }
    } 
-  }
-  
-}
-}
+  }  
+ }
+} */
+
+
+
+
+
+
 
 
 

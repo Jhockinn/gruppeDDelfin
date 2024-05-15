@@ -81,9 +81,9 @@ this.competition = competition;
  
  for(String discipline : competitor.getDiscipline()){
    System.out.println(discipline + " - Please add the length of the disciplinec [meters]: ");
-   System.out.println("You can choose between [50], [100], [200], [400]");  
+   System.out.println("You can choose between [50], [100], [200] meter");  
    int length = scan.nextInt(); 
-   if(length == 50 || length == 100 || length == 200 || length == 400){
+   if(length == 50 || length == 100 || length == 200){
    System.out.println(discipline + " - Please add the time of the discipline [minutes,seconds]: "); 
    double time = scan.nextDouble();
    
@@ -108,9 +108,9 @@ this.competition = competition;
 
  for(String discipline : competitor.getDiscipline()){
    System.out.println(discipline + " - Please add the length of the disciplinec [meters]: "); 
-   System.out.println("You can choose between [50], [100], [200], [400] meter");  
+   System.out.println("You can choose between [50], [100], [200] meter");  
    int length = scan.nextInt(); 
-   if(length == 50 || length == 100 || length == 200 || length == 400){
+   if(length == 50 || length == 100 || length == 200){
    System.out.println(discipline + " - Please add the time of the discipline [minutes,seconds]: "); 
    double time = scan.nextDouble(); 
    System.out.println("Please add placement for the competitor: "); 
