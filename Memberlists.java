@@ -31,21 +31,7 @@ public class Memberlists{
         System.out.println("An error occurred while creating the file.");
         e.printStackTrace();
     }
-}      //funktion til at adde en nyt medlem til klubben
-      /*public void writeToList() {
-         try {
-           FileWriter writer = new FileWriter("MemberList.txt", false); // false to overwrite existing content
-           writer.write("ID|  Member's name   |  Age   |  Gender  |  MemberType\n");
-         for (Members member : chair.memberList) {
-            writer.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + member.getGender() + " | " + member.getActive() + " | " + member.getCompetitor() + "\n");
-           }
-           writer.close();
-           System.out.println("Member list has been successfully updated.");
-       } catch (IOException e) {
-           System.out.println("An error occurred while writing to the file.");
-           e.printStackTrace();
-       }
-   }*/      
+}    
       public void AddtoList(ArrayList<Members> list){
          try{
             FileWriter myWriter = new FileWriter("MemberList.txt", true);
@@ -126,20 +112,7 @@ public class Memberlists{
             e.printStackTrace();
         }
     }
-   /*public void createFiles() {
-        try {
-            File memberListFile = new File("MemberList.txt");
-            File competitionFile = new File("Competition.txt");
-            File restanceFile = new File("Restance.txt");
 
-            createFile(memberListFile);
-            createFile(competitionFile);
-            createFile(restanceFile);
-        } catch (IOException e) {
-            System.out.println("An error occurred while creating files.");
-            e.printStackTrace();
-        }
-    }
 
     private void createFile(File file) throws IOException {
         if (file.createNewFile()) {
@@ -148,7 +121,7 @@ public class Memberlists{
             System.out.println("File already exists: " + file.getName());
         }
     }
-    */
+    
     // Write member list to file
     public void writeToList(ArrayList<Members> list) {
         try (FileWriter writer = new FileWriter("MemberList.txt")) {
@@ -165,32 +138,7 @@ public class Memberlists{
             e.printStackTrace();
         }
     }
-      /*
-    // Load member list from file
-    public void loadList() {
-        try (Scanner scanner = new Scanner(new File("MemberList.txt"))) {
-            scanner.nextLine(); // Skip header
-            while (scanner.hasNextLine()) {
-                String[] tokens = scanner.nextLine().split("\\|");
-
-                int age = Integer.parseInt(tokens[0].trim());
-                String name = tokens[1].trim();
-                String gender = tokens[2].trim();
-                boolean competitor = Boolean.parseBoolean(tokens[3].trim());
-                String discipline = tokens[4].trim();
-                boolean active = Boolean.parseBoolean(tokens[5].trim());
-
-                memberList.add(new Members(age, name/*, gender/*, competitor, discipline, active));
-            }
-            System.out.println("Member list loaded successfully.");
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
-            e.printStackTrace();
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            System.out.println("Error reading data from file.");
-            e.printStackTrace();
-        }
-    }*/
+    
     public void Combine(){
     createFiles();
     //writeToList();
