@@ -73,15 +73,16 @@ public class Memberlists{
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] tokens = line.split("\\|");
-                if(tokens.length>=7){
+                if(tokens.length>=8){
                 
                    // Trim and parse data from file
                    String name = tokens[1].trim();
                    int age = Integer.parseInt(tokens[2].trim());
                    String gender = tokens[3].trim();
-                   boolean active = Boolean.parseBoolean(tokens[4].trim());
-                   boolean competitive = Boolean.parseBoolean(tokens[5].trim());
-                   String discipline = tokens[6].trim();
+                   boolean restance = Boolean.parseBoolean(tokens[4].trim());
+                   boolean active = Boolean.parseBoolean(tokens[5].trim());
+                   boolean competitive = Boolean.parseBoolean(tokens[6].trim());
+                   String discipline = tokens[7].trim();
                    // Create a new Members object with parsed data and add it to memberList
                    Members newMember = new Members(age, name);
                    if(!"null".equals(discipline)){
@@ -92,6 +93,7 @@ public class Memberlists{
                    newMember.setGender("Male".equals(gender)); // Compare strings with equals()
                    newMember.setCompetitor(competitive);
                    newMember.setActive(active);
+                   newMember.setRestance(restance);
                    memberList.add(newMember);
 
                 } else {
@@ -112,24 +114,15 @@ public class Memberlists{
             e.printStackTrace();
         }
     }
-
-
-    private void createFile(File file) throws IOException {
-        if (file.createNewFile()) {
-            System.out.println("File Created: " + file.getName());
-        } else {
-            System.out.println("File already exists: " + file.getName());
-        }
-    }
     
     // Write member list to file
     public void writeToList(ArrayList<Members> list) {
         try (FileWriter writer = new FileWriter("MemberList.txt")) {
-            writer.write("ID| Name  |  Age   |  Gender   |  Active   |  Competitor  |  Discipline  \n");
+            writer.write("ID| Name  |  Age   |  Gender   |  Restance  |  Active   |  Competitor  |  Discipline  \n");
             for (Members member : list) {
                 writer.write(
                        member.getID()+ " | " + member.getName() + " | " +   
-                       member.getAge() + " | " + chair.chooseGender(member) +  " | " + 
+                       member.getAge() + " | " + chair.chooseGender(member) +  " | " + member.getRestance() + " | " +
                        member.getActive() + " | " + member.getCompetitor() + " | " + member.getDiscipline() + "\n");
             }
             System.out.println("Member list has been successfully updated.");

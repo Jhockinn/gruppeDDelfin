@@ -101,7 +101,7 @@ public class Members{
       return restance;
    }
    public String toString(){
-        return "[" + " ID: " + ID + ", Name: " + name + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Restance "+ restance + ", Competitor: " + competitor + " Discipline: " + discipline+ ", Active: " + active +" ]" + "\n";
+        return "[" + " ID: " + ID + ", Name: " + name + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Restance: "+ restance + ", Active: " + active + " Competitive: " + competitor + ", Discipline: " + discipline +" ]" + "\n";
    }
    public void restan(int memberPrice){
        
