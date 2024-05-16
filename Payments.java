@@ -7,12 +7,21 @@ import java.io.FileNotFoundException;
 
 public class Payments {
 
+    public Memberlists memberlists = new Memberlists(); 
     private Cashier cashier; 
-    private static ArrayList<String> latePayments = new ArrayList<>();
+    private static ArrayList<Members> latePayments = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
     
     public Payments(Cashier cashier) {
         this.cashier = cashier;
+    }
+
+    public void memberlistToLatePayments() {
+        for (Members member : memberlists.memberList) {
+            if (member.getRestance()) {
+                latePayments.add(member);
+            }    
+        }  
     }
 
     public Payments() {
@@ -21,7 +30,7 @@ public class Payments {
             System.out.println("1: Read the whole list of people with missing payments");
             System.out.println("2: Add people to the list of missing payments");
             System.out.println("3: Remove people from the list of missing payments");
-            System.out.println("4: Read the memberlist");
+            System.out.println("4: Read the member list");
             System.out.println("5: Go back to the main cashier menu");
             System.out.println("\n");
 
@@ -39,11 +48,11 @@ public class Payments {
                     scanner.nextLine(); 
                     System.out.println("Enter name of person to remove from late payment list:");
                     String personToRemove = scanner.nextLine();
-                    removePeopleFromLatePaymentList();
+                    removePeopleFromLatePaymentList(personToRemove);
                     removePeopleFromNotepad(personToRemove);
                     break;
                 case 4:    
-                   String filePath = "MemberList.txt";
+                    String filePath = "MemberList.txt";
 
                     try {
                         File file = new File(filePath);
@@ -74,82 +83,84 @@ public class Payments {
         scanner.nextLine();
         System.out.println("Enter name of person to add to late payment list:");
         String person = scanner.nextLine();
-        System.out.println("Enter membership ID of the person");
+        System.out.println("Enter age of the person:");
+        int age = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter membership ID of the person:");
         int ID = Integer.parseInt(scanner.nextLine());
-        latePayments.add(person);
-        latePayments.add(String.valueOf(ID));
-      
+        Members person1 = new Members(age, person);
+        person1.setID(ID);
+        latePayments.add(person1);
+
         System.out.println(person + " (ID: " + ID + ") added to late payment list.");
-        
-       try (FileWriter writer = new FileWriter("late_payment_people.txt", true)) {
+
+        try (FileWriter writer = new FileWriter("late_payment_people.txt", true)) {
             writer.write(person + "\n");
             System.out.println("Late payment person added to the list in the notepad.");
         } catch (IOException e) {
             System.out.println("An error occurred while writing late payment person to the notepad: " + e.getMessage());
             e.printStackTrace();
-        }   
+        }
     }
 
-public static void removePeopleFromLatePaymentList() {
-    scanner.nextLine();
-    System.out.println("Enter name of person to remove from late payment list:");
-    String person = scanner.nextLine();
-    
-    System.out.println("List before removal: " + latePayments);
-    
-    int index = latePayments.indexOf(person);
-    
-    if (index != -1) { 
-        latePayments.remove(index + 1); 
-        latePayments.remove(index); 
-        System.out.println(person + " removed from late payment list.");
-        System.out.println("ID removed.");
+    public static void removePeopleFromLatePaymentList(String personToRemove) {
+        System.out.println("List before removal: " + latePayments);
         
+        boolean found = false;
+        for (Members person : latePayments) {
+            if (person.getName().equalsIgnoreCase(personToRemove)) {
+                latePayments.remove(person);
+                System.out.println(personToRemove + " removed from late payment list.");
+                found = true;
+                break;
+            }
+        }
+        
+        if (!found) {
+            System.out.println(personToRemove + " is not in the late payment list.");
+        }
+
         System.out.println("List after removal: " + latePayments);
         
         updateLatePaymentFile();
-    } else {
-        System.out.println(person + " is not in the late payment list.");
     }
-}
 
-public static void removePeopleFromNotepad(String personToRemove) {
-    String filePath = "late_payment_people.txt";
+    public static void removePeopleFromNotepad(String personToRemove) {
+        String filePath = "late_payment_people.txt";
 
-    try {
-        File file = new File(filePath);
-        Scanner fileScanner = new Scanner(file);
-        ArrayList<String> updatedLatePayments = new ArrayList<>();
+        try {
+            File file = new File(filePath);
+            Scanner fileScanner = new Scanner(file);
+            ArrayList<String> updatedLatePayments = new ArrayList<>();
 
-        while (fileScanner.hasNextLine()) {
-            String person = fileScanner.nextLine();
-            if (!person.equals(personToRemove)) {
-                updatedLatePayments.add(person);
+            while (fileScanner.hasNextLine()) {
+                String person = fileScanner.nextLine();
+                if (!person.equals(personToRemove)) {
+                    updatedLatePayments.add(person);
+                }
             }
-        }
 
-        fileScanner.close();
+            fileScanner.close();
 
-        try (FileWriter writer = new FileWriter(filePath)) {
-            for (String person : updatedLatePayments) {
-                writer.write(person + "\n");
+            try (FileWriter writer = new FileWriter(filePath)) {
+                for (String person : updatedLatePayments) {
+                    writer.write(person + "\n");
+                }
+                System.out.println(personToRemove + " removed from the late payment list in the file.");
+            } catch (IOException e) {
+                System.out.println("An error occurred while updating the late payment list in the file: " + e.getMessage());
+                e.printStackTrace();
             }
-            System.out.println(personToRemove + " removed from the late payment list in the file.");
-        } catch (IOException e) {
-            System.out.println("An error occurred while updating the late payment list in the file: " + e.getMessage());
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found: " + filePath);
             e.printStackTrace();
         }
-    } catch (FileNotFoundException e) {
-        System.err.println("File not found: " + filePath);
-        e.printStackTrace();
     }
-}
-
 
     public static void updateLatePaymentFile() {
         try (FileWriter writer = new FileWriter("late_payment_people.txt")) {
-            for (String person : latePayments) {
-                writer.write(person + "\n");
+            for (Members person : latePayments) {
+                writer.write(person.getName() + "\n");
             }
             System.out.println("Late payment people list updated in the file.");
         } catch (IOException e) {
@@ -158,12 +169,11 @@ public static void removePeopleFromNotepad(String personToRemove) {
         }
     }
 
-    // write names to a notepad
     public static void printLatePaymentPeopleToFile(String latePaymentFile) {
         try (FileWriter writer = new FileWriter(latePaymentFile)) {
             writer.write("Late payment people list:\n");
-            for (String person : latePayments) {
-                writer.write(person + "\n");
+            for (Members person : latePayments) {
+                writer.write(person.getName() + "\n");
             }
             System.out.println("Late payment people list written to file: " + latePaymentFile);
         } catch (IOException e) {
@@ -181,7 +191,7 @@ public static void removePeopleFromNotepad(String personToRemove) {
 
             System.out.println("Late payment list:");
             while (fileScanner.hasNextLine()) {
-                String person = fileScanner.nextLine(); 
+                String person = fileScanner.nextLine();
                 System.out.println(person);
             }
 
@@ -192,6 +202,7 @@ public static void removePeopleFromNotepad(String personToRemove) {
         }
     }
 }
+
 
 
 

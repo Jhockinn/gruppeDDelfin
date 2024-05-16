@@ -19,17 +19,15 @@ public class Cashier {
             int choice = scanner.nextInt();
 
             switch (choice) {
-
                 case 1:
-                    // Late payments is a list of people with missing payments
                     Payments paymentUI = new Payments();
                     break;
 
                 case 2:
-                  MembershipFee membershipFees = new MembershipFee();
-                  membershipFees.showMembershipFee();
-                  membershipFees.printMembershipFeetoFile("membership_fees.txt");
-                break;
+                    MembershipFee membershipFees = new MembershipFee();
+                    membershipFees.showMembershipFee();
+                    membershipFees.printMembershipFeetoFile("membership_fees.txt");
+                    break;
 
                 case 3:
                     System.exit(0);
@@ -42,10 +40,3 @@ public class Cashier {
         }
     }
 }
-
-
-
-
-
-
-
