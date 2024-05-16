@@ -71,17 +71,6 @@ public class Payments {
         }
     }
 
-/*       NOT WORKING AS INTENDED -- VERSION 2 OR FINE POLISH
-            show late payment people inside UI
-    public static void getLatePaymentList() {
-        System.out.println("List of people with missing payments in currnt runetime:");
-        for (int i = 0; i < latePayments.size(); i += 2) {
-            String person = latePayments.get(i);
-            String ID = latePayments.get(i + 1);
-            System.out.println(person + " (ID: " + ID + ")");
-        }
-    }
-*/
     public static void addPeopleToLatePaymentList() {
         scanner.nextLine();
         System.out.println("Enter name of person to add to late payment list:");
