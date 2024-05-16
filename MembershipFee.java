@@ -13,7 +13,7 @@ public class MembershipFee {
         ElderMembershipFee = SeniorMembershipFee * (1 - discount);
     }
 
-    //  fees inside the UI.1
+    //  fees inside the UI
     public void showMembershipFee() {
         System.out.println("Annual price for passive membership: " + PassiveMembershipFee);
         System.out.println("Annual price for youth membership: " + YouthMembershipFee);
