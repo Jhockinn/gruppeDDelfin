@@ -4,6 +4,7 @@ public class Memberlists{
    static Chairman chair = new Chairman();
    ArrayList<Members> memberList = new ArrayList<Members>();  
    //creates a file and if the file already exists do nothing 
+   
    public void createFiles() {
     try {
         File memberListFile = new File("MemberList.txt");
@@ -43,8 +44,12 @@ public class Memberlists{
          } catch(IOException e){
             System.out.println("An error occured");
             e.printStackTrace();
+         } catch(IndexOutOfBoundsException e){
+            e.printStackTrace();
          }
-      }//addtomenu
+      }//addtolist
+      
+
       public static void viewList(){
          try {
             File myObj = new File("MemberList.txt");
@@ -64,6 +69,7 @@ public class Memberlists{
       
       //its the method that allows us to call on the added member
       public void loadList() {
+        if(memberList.isEmpty()){
         try {
             File file = new File("MemberList.txt");
             Scanner scanner = new Scanner(file);
@@ -114,6 +120,10 @@ public class Memberlists{
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Error reading data from file.");
             e.printStackTrace();
+        }
+        }
+        else{
+        System.out.println("List aint empty yooooooo");
         }
     }
     

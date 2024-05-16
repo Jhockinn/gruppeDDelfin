@@ -2,12 +2,15 @@
   import java.io.*;
   public class Chairman{
     Memberlists lists = new Memberlists();
+    Active setup = new Active();
     static Competition com = new Competition();
     ArrayList<String> boyNameList = new ArrayList<String>();
     ArrayList<String> girlNameList = new ArrayList<String>();
-    ArrayList<Members> memberList = new ArrayList<Members>();
+    //ArrayList<Members> memberList = new ArrayList<Members>();
     Random rand = new Random();
     Scanner scan = new Scanner(System.in);
+    Scanner reader = new Scanner("memberList.txt");
+    int count;
     int age; 
     int RandomName = 0;
     boolean gender;
@@ -23,10 +26,12 @@
     
     public Chairman() {
         // Initialize ArrayLists
-        memberList = new ArrayList<>();
+         //memberList = new ArrayList<>();
+         //lists.loadList();
+         //memberList = lists.memberList;
     }
     // Add member to list
-    public void addNewMember() {
+    public void addNewMember(ArrayList<Members> list) {
         Scanner scanner = new Scanner(System.in);
         // Name
         System.out.println("Enter the name of the new member:");
@@ -82,10 +87,9 @@
             } while (!disci.equals("Butterfly") && !disci.equals("Freestyle") && !disci.equals("Backstroke") && !disci.equals("Breaststroke"));
         }
         }
-
         // Check if the member already exists
         boolean memberExists = false;
-        for (Members member : memberList) {
+        for (Members member : list) {
             if (member.getName().equalsIgnoreCase(name) &&
                 member.getAge() == member.year - memberAge &&
                 member.getGender() == gender &&
@@ -94,11 +98,22 @@
                 System.out.println("This member already exists.");
                 break;
             }
-        }
-
-        // Creates member if member doesn't exist.
+        } 
+      
         if (!memberExists) {
-            lists.memberList.add(new Members(memberAge, name));
+             Members newMember = new Members(memberAge, name);
+             newMember.setID(list.size()+1);
+             newMember.setDiscipline(discipline);
+             newMember.setAge(memberAge);
+             newMember.setGender(gender);
+             newMember.setCompetitor(competitive);
+             newMember.setActive(acti);
+             newMember.setPrice(rand.nextInt(400, 10000));
+             newMember.restan(res());
+             unac(newMember);
+             list.add(newMember); // Add new member to the member list
+             lists.AddtoList(list); // Persist the updated list
+            /*lists.memberList.add(new Members(memberAge, name));
             lists.memberList.get(lists.memberList.size() - 1).setID(lists.memberList.size());
             lists.memberList.get(lists.memberList.size() - 1).setDiscipline(discipline);
             lists.memberList.get(lists.memberList.size() - 1).setAge(memberAge);
@@ -108,16 +123,72 @@
             lists.memberList.get(lists.memberList.size() - 1).setPrice(rand.nextInt(400, 10000));
             lists.memberList.get(lists.memberList.size() - 1).restan(res());
             unac(lists.memberList.get(lists.memberList.size() - 1));
-            lists.AddtoList(lists.memberList);
+            lists.AddtoList(lists.memberList);*/
             
             //writer(memberList.get(memberList.size()-1));
         }
     }
 
     // Adds different classes to the memberList (ArrayList)
-    public void add() {
+        public void add(ArrayList<Members> memberList) {
+        lists.loadList();
+        if (!memberList.isEmpty()) {
+            String name1;
+            for (int x = 0; x <= 100; x++) {
+                int rando = rand.nextInt(2) + 1;
+                if (rando == 1) {
+                    name1 = boyNameList.get(rand.nextInt(100));
+                } else {
+                    name1 = girlNameList.get(rand.nextInt(87));
+                }
+                int age = rand.nextInt(2006, 2018);
+                memberList.add(new Youth(age, name1));
+                memberList.get(memberList.size() - 1).setAge(age);
+                memberList.get(memberList.size() - 1).setID(memberList.size());
+                memberList.get(memberList.size() - 1).setGender(boyNameList.contains(name1));
+            }
+
+            for (int x = 0; x <= 100; x++) {
+                int rando = rand.nextInt(2) + 1;
+                if (rando == 1) {
+                    name1 = boyNameList.get(rand.nextInt(100));
+                } else {
+                    name1 = girlNameList.get(rand.nextInt(87));
+                }
+                int age = rand.nextInt(1964, 2005);
+                memberList.add(new Senior(age, name1));
+                memberList.get(memberList.size() - 1).setAge(age);
+                memberList.get(memberList.size() - 1).setID(memberList.size());
+                memberList.get(memberList.size() - 1).setGender(boyNameList.contains(name1));
+            }
+
+            for (int x = 0; x <= 47; x++) {
+                int rando = rand.nextInt(2) + 1;
+                if (rando == 1) {
+                    name1 = boyNameList.get(rand.nextInt(100));
+                } else {
+                    name1 = girlNameList.get(rand.nextInt(87));
+                }
+                int age = rand.nextInt(1940, 1964);
+                memberList.add(new Elder(age, name1));
+                memberList.get(memberList.size() - 1).setAge(age);
+                memberList.get(memberList.size() - 1).setID(memberList.size());
+                memberList.get(memberList.size() - 1).setGender(boyNameList.contains(name1));
+            }
+            
+            setup.active(memberList);
+            lists.writeToList(memberList);
+        }
+        else{
+        System.out.println("Fuck you the list is not empty");
+        }
+      }
+  
+
+    /*public void add() {
       if(lists.memberList.size()>1){
       //lists.loadList();
+      System.out.println("List already added"); 
       }
       else{
         for (int x = 0; x <= 100; x++) {
@@ -128,11 +199,11 @@
                 name1 = girlNameList.get(rand.nextInt(87));
             }
             int age = rand.nextInt(2006, 2018);
-            memberList.add(new Youth(age, name1));
+            lists.memberList.add(new Youth(age, name1));
             //memberList.get(memberList.size()-1).setPrice(rand.nextInt(400, 10000));
-            memberList.get(memberList.size()-1).setAge(age);
-            memberList.get(memberList.size()-1).setID(memberList.size());
-            memberList.get(memberList.size()-1).setGender(boyNameList.contains(name1));
+            lists.memberList.get(lists.memberList.size()-1).setAge(age);
+            lists.memberList.get(lists.memberList.size()-1).setID(lists.memberList.size());
+            lists.memberList.get(lists.memberList.size()-1).setGender(boyNameList.contains(name1));
             //writer(memberList.get(memberList.size()-1));
             
             
@@ -146,11 +217,11 @@
                 name1 = girlNameList.get(rand.nextInt(87));
             }
             int age = rand.nextInt(1964, 2005);
-            memberList.add(new Senior(age, name1));
+            lists.memberList.add(new Senior(age, name1));
             //memberList.get(memberList.size()-1).setPrice(rand.nextInt(400, 10000));
-            memberList.get(memberList.size()-1).setAge(age);
-            memberList.get(memberList.size()-1).setID(memberList.size());
-            memberList.get(memberList.size()-1).setGender(boyNameList.contains(name1));
+            lists.memberList.get(lists.memberList.size()-1).setAge(age);
+            lists.memberList.get(lists.memberList.size()-1).setID(lists.memberList.size());
+            lists.memberList.get(lists.memberList.size()-1).setGender(boyNameList.contains(name1));
             //writer(memberList.get(memberList.size()-1));
             
         }
@@ -162,11 +233,11 @@
                 name1 = girlNameList.get(rand.nextInt(87));
             }
             int age = rand.nextInt(1940, 1964);
-            memberList.add(new Elder(age, name1));
+            lists.memberList.add(new Elder(age, name1));
             //memberList.get(memberList.size()-1).setPrice(rand.nextInt(400, 10000));
-            memberList.get(memberList.size()-1).setAge(age);
-            memberList.get(memberList.size()-1).setID(memberList.size());
-            memberList.get(memberList.size()-1).setGender(boyNameList.contains(name1));
+            lists.memberList.get(lists.memberList.size()-1).setAge(age);
+            lists.memberList.get(lists.memberList.size()-1).setID(lists.memberList.size());
+            lists.memberList.get(lists.memberList.size()-1).setGender(boyNameList.contains(name1));
             //writer(memberList.get(memberList.size()-1));
             
          
@@ -176,9 +247,9 @@
      
     }
     
-   } 
-   public void add2(){
-    for(Members members : memberList){
+   } */
+   /*public void add2(){
+    for(Members members : lists.memberList){
          if(members.getAge()<18 && members.getCompetitor() == true){
             com.youthCompetitors.add(new Competitor(members.getAge(), members.getName(), members.getDiscipline()));
             
@@ -189,16 +260,16 @@
          
       }
       com.showYouthCompetitors();
-   }
+   }*/
     // Comparator for sorting by age
-    public void sort() {
-        Collections.sort(memberList, new Comparator<Members>() {
+    /*public void sort() {
+        Collections.sort(lists.memberList, new Comparator<Members>() {
             @Override
             public int compare(Members p1, Members p2) {
                 return p1.getAge() - p2.getAge();
             }
         });
-    }    
+    }*/    
     public String chooseGender(Members member){
          if(member.getGender() == true){
             return "Male  ";

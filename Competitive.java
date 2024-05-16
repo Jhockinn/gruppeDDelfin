@@ -4,8 +4,6 @@ import java.time.format.*;
 import java.time.*;
 
 public class Competitive{
-   Members memm = new Members(1, "Pete");
-   Chairman chair = new Chairman();
    Random rand = new Random();
    Scanner scan = new Scanner(System.in);
    File file; 
