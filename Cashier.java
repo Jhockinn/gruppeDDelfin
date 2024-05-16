@@ -6,12 +6,6 @@ public class Cashier {
     // Declare MembershipFee as a field of the Cashier class
     private MembershipFee membershipfee = new MembershipFee();
 
-    public static void main(String[] args) {
-        // Create a Cashier instance to access the managePayments method
-        Cashier cashier = new Cashier();
-        cashier.managePayments();
-    }
-
     public void managePayments() {
         Scanner scanner = new Scanner(System.in);
         Payments payments = new Payments(this); // Pass this instance of Cashier to Payments
