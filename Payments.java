@@ -15,7 +15,6 @@ public class Payments {
         this.cashier = cashier;
     }
 
-    // Constructor
     public Payments() {
         while (true) {
             System.out.println("\nOptions:");
@@ -48,7 +47,7 @@ public class Payments {
 
                     try {
                         File file = new File(filePath);
-                        Scanner fileScanner = new Scanner(file); // Create a new scanner for file reading
+                        Scanner fileScanner = new Scanner(file);
 
                         System.out.println("Member List:");
                         while (fileScanner.hasNextLine()) {
@@ -56,7 +55,7 @@ public class Payments {
                             System.out.println(member);
                         }
 
-                        fileScanner.close(); // Close the file scanner after use
+                        fileScanner.close();
                     } catch (FileNotFoundException e) {
                         System.err.println("File not found: " + filePath);
                         e.printStackTrace();
