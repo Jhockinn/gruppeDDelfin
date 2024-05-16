@@ -131,8 +131,8 @@
 
     // Adds different classes to the memberList (ArrayList)
         public void add(ArrayList<Members> memberList) {
-        lists.loadList();
-        if (!memberList.isEmpty()) {
+        //lists.loadList();
+        if (memberList.isEmpty()) {
             String name1;
             for (int x = 0; x <= 100; x++) {
                 int rando = rand.nextInt(2) + 1;
