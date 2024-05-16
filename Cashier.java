@@ -3,12 +3,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Cashier {
-    // Declare MembershipFee as a field of the Cashier class
     private MembershipFee membershipfee = new MembershipFee();
 
     public void managePayments() {
         Scanner scanner = new Scanner(System.in);
-        Payments payments = new Payments(this); // Pass this instance of Cashier to Payments
+        Payments payments = new Payments(this);
 
         while (true) {
             System.out.println("\nCashier UI Options:");
@@ -28,7 +27,7 @@ public class Cashier {
 
                 case 2:
                   MembershipFee membershipFees = new MembershipFee();
-                  membershipFees.showMembershipFee(); // See fees inside UI
+                  membershipFees.showMembershipFee();
                   membershipFees.printMembershipFeetoFile("membership_fees.txt");
                 break;
 
