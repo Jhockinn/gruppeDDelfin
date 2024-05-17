@@ -21,9 +21,7 @@ public class Login{
       String close;
      
    public void login(){
-      lists.createFiles();
-      chairman.addNames();
-      lists.loadList();
+      lists.upStart();
       chairman.add(lists.memberList);
       do{
       System.out.println("Welcome to the system");

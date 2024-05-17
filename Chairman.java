@@ -11,6 +11,8 @@
     Scanner scan = new Scanner(System.in);
     Scanner reader = new Scanner("memberList.txt");
     private int id; 
+    private int memberAge;
+    private String competitor;
     int count;
     int age; 
     int RandomName = 0;
@@ -38,8 +40,13 @@
         System.out.println("Enter the name of the new member:");
         String name = scanner.nextLine();
         // Age
+        do{
         System.out.println("Enter the year of birth:");
-        int memberAge = Integer.parseInt(scanner.nextLine());
+        memberAge = Integer.parseInt(scanner.nextLine());
+          if(memberAge<2018 && memberAge>1940){
+             System.out.println("Your age is not accepted here, try again");
+          }
+        }while(memberAge<2018 && memberAge>1940);
         // Gender
         do {
             System.out.println("Write gender (male or female):");
@@ -114,19 +121,6 @@
              unac(newMember);
              list.add(newMember); // Add new member to the member list
              lists.AddtoList(list); // Persist the updated list
-            /*lists.memberList.add(new Members(memberAge, name));
-            lists.memberList.get(lists.memberList.size() - 1).setID(lists.memberList.size());
-            lists.memberList.get(lists.memberList.size() - 1).setDiscipline(discipline);
-            lists.memberList.get(lists.memberList.size() - 1).setAge(memberAge);
-            lists.memberList.get(lists.memberList.size() - 1).setGender(gender);
-            lists.memberList.get(lists.memberList.size() - 1).setCompetitor(competitive);
-            lists.memberList.get(lists.memberList.size() - 1).setActive(acti);
-            lists.memberList.get(lists.memberList.size() - 1).setPrice(rand.nextInt(400, 10000));
-            lists.memberList.get(lists.memberList.size() - 1).restan(res());
-            unac(lists.memberList.get(lists.memberList.size() - 1));
-            lists.AddtoList(lists.memberList);*/
-            
-            //writer(memberList.get(memberList.size()-1));
         }
     }
     public void removeMember(ArrayList<Members> list){
@@ -156,8 +150,10 @@
             }
             break;
           case "Competitor" : 
+            do{
             System.out.println("Change to regular or competitor ?"); 
-            String competitor = scan.nextLine(); 
+            competitor = scan.nextLine(); 
+            }while(!competitor.equals("regular") && !competitor.equals("competitor"));
             if(competitor.equals("competitor")){
                list.get(id-1).setCompetitor(true);
                do{
@@ -246,93 +242,7 @@
         System.out.println("Fuck you the list is not empty");
         }
       }
-  
-
-    /*public void add() {
-      if(lists.memberList.size()>1){
-      //lists.loadList();
-      System.out.println("List already added"); 
-      }
-      else{
-        for (int x = 0; x <= 100; x++) {
-            int rando = rand.nextInt(2) + 1;
-            if (rando == 1) {
-                name1 = boyNameList.get(rand.nextInt(100));
-            } else {
-                name1 = girlNameList.get(rand.nextInt(87));
-            }
-            int age = rand.nextInt(2006, 2018);
-            lists.memberList.add(new Youth(age, name1));
-            //memberList.get(memberList.size()-1).setPrice(rand.nextInt(400, 10000));
-            lists.memberList.get(lists.memberList.size()-1).setAge(age);
-            lists.memberList.get(lists.memberList.size()-1).setID(lists.memberList.size());
-            lists.memberList.get(lists.memberList.size()-1).setGender(boyNameList.contains(name1));
-            //writer(memberList.get(memberList.size()-1));
-            
-            
-        }
-
-        for (int x = 0; x <= 100; x++) {
-            int rando = rand.nextInt(2) + 1;
-            if (rando == 1) {
-                name1 = boyNameList.get(rand.nextInt(100));
-            } else {
-                name1 = girlNameList.get(rand.nextInt(87));
-            }
-            int age = rand.nextInt(1964, 2005);
-            lists.memberList.add(new Senior(age, name1));
-            //memberList.get(memberList.size()-1).setPrice(rand.nextInt(400, 10000));
-            lists.memberList.get(lists.memberList.size()-1).setAge(age);
-            lists.memberList.get(lists.memberList.size()-1).setID(lists.memberList.size());
-            lists.memberList.get(lists.memberList.size()-1).setGender(boyNameList.contains(name1));
-            //writer(memberList.get(memberList.size()-1));
-            
-        }
-        for (int x = 0; x <= 47; x++) {
-            int rando = rand.nextInt(2) + 1;
-            if (rando == 1) {
-                name1 = boyNameList.get(rand.nextInt(100));
-            } else {
-                name1 = girlNameList.get(rand.nextInt(87));
-            }
-            int age = rand.nextInt(1940, 1964);
-            lists.memberList.add(new Elder(age, name1));
-            //memberList.get(memberList.size()-1).setPrice(rand.nextInt(400, 10000));
-            lists.memberList.get(lists.memberList.size()-1).setAge(age);
-            lists.memberList.get(lists.memberList.size()-1).setID(lists.memberList.size());
-            lists.memberList.get(lists.memberList.size()-1).setGender(boyNameList.contains(name1));
-            //writer(memberList.get(memberList.size()-1));
-            
-         
-        }
-      //activ.active(memberList);
-      //lists.writeToList(memberList);
-     
-    }
-    
-   } */
-   /*public void add2(){
-    for(Members members : lists.memberList){
-         if(members.getAge()<18 && members.getCompetitor() == true){
-            com.youthCompetitors.add(new Competitor(members.getAge(), members.getName(), members.getDiscipline()));
-            
-         }
-         if(members.getAge()>18 && members.getCompetitor() == true){
-            com.seniorCompetitors.add(new Competitor(members.getAge(), members.getName(), members.getDiscipline()));
-        }
-         
-      }
-      com.showYouthCompetitors();
-   }*/
-    // Comparator for sorting by age
-    /*public void sort() {
-        Collections.sort(lists.memberList, new Comparator<Members>() {
-            @Override
-            public int compare(Members p1, Members p2) {
-                return p1.getAge() - p2.getAge();
-            }
-        });
-    }*/    
+      
     public String chooseGender(Members member){
          if(member.getGender() == true){
             return "Male  ";

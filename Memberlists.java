@@ -147,6 +147,7 @@ public class Memberlists{
     }
     
     public void upStart(){
+    chair.addNames();
     createFiles();
     loadList();
     }     
