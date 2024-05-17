@@ -33,11 +33,14 @@ public class Memberlists{
         e.printStackTrace();
     }
 }    
+      //adds a single person to the memberlist file
       public void AddtoList(ArrayList<Members> list){
          try{
             FileWriter myWriter = new FileWriter("MemberList.txt", true);
             Members member = list.get(list.size()-1);
-            myWriter.write(member.getID()+ " | " + member.getName() + " | " + member.getAge() + " | " + chair.chooseGender(member) + " | " + member.getRestance() +" | " + member.getActive() + " | " + member.getCompetitor() + " | " + member.getDiscipline()+"\n");            
+            myWriter.write(member.getID()+ " | " + member.getName() + "   | " + member.getAge() + " | " + 
+                           chair.chooseGender(member) + " | " + member.getRestance() +" | " + 
+                           member.getActive() + " | " + member.getCompetitor() + " | " + member.getDiscipline()+"\n");            
             myWriter.close();
             System.out.println("Member added to the club");
          
@@ -49,7 +52,7 @@ public class Memberlists{
          }
       }//addtolist
       
-
+      //you can see what is inside memberlist.txt file
       public static void viewList(){
          try {
             File myObj = new File("MemberList.txt");
@@ -67,7 +70,7 @@ public class Memberlists{
          }
       }//viewmenu
       
-      //its the method that allows us to call on the added member
+      //its the method that allows us to call on the added member and load them down to the arraylist
       public void loadList() {
         if(memberList.isEmpty()){
         try {
@@ -121,19 +124,18 @@ public class Memberlists{
             System.out.println("Error reading data from file.");
             e.printStackTrace();
         }
-        }
-        else{
-        System.out.println("List aint empty yooooooo");
+        }else {
+            System.out.println("The list ain't empty ya doofus");
         }
     }
     
-    // Write member list to file
+    // Writes member list to the txt file 
     public void writeToList(ArrayList<Members> list) {
         try (FileWriter writer = new FileWriter("MemberList.txt")) {
-            writer.write("ID| Name  |  Age   |  Gender   |  Restance  |  Active   |  Competitor  |  Discipline  \n");
+            writer.write("ID | Name   | Age | Gender | Restance | Active | Competitor |  Discipline  \n");
             for (Members member : list) {
                 writer.write(
-                       member.getID()+ " | " + member.getName() + " | " +   
+                       member.getID()+ " | " + member.getName() + "    | " +   
                        member.getAge() + " | " + chair.chooseGender(member) +  " | " + member.getRestance() + " | " +
                        member.getActive() + " | " + member.getCompetitor() + " | " + member.getDiscipline() + "\n");
             }
@@ -144,9 +146,8 @@ public class Memberlists{
         }
     }
     
-    public void Combine(){
+    public void upStart(){
     createFiles();
-    //writeToList();
     loadList();
     }     
 }
