@@ -12,5 +12,8 @@ public class MainTest{
       AddMemb.add(lists.memberList);
       AddMemb.addNewMember(lists.memberList);
       lists.viewList();
+      //AddMemb.removeMember(lists.memberList);
+      //AddMemb.modifyMember(lists.memberList);
+      lists.writeToList(lists.memberList);
   }
 }

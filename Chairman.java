@@ -102,7 +102,7 @@
       
         if (!memberExists) {
              Members newMember = new Members(memberAge, name);
-             newMember.setID(list.size()+1);
+             newMember.setID(list.get(list.size()-1).getID()+1);
              newMember.setDiscipline(discipline);
              newMember.setAge(memberAge);
              newMember.setGender(gender);
@@ -128,7 +128,65 @@
             //writer(memberList.get(memberList.size()-1));
         }
     }
-
+    public void removeMember(ArrayList<Members> list){
+         System.out.println("Write id of person you want to remove"); 
+         int id = scan.nextInt();
+         scan.nextLine();
+         list.remove(id-1);
+        }
+      public void modifyMember(ArrayList<Members> list){
+         System.out.println("Write id of person you want to change"); 
+         int id = scan.nextInt();
+         scan.nextLine();
+         System.out.println("What setting do you want to change?");
+         System.out.println("Active or Competitor"); 
+         String choice = scan.nextLine();
+         switch(choice){
+         case "Active" : 
+            System.out.println("Change to active or passive ?"); 
+            String active = scan.nextLine(); 
+            if(active.equals("active")){
+               list.get(id-1).setActive(true);
+            }
+            else{
+               list.get(id-1).setActive(false);
+            }
+            break;
+          case "Competitor" : 
+            System.out.println("Change to regular or competitor ?"); 
+            String competitor = scan.nextLine(); 
+            if(competitor.equals("competitor")){
+               list.get(id-1).setCompetitor(true);
+                   System.out.println("Choose Discipline");
+                   System.out.println("Butterfly, Freestyle, Backstroke, Breaststroke");
+                   discipline = scan.nextLine();
+               switch(discipline){
+                  case "Butterfly" :
+                        list.get(id-1).setDiscipline("Butterfly");
+                        break; 
+                  case "Freestyle" :
+                        list.get(id-1).setDiscipline("Freestyle");
+                        break; 
+                  case "Backstroke" :
+                        list.get(id-1).setDiscipline("Backstroke");
+                        break; 
+                  case "Breaststroke" :
+                        list.get(id-1).setDiscipline("Breaststroke");
+                        break; 
+                  default: 
+                  break; 
+                    }
+               
+            }
+            else{
+               list.get(id-1).setCompetitor(false);
+            }
+            break;
+ 
+           default:
+           break;
+         }
+      }
     // Adds different classes to the memberList (ArrayList)
         public void add(ArrayList<Members> memberList) {
         //lists.loadList();
