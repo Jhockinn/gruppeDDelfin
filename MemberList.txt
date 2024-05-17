@@ -253,3 +253,4 @@ ID| Name  |  Age   |  Gender   |  Restance  |  Active   |  Competitor  |  Discip
 252 | Sten fra terkel i knipe | 52 | Female | false | true | true | Freestyle
 253 | bo | 25 | Male   | false | false | false | null
 254 | bo | 125 | Male   | false | false | false | null
+255 | Bill | 25 | Male   | false | false | false | null

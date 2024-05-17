@@ -10,6 +10,7 @@
     Random rand = new Random();
     Scanner scan = new Scanner(System.in);
     Scanner reader = new Scanner("memberList.txt");
+    private int id; 
     int count;
     int age; 
     int RandomName = 0;
@@ -130,14 +131,16 @@
     }
     public void removeMember(ArrayList<Members> list){
          System.out.println("Write id of person you want to remove"); 
-         int id = scan.nextInt();
+         int id1 = scan.nextInt();
          scan.nextLine();
          list.remove(id-1);
         }
       public void modifyMember(ArrayList<Members> list){
+         do{
          System.out.println("Write id of person you want to change"); 
-         int id = scan.nextInt();
+         id = scan.nextInt();
          scan.nextLine();
+          }while(id >list.get(list.size()-1).getID());
          System.out.println("What setting do you want to change?");
          System.out.println("Active or Competitor"); 
          String choice = scan.nextLine();
@@ -157,6 +160,7 @@
             String competitor = scan.nextLine(); 
             if(competitor.equals("competitor")){
                list.get(id-1).setCompetitor(true);
+               do{
                    System.out.println("Choose Discipline");
                    System.out.println("Butterfly, Freestyle, Backstroke, Breaststroke");
                    discipline = scan.nextLine();
@@ -173,10 +177,11 @@
                   case "Breaststroke" :
                         list.get(id-1).setDiscipline("Breaststroke");
                         break; 
-                  default: 
+                  default:
+                        System.out.println("Wrong input");  
                   break; 
                     }
-               
+                }while(!disci.equals("Butterfly") && !disci.equals("Freestyle") && !disci.equals("Backstroke") && !disci.equals("Breaststroke"));
             }
             else{
                list.get(id-1).setCompetitor(false);
@@ -186,7 +191,7 @@
            default:
            break;
          }
-      }
+   }
     // Adds different classes to the memberList (ArrayList)
         public void add(ArrayList<Members> memberList) {
         //lists.loadList();

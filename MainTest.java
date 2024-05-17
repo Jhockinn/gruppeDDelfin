@@ -6,14 +6,15 @@ public class MainTest{
       Active acti = new Active();
       Login login = new Login();
       Memberlists lists = new Memberlists();
-      lists.createFiles();
-      AddMemb.addNames();
-      lists.loadList();
-      AddMemb.add(lists.memberList);
-      AddMemb.addNewMember(lists.memberList);
-      lists.viewList();
+      login.login();
+      //lists.createFiles();
+      //AddMemb.addNames();
+      //lists.loadList();
+      //AddMemb.add(lists.memberList);
+      //AddMemb.addNewMember(lists.memberList);
+      //lists.viewList();
       //AddMemb.removeMember(lists.memberList);
       //AddMemb.modifyMember(lists.memberList);
-      lists.writeToList(lists.memberList);
+      //lists.writeToList(lists.memberList);
   }
 }
