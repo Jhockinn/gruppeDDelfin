@@ -1,6 +1,8 @@
 import java.util.Scanner; 
 import java.util.Random; 
 import java.util.ArrayList; 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CompetitionStatistics{
 
@@ -90,8 +92,10 @@ Competition competition;
    if(length == 50 || length == 100 || length == 200){
    System.out.println(discipline + " - Please add the time of the discipline [minutes,seconds]: "); 
    double time = scan.nextDouble();
+   System.out.println("Please add the date of the training result [dd-MM-yyyy]");
+   String date = scan.next(); 
    
-   TrainingResult trainingResult = new TrainingResult(discipline, length, time); 
+   TrainingResult trainingResult = new TrainingResult(discipline, length, time, date); 
    competitor.addTrainingResult(trainingResult);
   
    System.out.println("Training Results: "); 
@@ -100,6 +104,8 @@ Competition competition;
    System.out.println("The discipline: " + discipline); 
    System.out.println("Length: " + length + " meters"); 
    System.out.println("Time: " + time + " minutes");
+   System.out.println("Date: " + date); 
+   System.out.println(); 
    }else{
    System.out.println("Invalid input - try to enter training results again"); 
    }
@@ -134,6 +140,7 @@ Competition competition;
    System.out.println("Time: " + time + " minutes");
    System.out.println("Placement: " + placement + " place"); 
    System.out.println("Location: " + location); 
+   System.out.println(); 
    }else{
    System.out.println("Invalid input - try to enter training results again"); 
    }
@@ -217,6 +224,7 @@ Competition competition;
       String formattedTime = String.format("%.2f", randomNumber);
         formattedTime = formattedTime.replace(",", ".");
          time = Double.parseDouble(formattedTime);
+         
       } else if(length == 100) {
       double min = 1.00; 
       double max = 1.30; 
@@ -224,6 +232,7 @@ Competition competition;
       String formattedTime = String.format("%.2f", randomNumber);
         formattedTime = formattedTime.replace(",", ".");
          time = Double.parseDouble(formattedTime);
+         
       }else{
       double min = 1.30; 
       double max = 1.59; 
@@ -233,7 +242,14 @@ Competition competition;
          time = Double.parseDouble(formattedTime);
       }
       
-      TrainingResult trainingResult = new TrainingResult(discipline, length, time); 
+      // Generate a random date
+      Random rand = new Random(); 
+      LocalDate randomDate = LocalDate.of(rand.nextInt(2018, 2025), rand.nextInt(1, 13), rand.nextInt(1, 30));
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+      String date = randomDate.format(formatter);
+      
+      TrainingResult trainingResult = new TrainingResult(discipline, length, time, date); 
       competitor.addTrainingResult(trainingResult);     
      }
     }
@@ -253,14 +269,16 @@ Competition competition;
       if(competitor.getID() == competitorID){
       found = true; 
       System.out.println("Training Results: "); 
-      System.out.println(); 
       System.out.println("The competitor : " + competitor.getName()); 
+      System.out.println(); 
       
       if(competitor.getTrainingResults() != null){
       for(TrainingResult trainingResult : competitor.getTrainingResults()){
       System.out.println("The discipline: " + trainingResult.getDiscipline()); 
       System.out.println("Length: " + trainingResult.getLength() + " meters"); 
       System.out.println("Time: " + trainingResult.getTime() + " minutes"); 
+      System.out.println("Date: " + trainingResult.getDate()); 
+      System.out.println(); 
       }
 
       }else{
@@ -284,14 +302,16 @@ Competition competition;
       if(competitor.getID() == competitorID){
       found = true; 
       System.out.println("Training Results: "); 
-      System.out.println(); 
       System.out.println("The competitor : " + competitor.getName()); 
+      System.out.println(); 
       
       if(competitor.getTrainingResults()!= null){
       for(TrainingResult trainingResult : competitor.getTrainingResults()){
       System.out.println("The discipline: " + trainingResult.getDiscipline()); 
       System.out.println("Length: " + trainingResult.getLength() + " meters"); 
       System.out.println("Time: " + trainingResult.getTime() + " minutes"); 
+      System.out.println("Date: " + trainingResult.getDate()); 
+      System.out.println(); 
       }
 
       }else{
@@ -313,8 +333,8 @@ Competition competition;
       if(competitor.getID() == competitorID){
       found = true; 
       System.out.println("Competition Results: "); 
-      System.out.println(); 
       System.out.println("The competitor : " + competitor.getName()); 
+      System.out.println(); 
       
       if(competitor.getCompetitionResults() != null){
       for(CompetitionResult competitionResult : competitor.getCompetitionResults()){
@@ -323,6 +343,7 @@ Competition competition;
       System.out.println("Time: " + competitionResult.getTime() + " minutes");
       System.out.println("Placement: " + competitionResult.getPlacement() + " place"); 
       System.out.println("Location: " + competitionResult.getLocation());  
+      System.out.println(); 
       }
 
       }else{
@@ -344,8 +365,8 @@ Competition competition;
       if(competitor.getID() == competitorID){
       found = true; 
       System.out.println("Competition Results: "); 
-      System.out.println(); 
       System.out.println("The competitor : " + competitor.getName()); 
+      System.out.println(); 
       
       if(competitor.getCompetitionResults() != null){
       for(CompetitionResult competitionResult : competitor.getCompetitionResults()){
@@ -354,6 +375,7 @@ Competition competition;
       System.out.println("Time: " + competitionResult.getTime() + " minutes");
       System.out.println("Placement: " + competitionResult.getPlacement() + " place"); 
       System.out.println("Location: " + competitionResult.getLocation());  
+      System.out.println(); 
       }
 
       }else{

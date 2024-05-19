@@ -23,6 +23,7 @@ public void addCompetitor(){
    System.out.println("How many swimming disciplines does the member participate in?"); 
    int choice = scan.nextInt(); 
    
+   
    ArrayList<String> disciplines = new ArrayList<String>(); 
    
    for(int i=0; i<choice; i++){
@@ -85,14 +86,14 @@ int lastID = 0;
 public void sortCompetitors(Chairman chair){ 
 
 for(Members member : chair.memberList){   
-   if(member.getCompetitor() && member.getAge()<18){
+   if(member.getCompetitor() && member.getAge()<=18){
       Competitor youthCompetitor = new Competitor(member.getID(), member.getAge(), member.getName(), chair.chooseGender(member)); // creates a competitor with age and name
       Discipline discipline = new Discipline();
          youthCompetitor.setDiscipline(discipline.getRandomDiscipline());  // gives the competitor a random discipline
          youthCompetitors.add(youthCompetitor); // adds the competitor to the arrayList
          youthCompetitors.get(youthCompetitors.size()-1).setID(youthCompetitors.size()); 
  
-   }else if(member.getCompetitor() && member.getAge()>17){
+   }else if(member.getCompetitor() && member.getAge()>18){
       Competitor seniorCompetitor = new Competitor(member.getID(),member.getAge(), member.getName(), chair.chooseGender(member)); 
       Discipline discipline = new Discipline();
          seniorCompetitor.setDiscipline(discipline.getRandomDiscipline());  

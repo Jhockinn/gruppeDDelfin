@@ -6,7 +6,7 @@ Trainer trainer = new Trainer();
 trainer.TrainerUi(); 
 
 /* Huskeliste
-- få dato på 
+
 */
    }
 }

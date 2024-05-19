@@ -9,11 +9,13 @@ private int length;
 private double time; 
 private String location; 
 private int placement; 
+private String date; 
 
-public TrainingResult(String discipline, int length, double time){ // + dato 
+public TrainingResult(String discipline, int length, double time, String date){ // + dato 
 this.discipline = discipline; 
 this.length = length; 
 this.time = time; 
+this.date = date; 
 }
 
 public TrainingResult(){
@@ -30,6 +32,10 @@ return length;
 
 public double getTime(){
 return time; 
+}
+
+public String getDate(){
+return date; 
 }
 
 }
