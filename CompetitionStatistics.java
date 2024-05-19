@@ -169,7 +169,7 @@ Competition competition;
          time = Double.parseDouble(formattedTime);
       }else{
       double min = 1.30; 
-      double max = 2.00; 
+      double max = 1.59; 
       double randomNumber = min + (max - min) * ran.nextDouble();
       String formattedTime = String.format("%.2f", randomNumber);
         formattedTime = formattedTime.replace(",", ".");
@@ -226,7 +226,7 @@ Competition competition;
          time = Double.parseDouble(formattedTime);
       }else{
       double min = 1.30; 
-      double max = 2.00; 
+      double max = 1.59; 
       double randomNumber = min + (max - min) * ran.nextDouble();
       String formattedTime = String.format("%.2f", randomNumber);
         formattedTime = formattedTime.replace(",", ".");

@@ -54,8 +54,10 @@ while(true){
       System.out.println("Do you want to see training results for youth [1] or senior [2]?");  
       int trainingChoice = scan.nextInt(); 
          if(trainingChoice == 1){
+         competition.showYouthCompetitors();
          statistics.showYouthTrainingResults(); 
          }else{
+         competition.showSeniorCompetitors(); 
          statistics.showSeniorTrainingResults(); 
          }
       break; 
@@ -63,8 +65,10 @@ while(true){
       System.out.println("Do you want to see competition results for youth [1] or senior [2]?");  
       int competitionChoice = scan.nextInt(); 
          if(competitionChoice == 1){
+         competition.showYouthCompetitors();
          statistics.showYouthCompetitionResults(); 
          }else{
+         competition.showSeniorCompetitors(); 
          statistics.showSeniorCompetitionResults(); 
          }
        break; 
