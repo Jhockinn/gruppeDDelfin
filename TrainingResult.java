@@ -18,16 +18,7 @@ this.time = time;
 
 public TrainingResult(){
 
-}
-
-public void getRandomDate(){
-LocalDateTime randomTime = LocalDateTime.now(); 
-DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"); 
-
-   String formattedDate = randomTime.format(formatTime); 
-   System.out.println("After formatting: " + formattedDate); 
-   System.out.println(formattedDate);
- } 
+} 
 
 public String getDiscipline(){
 return discipline; 

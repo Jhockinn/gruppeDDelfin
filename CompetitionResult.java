@@ -5,7 +5,8 @@ private int length;
 private double time; 
 private String location; 
 private int placement; 
-public static final int[] ALLOWED_LENGTHS = {50, 100, 200, 400};
+private Competitor competitor; 
+
 
  public CompetitionResult(String discipline, int length, double time, int placement, String location){
    this.discipline = discipline; 
@@ -16,6 +17,14 @@ public static final int[] ALLOWED_LENGTHS = {50, 100, 200, 400};
  }
  
  public CompetitionResult(){
+ }
+ 
+ public void setCompetitor(Competitor competitor) {
+   this.competitor = competitor;
+ }
+
+ public Competitor getCompetitor() {
+   return competitor;
  }
  
  public String getDiscipline(){
