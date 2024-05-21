@@ -1,5 +1,3 @@
-import java.time.LocalDateTime; 
-import java.time.format.DateTimeFormatter; 
 import java.util.Random; 
 
 public class TrainingResult{
@@ -7,24 +5,20 @@ public class TrainingResult{
 private String discipline; 
 private int length; 
 private double time; 
+private String location; 
+private int placement; 
+private String date; 
 
-public TrainingResult(String discipline, int length, double time){ // + dato 
+public TrainingResult(String discipline, int length, double time, String date){ // + dato 
 this.discipline = discipline; 
 this.length = length; 
 this.time = time; 
+this.date = date; 
 }
 
-// dato her evt 
+public TrainingResult(){
 
-public void getRandomDate(){
-LocalDateTime randomTime = LocalDateTime.now(); 
-DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"); 
-
-   String formattedDate = randomTime.format(formatTime); 
-   System.out.println("After formatting: " + formattedDate); 
-   Random ran = new Random(); 
-   
-}
+} 
 
 public String getDiscipline(){
 return discipline; 
@@ -36,6 +30,10 @@ return length;
 
 public double getTime(){
 return time; 
+}
+
+public String getDate(){
+return date; 
 }
 
 }
