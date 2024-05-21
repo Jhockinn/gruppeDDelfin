@@ -2,6 +2,7 @@ import java.util.*;
 public class Login{
       Scanner scan = new Scanner(System.in);
       Trainer trainer = new Trainer();
+      Competition competition = new Competition();
       Chairman chairman = new Chairman();
       Memberlists lists = new Memberlists();
       Cashier cashier = new Cashier();
@@ -24,6 +25,7 @@ public class Login{
    public void login(){
       lists.upStart();
       chairman.add(lists.memberList);
+      competition.sortCompetitors(lists.memberList);
       do{
       System.out.println("Welcome to the system");
       do{
@@ -86,39 +88,10 @@ public class Login{
             }while(logout);
          }
          if(username.equals(cashUser) && password.equals(cashPass)){
-            do{
-            //cashier.//set metode fra cashier her. 
-            
-            /*System.out.println("Welcome Chashier");
-            System.out.println("What would you like to do?");
-            System.out.println("");
-            System.out.println("");
-            System.out.println("");
-            System.out.println("");
-            int input = scan.nextInt();
-               
-               switch(input){
-               case 1:
-               break; 
-               
-               case 2: 
-               break;
-               
-               case 3: 
-               break;
-               
-               case 4:
-               break; 
-               
-               default: 
-               break;
-               }//Switch*/
-            }while(true);
+            cashier.managePayments();  
          }
         if(username.equals(trainUser) && password.equals(trainPass)){
-            do{
-            //trainer.TrainerUi()
-            }while(true);
+               trainer.TrainerUi();
          }
          else{
             System.out.println("Wrong username or password, Try again!");

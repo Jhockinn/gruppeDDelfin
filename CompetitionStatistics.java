@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class CompetitionStatistics{
-
+static ArrayList<Competitor> allCompetitors = new ArrayList<>(); // creates a new arraylist with both senior and youth competitors 
 Scanner scan = new Scanner(System.in); 
 Random ran = new Random(); 
 
@@ -161,7 +161,6 @@ Competition competition;
   
   // method for adding random competition results for competitors
   public void addRandomCompetitionResults(){
-  ArrayList<Competitor> allCompetitors = new ArrayList<>(); // creates a new arraylist with both senior and youth competitors 
    allCompetitors.addAll(competition.youthCompetitors); 
    allCompetitors.addAll(competition.seniorCompetitors);
    

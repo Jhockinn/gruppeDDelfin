@@ -2,10 +2,7 @@ import java.util.*;
 import java.io.*;
 public class MainTest{
   public static void main(String[]args){
-      Chairman AddMemb = new Chairman();
-      Active acti = new Active();
       Login login = new Login();
-      Memberlists lists = new Memberlists();
       login.login();
       //lists.createFiles();
       //AddMemb.addNames();

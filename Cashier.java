@@ -42,3 +42,4 @@ public class Cashier {
         scanner.close();
         System.out.println("Cashier logged out.");
     }
+}

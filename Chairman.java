@@ -4,8 +4,8 @@
     Memberlists lists = new Memberlists();
     Active setup = new Active();
     static Competition com = new Competition();
-    ArrayList<String> boyNameList = new ArrayList<String>();
-    ArrayList<String> girlNameList = new ArrayList<String>();
+    static ArrayList<String> boyNameList = new ArrayList<String>();
+    static ArrayList<String> girlNameList = new ArrayList<String>();
     //ArrayList<Members> memberList = new ArrayList<Members>();
     Random rand = new Random();
     Scanner scan = new Scanner(System.in);
@@ -193,6 +193,7 @@
         //lists.loadList();
         if (memberList.isEmpty()) {
             String name1;
+            try{
             for (int x = 0; x <= 100; x++) {
                 int rando = rand.nextInt(2) + 1;
                 if (rando == 1) {
@@ -206,7 +207,10 @@
                 memberList.get(memberList.size() - 1).setID(memberList.size());
                 memberList.get(memberList.size() - 1).setGender(boyNameList.contains(name1));
             }
-
+            }catch(Exception e){
+               e.printStackTrace();
+            }
+            try{
             for (int x = 0; x <= 100; x++) {
                 int rando = rand.nextInt(2) + 1;
                 if (rando == 1) {
@@ -220,7 +224,10 @@
                 memberList.get(memberList.size() - 1).setID(memberList.size());
                 memberList.get(memberList.size() - 1).setGender(boyNameList.contains(name1));
             }
-
+            }catch(Exception e){
+               e.printStackTrace();
+            }
+            try{
             for (int x = 0; x <= 47; x++) {
                 int rando = rand.nextInt(2) + 1;
                 if (rando == 1) {
@@ -233,6 +240,9 @@
                 memberList.get(memberList.size() - 1).setAge(age);
                 memberList.get(memberList.size() - 1).setID(memberList.size());
                 memberList.get(memberList.size() - 1).setGender(boyNameList.contains(name1));
+            }
+             }catch(Exception e){
+               e.printStackTrace();
             }
             
             setup.active(memberList);

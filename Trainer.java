@@ -8,16 +8,9 @@ Discipline discipline = new Discipline();
 CompetitionStatistics statistics = new CompetitionStatistics(competition); 
 Memberlists lists = new Memberlists();
 Chairman AddMemb = new Chairman();
-Active acti = new Active();
-Competitive competi = new Competitive();
 
-AddMemb.addNames();
-AddMemb.add();
-acti.active(AddMemb.memberList);
-lists.writeToList(AddMemb.memberList);
-competi.compe(AddMemb.memberList);
-//System.out.println(AddMemb.memberList);
-competition.sortCompetitors(AddMemb);
+
+//competition.sortCompetitors(lists.memberList);
 statistics.addRandomCompetitionResults();
 statistics.addRandomTrainingResults();     
 

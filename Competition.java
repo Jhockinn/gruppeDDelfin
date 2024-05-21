@@ -7,13 +7,14 @@ import java.util.Arrays;
 public class Competition{
 
 // ArrayLists for youth and senior competitors 
-public ArrayList<Competitor> youthCompetitors = new ArrayList<Competitor>(); 
-public ArrayList<Competitor> seniorCompetitors = new ArrayList<Competitor>(); 
+public static ArrayList<Competitor> youthCompetitors = new ArrayList<Competitor>(); 
+public static ArrayList<Competitor> seniorCompetitors = new ArrayList<Competitor>(); 
 
 // Scanner & random
 Scanner scan = new Scanner(System.in); 
 Random ran = new Random(); 
-Memberlists lists = new Memberlists();
+//Memberlists lists = new Memberlists();
+Chairman chair = new Chairman();
 // Method for adding new competitors 
 public void addCompetitor(){
    System.out.println("What is the members name?"); 
@@ -83,9 +84,9 @@ public void showSeniorCompetitors(){
 int lastID = 0; 
 
 // method for sorting members from memberList to a competitorList
-public void sortCompetitors(Chairman chair){ 
+public void sortCompetitors(ArrayList<Members> list){ 
 
-for(Members member : lists.memberList){   
+for(Members member : list){   
    if(member.getCompetitor() && member.getAge()<=18){
       Competitor youthCompetitor = new Competitor(member.getID(), member.getAge(), member.getName(), chair.chooseGender(member)); // creates a competitor with age and name
       Discipline discipline = new Discipline();
