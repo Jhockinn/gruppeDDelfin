@@ -9,7 +9,6 @@ public class Competitive{
    File file; 
    int count = -1;
    ArrayList<String> disci = new ArrayList<String>(); 
-   //Constructor that initialises disciplines.
    public Competitive(){
    disci.add("Butterfly");
    disci.add("Freestyle");

@@ -5,8 +5,7 @@ public class Login{
       Chairman chairman = new Chairman();
       Memberlists lists = new Memberlists();
       Cashier cashier = new Cashier();
-      int input;
-      boolean logout = true;
+      int input; 
       //logins for diffrent users. 
       String chairUser = "Chairman";
       String chairPass = "TheBoss";
@@ -27,8 +26,7 @@ public class Login{
       do{
       System.out.println("Welcome to the system");
       do{
-         System.out.println("1: type login to login");
-         System.out.println("2: type close to shutdown");
+         System.out.println("Would you like to login or close? type in login or close so select.");
          close = scan.nextLine();
             if(close.equals("close")){
                System.exit(0);
@@ -60,7 +58,6 @@ public class Login{
                break; 
                
                case 2: 
-                  lists.viewList();
                   chairman.modifyMember(lists.memberList);
                   lists.writeToList(lists.memberList);
                break;
@@ -76,14 +73,13 @@ public class Login{
                
                case 5:
                   System.out.println("Thank you Chairman");
-                  logout = false; 
                break; 
                
                default:
                   System.out.println("Naugthy Naugthy boy");  
                break;
                }//Switch*/
-            }while(logout);
+            }while(input<=4 && input >=6);
          }
          if(username.equals(cashUser) && password.equals(cashPass)){
             do{
