@@ -16,7 +16,7 @@ AddMemb.add();
 acti.active(AddMemb.memberList);
 lists.writeToList(AddMemb.memberList);
 competi.compe(AddMemb.memberList);
-System.out.println(AddMemb.memberList);
+//System.out.println(AddMemb.memberList);
 competition.sortCompetitors(AddMemb);
 statistics.addRandomCompetitionResults();
 statistics.addRandomTrainingResults();     
@@ -26,7 +26,7 @@ Scanner scan = new Scanner(System.in);
 
 while(true){
    System.out.println(); 
-   System.out.println("Welcome to the Trainer UI"); 
+   System.out.println("Welcome to the Trainer UI");
    System.out.println("1: Look at the youth competitor list"); 
    System.out.println("2: Look at the senior competitor list"); 
    System.out.println("3: Register competition results"); 
