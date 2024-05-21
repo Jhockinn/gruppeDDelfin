@@ -13,7 +13,7 @@ public ArrayList<Competitor> seniorCompetitors = new ArrayList<Competitor>();
 // Scanner & random
 Scanner scan = new Scanner(System.in); 
 Random ran = new Random(); 
-
+Memberlists lists = new Memberlists();
 // Method for adding new competitors 
 public void addCompetitor(){
    System.out.println("What is the members name?"); 
@@ -85,7 +85,7 @@ int lastID = 0;
 // method for sorting members from memberList to a competitorList
 public void sortCompetitors(Chairman chair){ 
 
-for(Members member : chair.memberList){   
+for(Members member : lists.memberList){   
    if(member.getCompetitor() && member.getAge()<=18){
       Competitor youthCompetitor = new Competitor(member.getID(), member.getAge(), member.getName(), chair.chooseGender(member)); // creates a competitor with age and name
       Discipline discipline = new Discipline();
@@ -364,4 +364,4 @@ for(Members member : chair.memberList){
      
    return bestTime; 
   }
-
+}
