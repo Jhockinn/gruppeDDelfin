@@ -8,8 +8,10 @@ public class Cashier {
     public void managePayments() {
         Scanner scanner = new Scanner(System.in);
         Payments payments = new Payments(this);
+        boolean isRunning = true;
 
-        while (true) {
+
+        while (isRunning) {
             System.out.println("\nCashier UI Options:");
             System.out.println("1: Payment page");
             System.out.println("2: See membership fees and print to a file");
@@ -30,13 +32,16 @@ public class Cashier {
                     break;
 
                 case 3:
-                    System.exit(0);
-                    return;
+                    isRunning = false;
+                    break;
 
                 default:
                     System.out.println("Invalid input");
                     break;
             }
         }
+            scanner.close();
+            System.out.println("Cashier logged out.");
+        
     }
 }
