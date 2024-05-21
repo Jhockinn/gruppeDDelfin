@@ -248,4 +248,4 @@ ID| Name  |  Age   |  Gender   |  Restance  |  Active   |  Competitor  |  Discip
 247 | David    | 73 | Male   | false | true | false | null
 248 | Ryan     | 82 | Male   | false | true | false | null
 249 | Miriam   | 78 | Female | false | true | true | Freestyle
-250 | Stella   | 61 | Female | false | true | true | Backstroke
+

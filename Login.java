@@ -3,7 +3,10 @@ public class Login{
       Scanner scan = new Scanner(System.in);
       Trainer trainer = new Trainer();
       Chairman chairman = new Chairman();
+      Memberlists lists = new Memberlists();
       Cashier cashier = new Cashier();
+      int input;
+      boolean logout=true; 
       //logins for diffrent users. 
       String chairUser = "Chairman";
       String chairPass = "TheBoss";
@@ -19,13 +22,16 @@ public class Login{
       String close;
      
    public void login(){
+      lists.upStart();
+      chairman.add(lists.memberList);
       do{
       System.out.println("Welcome to the system");
       do{
-         System.out.println("Would you like to login or close? type in login or close so select.");
+         System.out.println("1: Type login to login");
+         System.out.println("2: type close to exit");
          close = scan.nextLine();
             if(close.equals("close")){
-               break;
+               System.exit(0);
             }
             if(!close.equals("close") || !close.equals("login")){
                System.out.println("Wrong input please try again");
@@ -37,34 +43,47 @@ public class Login{
       password = scan.nextLine();
          if(username.equals(chairUser) && password.equals(chairPass)){
             do{
-            System.out.println("Good job buddy");
             //chairman.//set metode fra chairman her. 
             
-            /*System.out.println("Welcome Chairman");
+            System.out.println("Welcome Chairman");
             System.out.println("What would you like to do?");
-            System.out.println("");
-            System.out.println("");
-            System.out.println("");
-            System.out.println("");
-            int input = scan.nextInt();
-               
+            System.out.println("1: Add Member");
+            System.out.println("2: Modify Member");
+            System.out.println("3: Remove Member");
+            System.out.println("4: View Memberlist");
+            System.out.println("5: Logout");
+            input = scan.nextInt();
+            scan.nextLine();
                switch(input){
                case 1:
+                  chairman.addNewMember(lists.memberList);
                break; 
                
-               case 2: 
+               case 2:
+                  lists.viewList(); 
+                  chairman.modifyMember(lists.memberList);
+                  lists.writeToList(lists.memberList);
                break;
-               
+  
                case 3: 
+                  chairman.removeMember(lists.memberList);
+                  lists.writeToList(lists.memberList);
                break;
                
                case 4:
+                  lists.viewList();
+               break;
+               
+               case 5:
+                  System.out.println("Thank you Chairman");
+                  logout=false;
                break; 
                
-               default: 
+               default:
+                  System.out.println("Naugthy Naugthy boy");  
                break;
                }//Switch*/
-            }while(true);
+            }while(logout);
          }
          if(username.equals(cashUser) && password.equals(cashPass)){
             do{

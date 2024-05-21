@@ -2,26 +2,19 @@ import java.util.*;
 import java.io.*;
 public class MainTest{
   public static void main(String[]args){
-      Competitive competi = new Competitive();
       Chairman AddMemb = new Chairman();
       Active acti = new Active();
       Login login = new Login();
       Memberlists lists = new Memberlists();
-      lists.createFiles();
+      login.login();
+      //lists.createFiles();
       //AddMemb.addNames();
-      //AddMemb.add();
-      //AddMemb.add();
-      //acti.active(AddMemb.memberList);
-      //lists.writeToList(AddMemb.memberList);
-      //competi.compe(AddMemb.memberList);
-      //AddMemb.sort();
-      //System.out.println(AddMemb.memberList);
-      //AddMemb.addNewMember();
-      //System.out.println(AddMemb.memberList);
-      //login.login();
-      //competi.fileOrder(AddMemb.memberList);
       //lists.loadList();
-      //System.out.println(lists.memberList);
-      //lists.viewList();   
+      //AddMemb.add(lists.memberList);
+      //AddMemb.addNewMember(lists.memberList);
+      //lists.viewList();
+      //AddMemb.removeMember(lists.memberList);
+      //AddMemb.modifyMember(lists.memberList);
+      //lists.writeToList(lists.memberList);
   }
 }

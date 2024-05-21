@@ -15,7 +15,7 @@ public class Members{
    private double price; 
    private boolean gender;
    private String discipline; 
-   public int ID;
+   private int ID;
    int year = LocalDate.now().getYear(); 
      
    public Members(int age,String name){

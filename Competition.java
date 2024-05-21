@@ -364,5 +364,4 @@ for(Members member : chair.memberList){
      
    return bestTime; 
   }
-}
- 
+

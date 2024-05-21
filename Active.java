@@ -3,7 +3,6 @@ import java.io.*;
 public class Active{
    Competitive compet = new Competitive();
    Random rand = new Random();
-   Chairman chair = new Chairman();
    // Change boolean value at random 
    public void active(ArrayList<Members> list){
       for(Members members : list){
