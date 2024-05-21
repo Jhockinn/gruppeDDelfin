@@ -42,11 +42,3 @@ public class Cashier {
         scanner.close();
         System.out.println("Cashier logged out.");
     }
-/*
-    public static void main(String[] args) {
-        Cashier cashier = new Cashier();
-        cashier.managePayments();
-    }
-}
-
-*/
