@@ -17,13 +17,14 @@ Competition competition;
 
  // method for registering training results for youth and senior competitors 
  public void registerTrainingResults(){
+   
    System.out.println("Here is the list of competitors: "); 
       competition.showYouthCompetitors(); 
       competition.showSeniorCompetitors();  
-        
+       
       System.out.println("For which competitor do you want to sumbit training results [ID]? ");
-         //String competitorName = scan.next(); 
-         int competitorID = scan.nextInt(); 
+      if(scan.hasNextInt()){
+      int competitorID = scan.nextInt();     
       
    boolean found = false; 
    for(Competitor competitor : competition.youthCompetitors){
@@ -46,16 +47,23 @@ Competition competition;
    
     if(!found){
     System.out.println("Could not find the competitor");
-   } 
- }
+    } 
+    }else {
+    System.out.println("Invalid input. Please enter a valid ID.");
+    scan.next(); 
+    }
+  }
+
  
  // method for registering competition results for youth and senior competitors 
  public void registerCompetitionResults(){
    System.out.println("Here is the list of competitors: "); 
       competition.showYouthCompetitors(); 
-      competition.showSeniorCompetitors();  
+      competition.showSeniorCompetitors(); 
+       
       System.out.println("For which competitor do you want to sumbit competition results [ID]? ");
-         int competitorID = scan.nextInt(); 
+      if(scan.hasNextInt()){
+      int competitorID = scan.nextInt(); 
       
    boolean found = false; 
       for(Competitor competitor : competition.youthCompetitors){
@@ -77,8 +85,12 @@ Competition competition;
    } 
    
    if(!found){
-      System.out.println("Could not find the com40petitor");
+      System.out.println("Could not find the competitor");
    }  
+   }else{
+   System.out.println("Invalid input. Please enter a valid ID.");
+   scan.next();
+   }
  }
  
  // method for submitting training results 
@@ -244,7 +256,7 @@ Competition competition;
       
       // Generate a random date
       Random rand = new Random(); 
-      LocalDate randomDate = LocalDate.of(rand.nextInt(2018, 2025), rand.nextInt(1, 13), rand.nextInt(1, 30));
+      LocalDate randomDate = LocalDate.of(rand.nextInt(2018, 2024), rand.nextInt(1, 13), rand.nextInt(1, 29));
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
       String date = randomDate.format(formatter);
