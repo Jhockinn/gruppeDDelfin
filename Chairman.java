@@ -43,10 +43,10 @@
         do{
         System.out.println("Enter the year of birth:");
         memberAge = Integer.parseInt(scanner.nextLine());
-          if(memberAge<2018 && memberAge>1940){
+          if(memberAge>2018 || memberAge<1940){
              System.out.println("Your age is not accepted here, try again");
           }
-        }while(memberAge<2018 && memberAge>1940);
+        }while(memberAge>2018 || memberAge<1940);
         // Gender
         do {
             System.out.println("Write gender (male or female):");
