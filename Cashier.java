@@ -3,13 +3,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Cashier {
+
     private MembershipFee membershipfee = new MembershipFee();
 
     public void managePayments() {
         Scanner scanner = new Scanner(System.in);
         Payments payments = new Payments(this);
         boolean isRunning = true;
-
 
         while (isRunning) {
             System.out.println("\nCashier UI Options:");
@@ -22,13 +22,12 @@ public class Cashier {
 
             switch (choice) {
                 case 1:
-                    Payments paymentUI = new Payments();
+                    payments = new Payments();
                     break;
 
                 case 2:
-                    MembershipFee membershipFees = new MembershipFee();
-                    membershipFees.showMembershipFee();
-                    membershipFees.printMembershipFeetoFile("membership_fees.txt");
+                    membershipfee.showMembershipFee();
+                    membershipfee.printMembershipFeetoFile("membership_fees.txt");
                     break;
 
                 case 3:
@@ -40,8 +39,14 @@ public class Cashier {
                     break;
             }
         }
-            scanner.close();
-            System.out.println("Cashier logged out.");
-        
+        scanner.close();
+        System.out.println("Cashier logged out.");
+    }
+/*
+    public static void main(String[] args) {
+        Cashier cashier = new Cashier();
+        cashier.managePayments();
     }
 }
+
+*/
