@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Cashier {
-
+    private static Memberlists lists = new Memberlists();
     private MembershipFee membershipfee = new MembershipFee();
 
     public void managePayments() {
@@ -19,10 +19,10 @@ public class Cashier {
             System.out.println("\n");
 
             int choice = scanner.nextInt();
-
+            scanner.nextLine();
             switch (choice) {
                 case 1:
-                    payments = new Payments();
+                    payments.payments();
                     break;
 
                 case 2:
@@ -39,7 +39,7 @@ public class Cashier {
                     break;
             }
         }
-        scanner.close();
+        //scanner.close();
         System.out.println("Cashier logged out.");
     }
 }

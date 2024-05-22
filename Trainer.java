@@ -1,7 +1,7 @@
 import java.util.Scanner; 
 
 public class Trainer{
-
+boolean log = true;
 public void TrainerUi(){
 Competition competition = new Competition(); 
 Discipline discipline = new Discipline(); 
@@ -17,7 +17,7 @@ statistics.addRandomTrainingResults();
 
 Scanner scan = new Scanner(System.in);
 
-while(true){
+while(log){
    System.out.println(); 
    System.out.println("Welcome to the Trainer UI");
    System.out.println("1: Look at the youth competitor list"); 
@@ -27,6 +27,7 @@ while(true){
    System.out.println("5: Show training results for competitors"); 
    System.out.println("6: Show competition results for competitors"); 
    System.out.println("7: Show a top five ranking of the best swimmers for each discipline"); 
+   System.out.println("8: Logout");
    
    int choice = scan.nextInt(); 
    
@@ -80,6 +81,9 @@ while(true){
          if(topFive == 4){
          competition.showTopFiveSwimmersForBreaststroke(); 
          }
+     break;
+     case 8: 
+     log = false;
      break;
      default: 
       System.out.println("Invalid input");  

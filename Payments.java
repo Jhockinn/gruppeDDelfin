@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Payments {
 
-    public Memberlists memberlists = new Memberlists();
+    public static Memberlists memberlists = new Memberlists();
     private Cashier cashier;
     private static ArrayList<Members> latePayments = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
@@ -12,8 +12,9 @@ public class Payments {
     public Payments(Cashier cashier) {
         this.cashier = cashier;
     }
+    public Payments(){}
 
-    public Payments() {
+    public void payments() {
         while (true) {
             System.out.println("\nOptions:");
             System.out.println("1: Read the whole list of people with missing payments");
@@ -55,15 +56,16 @@ public class Payments {
         }
     }
 
-    public void memberlistToLatePayments() {
-        for (Members member : memberlists.memberList) {
-            if (member.getRestance()) {
-                latePayments.add(member);
-            }
-        }
-    }
-
-    public static void addPeopleToLatePaymentList() {
+    
+      public static void addAllLatePaymentMembers(ArrayList<Members> list) {
+           for (Members member : list) {
+               if (member.getRestance()==true) {
+                   latePayments.add(member);
+               }
+           }
+           updateLatePaymentFile();
+       }
+       public static void addPeopleToLatePaymentList() {
         scanner.nextLine();
         System.out.println("Enter name of person to add to late payment list:");
         String person = scanner.nextLine();
@@ -144,7 +146,7 @@ public class Payments {
     public static void updateLatePaymentFile() {
         try (FileWriter writer = new FileWriter("late_payment_people.txt")) {
             for (Members person : latePayments) {
-                writer.write(person.getName() + "\n");
+                writer.write("ID: " + person.getID() +" Name: " +person.getName() + "\n");
             }
             System.out.println("Late payment people list updated in the file.");
         } catch (IOException e) {

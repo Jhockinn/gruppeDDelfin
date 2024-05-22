@@ -1,5 +1,6 @@
 import java.util.*;
 public class Login{
+      Payments payment = new Payments();
       Scanner scan = new Scanner(System.in);
       Trainer trainer = new Trainer();
       Competition competition = new Competition();
@@ -87,6 +88,7 @@ public class Login{
             }while(logout);
          }
          if(username.equals(cashUser) && password.equals(cashPass)){
+            payment.addAllLatePaymentMembers(lists.memberList);
             cashier.managePayments();  
          }
          if(username.equals(trainUser) && password.equals(trainPass)){
