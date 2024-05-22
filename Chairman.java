@@ -13,6 +13,7 @@
     private int id; 
     private int memberAge;
     private String competitor;
+    int id1;
     int count;
     int age; 
     int RandomName = 0;
@@ -25,14 +26,6 @@
     String disci;
     String discipline;
     String name1;
-    
-    
-    public Chairman() {
-        // Initialize ArrayLists
-         //memberList = new ArrayList<>();
-         //lists.loadList();
-         //memberList = lists.memberList;
-    }
     // Add member to list
     public void addNewMember(ArrayList<Members> list) {
         Scanner scanner = new Scanner(System.in);
@@ -49,37 +42,37 @@
         }while(memberAge>2018 || memberAge<1940);
         // Gender
         do {
-            System.out.println("Write gender (male or female):");
+            System.out.println("Write gender (m for male or f for female):");
             choice = scan.nextLine();
-            if (choice.equals("male") || choice.equals("female")) {
-                gender = choice.equals("male");
+            if (choice.equals("m") || choice.equals("f")) {
+                gender = choice.equals("m");
             } else {
                 System.out.println("Please try to write it again.");
             }
-        } while (!choice.equals("male") && !choice.equals("female"));
+        } while (!choice.equals("m") && !choice.equals("f"));
         
             // Active
         do {
-            System.out.println("Are you active or passive?");
+            System.out.println("Are you active or passive? a for active p for passive");
             active = scan.nextLine();
-            if (active.equals("active") || active.equals("passive")) {
-                acti = active.equals("active");
+            if (active.equals("a") || active.equals("p")) {
+                acti = active.equals("a");
             } else {
                 System.out.println("Sorry, wrong input. Try again!");
             }
-        } while (!active.equals("active") && !active.equals("passive"));
+        } while (!active.equals("a") && !active.equals("p"));
 
         // Competitor
         if(acti == true){
         do {
-            System.out.println("Are you regular or competitive?");
+            System.out.println("Are you regular or competitive? r for regular c for competitive");
             compe = scan.nextLine();
-            if (compe.equals("regular") || compe.equals("competitive")) {
-                competitive = compe.equals("competitive");
+            if (compe.equals("r") || compe.equals("c")) {
+                competitive = compe.equals("c");
             } else {
                 System.out.println("Sorry, wrong input. Try again!");
             }
-         } while (!compe.equals("regular") && !compe.equals("competitive"));
+         } while (!compe.equals("r") && !compe.equals("c"));
 
 
         if (competitive) {
@@ -124,10 +117,12 @@
         }
     }
     public void removeMember(ArrayList<Members> list){
+         do{
          System.out.println("Write id of person you want to remove"); 
-         int id1 = scan.nextInt();
+         id1 = scan.nextInt();
          scan.nextLine();
-         list.remove(id-1);
+         }while(id <list.get(list.size()-1).getID());
+         list.remove(id1-1);
         }
       public void modifyMember(ArrayList<Members> list){
          do{
@@ -135,14 +130,18 @@
          id = scan.nextInt();
          scan.nextLine();
           }while(id >list.get(list.size()-1).getID());
+         do{
          System.out.println("What setting do you want to change?");
          System.out.println("Active or Competitor"); 
-         String choice = scan.nextLine();
+         choice = scan.nextLine();
+         }while(!choice.equals("Active") && !choice.equals("Competitor"));
          switch(choice){
          case "Active" : 
-            System.out.println("Change to active or passive ?"); 
-            String active = scan.nextLine(); 
-            if(active.equals("active")){
+            do{
+            System.out.println("Change to Active or Passive ?"); 
+            active = scan.nextLine(); 
+            }while(!active.equals("Active") && !active.equals("Passive"));
+            if(active.equals("Active")){
                list.get(id-1).setActive(true);
             }
             else{
@@ -151,15 +150,17 @@
             break;
           case "Competitor" : 
             do{
-            System.out.println("Change to regular or competitor ?"); 
+            System.out.println("Change to Regular or Competitor ?"); 
             competitor = scan.nextLine(); 
-            }while(!competitor.equals("regular") && !competitor.equals("competitor"));
-            if(competitor.equals("competitor")){
+            }while(!competitor.equals("Regular") && !competitor.equals("Competitor"));
+            if(competitor.equals("Competitor")){
                list.get(id-1).setCompetitor(true);
                do{
+                   do{
                    System.out.println("Choose Discipline");
                    System.out.println("Butterfly, Freestyle, Backstroke, Breaststroke");
                    discipline = scan.nextLine();
+                   }while(!discipline.equals("Butterfly") && !discipline.equals("Freestyle") && !discipline.equals("Backstroke") && !discipline.equals("Breaststroke"));
                switch(discipline){
                   case "Butterfly" :
                         list.get(id-1).setDiscipline("Butterfly");
@@ -177,7 +178,7 @@
                         System.out.println("Wrong input");  
                   break; 
                     }
-                }while(!disci.equals("Butterfly") && !disci.equals("Freestyle") && !disci.equals("Backstroke") && !disci.equals("Breaststroke"));
+                }while(!discipline.equals("Butterfly") && !discipline.equals("Freestyle") && !discipline.equals("Backstroke") && !discipline.equals("Breaststroke"));
             }
             else{
                list.get(id-1).setCompetitor(false);
@@ -249,7 +250,6 @@
             lists.writeToList(memberList);
         }
         else{
-        System.out.println("Fuck you the list is not empty");
         }
       }
       
@@ -271,6 +271,7 @@
          return 1200; 
          }
     }
+    //Checks restance if member is unactive
     public void unac(Members member){
     if(member.getActive() == false){
                if(member.getPrice() > 500){

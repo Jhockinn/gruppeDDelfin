@@ -10,13 +10,13 @@ public class Login{
       boolean logout=true; 
       //logins for diffrent users. 
       String chairUser = "Chairman";
-      String chairPass = "TheBoss";
+      String chairPass = "Test";
       
       String cashUser = "Cashier";
-      String cashPass = "Embezzler";
+      String cashPass = "Test";
       
       String trainUser = "Trainer";
-      String trainPass = "AsbjørnRiis";
+      String trainPass = "Test";
       
       String username;
       String password;
@@ -35,7 +35,7 @@ public class Login{
             if(close.equals("close")){
                System.exit(0);
             }
-            if(!close.equals("close") || !close.equals("login")){
+            if(!close.equals("close") && !close.equals("login")){
                System.out.println("Wrong input please try again");
             }
       }while(!close.equals("close") && !close.equals("login"));
@@ -45,7 +45,6 @@ public class Login{
       password = scan.nextLine();
          if(username.equals(chairUser) && password.equals(chairPass)){
             do{
-            //chairman.//set metode fra chairman her. 
             
             System.out.println("Welcome Chairman");
             System.out.println("What would you like to do?");
@@ -90,11 +89,8 @@ public class Login{
          if(username.equals(cashUser) && password.equals(cashPass)){
             cashier.managePayments();  
          }
-        if(username.equals(trainUser) && password.equals(trainPass)){
+         if(username.equals(trainUser) && password.equals(trainPass)){
                trainer.TrainerUi();
-         }
-         else{
-            System.out.println("Wrong username or password, Try again!");
          }
       }while((username!=trainUser && password != trainPass) || (username!= cashUser && password!=cashPass) && 
       (username!=chairUser && password!=chairPass));
