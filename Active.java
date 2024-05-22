@@ -14,6 +14,7 @@ public class Active{
                members.setActive(true);
 
             }
+            //Random competitive if they are active,
             int random1 = rand.nextInt(1,10);
             if(random1>5 || members.getActive() == false){
                      members.setCompetitor(false);

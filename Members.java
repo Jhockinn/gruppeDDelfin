@@ -17,7 +17,7 @@ public class Members{
    private String discipline; 
    private int ID;
    int year = LocalDate.now().getYear(); 
-     
+     //Constructor 
    public Members(int age,String name){
       this.age = age;
       this.name = name;
@@ -103,6 +103,7 @@ public class Members{
    public String toString(){
         return "[" + " ID: " + ID + ", Name: " + name + " Age: " + age + ", Gender: " + main.chooseGender(this) + ", Restance: "+ restance + ", Active: " + active + " Competitive: " + competitor + ", Discipline: " + discipline +" ]" + "\n";
    }
+   //Set restance false/true based on price and memberfeeprice. 
    public void restan(int memberPrice){
        
       if(price > memberPrice){

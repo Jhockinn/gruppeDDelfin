@@ -6,7 +6,6 @@
     static Competition com = new Competition();
     static ArrayList<String> boyNameList = new ArrayList<String>();
     static ArrayList<String> girlNameList = new ArrayList<String>();
-    //ArrayList<Members> memberList = new ArrayList<Members>();
     Random rand = new Random();
     Scanner scan = new Scanner(System.in);
     Scanner reader = new Scanner("memberList.txt");
@@ -116,6 +115,7 @@
              lists.AddtoList(list); // Persist the updated list
         }
     }
+    //Removes a member.
     public void removeMember(ArrayList<Members> list){
          do{
          System.out.println("Write id of person you want to remove"); 
@@ -124,6 +124,8 @@
          }while(id <list.get(list.size()-1).getID());
          list.remove(id1-1);
         }
+        
+       //Modify active, competitor and discipline for members. 
       public void modifyMember(ArrayList<Members> list){
          do{
          System.out.println("Write id of person you want to change"); 
@@ -252,7 +254,7 @@
         else{
         }
       }
-      
+    //return a string with gender, based on gender boolean.
     public String chooseGender(Members member){
          if(member.getGender() == true){
             return "Male  ";
@@ -260,6 +262,7 @@
             return "Female";
          }
     }
+    // used in AddMember, gives a price based on age. 
     public int res(){
          if(age<18){
          return 1000;

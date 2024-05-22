@@ -24,6 +24,7 @@ public class Login{
       String close;
      
    public void login(){
+      //Methods to run to add members to diffrent list. 
       lists.upStart();
       chairman.add(lists.memberList);
       competition.sortCompetitors(lists.memberList);
@@ -44,6 +45,7 @@ public class Login{
       username = scan.nextLine();
       System.out.println("Type in password: ");
       password = scan.nextLine();
+      //Chairman login
          if(username.equals(chairUser) && password.equals(chairPass)){
             do{
             
@@ -87,10 +89,12 @@ public class Login{
                }//Switch*/
             }while(logout);
          }
+         //Cashier login
          if(username.equals(cashUser) && password.equals(cashPass)){
             payment.addAllLatePaymentMembers(lists.memberList);
             cashier.managePayments();  
          }
+         //Trainer login
          if(username.equals(trainUser) && password.equals(trainPass)){
                trainer.TrainerUi();
          }
