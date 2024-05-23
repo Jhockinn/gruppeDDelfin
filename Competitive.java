@@ -6,8 +6,6 @@ import java.time.*;
 public class Competitive{
    Random rand = new Random();
    Scanner scan = new Scanner(System.in);
-   File file; 
-   int count = -1;
    ArrayList<String> disci = new ArrayList<String>(); 
    public Competitive(){
    disci.add("Butterfly");
