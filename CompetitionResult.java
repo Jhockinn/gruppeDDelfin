@@ -7,7 +7,6 @@ private String location;
 private int placement; 
 private Competitor competitor; 
 
-
  public CompetitionResult(String discipline, int length, double time, int placement, String location){
    this.discipline = discipline; 
    this.length = length; 

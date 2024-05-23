@@ -1,6 +1,7 @@
 import java.util.Scanner; 
 
 public class Trainer{
+
 boolean log = true;
 public void TrainerUi(){
 Competition competition = new Competition(); 
@@ -24,8 +25,8 @@ while(log){
    System.out.println("2: Look at the senior competitor list"); 
    System.out.println("3: Register competition results"); 
    System.out.println("4: Register training results"); 
-   System.out.println("5: Show training results for competitors"); 
-   System.out.println("6: Show competition results for competitors"); 
+   System.out.println("5: Show competition results for competitors"); 
+   System.out.println("6: Show training results for competitors"); 
    System.out.println("7: Show a top five ranking of the best swimmers for each discipline"); 
    System.out.println("8: Logout");
    
@@ -45,17 +46,6 @@ while(log){
       statistics.registerTrainingResults(); 
       break; 
    case 5:
-      System.out.println("Do you want to see training results for youth [1] or senior [2]?");  
-      int trainingChoice = scan.nextInt(); 
-         if(trainingChoice == 1){
-         competition.showYouthCompetitors();
-         statistics.showYouthTrainingResults(); 
-         }else{
-         competition.showSeniorCompetitors(); 
-         statistics.showSeniorTrainingResults(); 
-         }
-      break; 
-    case 6:      
       System.out.println("Do you want to see competition results for youth [1] or senior [2]?");  
       int competitionChoice = scan.nextInt(); 
          if(competitionChoice == 1){
@@ -65,6 +55,17 @@ while(log){
          competition.showSeniorCompetitors(); 
          statistics.showSeniorCompetitionResults(); 
          }
+      break; 
+    case 6:
+      System.out.println("Do you want to see training results for youth [1] or senior [2]?");  
+      int trainingChoice = scan.nextInt(); 
+         if(trainingChoice == 1){
+         competition.showYouthCompetitors();
+         statistics.showYouthTrainingResults(); 
+         }else{
+         competition.showSeniorCompetitors(); 
+         statistics.showSeniorTrainingResults(); 
+         }    
        break; 
      case 7: 
        System.out.println("Do you want to see a top five for for Freestyle [1], Butterfly [2], Backstroke [3] or Breaststroke [4]");

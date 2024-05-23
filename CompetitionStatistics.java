@@ -5,15 +5,18 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class CompetitionStatistics{
+
 static ArrayList<Competitor> allCompetitors = new ArrayList<>(); // creates a new arraylist with both senior and youth competitors 
+
+// scanner & random
 Scanner scan = new Scanner(System.in); 
 Random ran = new Random(); 
 
 Competition competition; 
-
- public CompetitionStatistics(Competition competition){
- this.competition = competition; 
- }
+   
+public CompetitionStatistics(Competition competition){
+   this.competition = competition; 
+  } 
 
  // method for registering training results for youth and senior competitors 
  public void registerTrainingResults(){
@@ -156,8 +159,8 @@ Competition competition;
    }else{
    System.out.println("Invalid input - try to enter training results again"); 
    }
-   }
   }
+ }
   
   // method for adding random competition results for competitors
   public void addRandomCompetitionResults(){
@@ -180,14 +183,14 @@ Competition competition;
          time = Double.parseDouble(formattedTime);
       } else if(length == 100) {
       double min = 1.00; 
-      double max = 1.30; 
+      double max = 1.45; 
       double randomNumber = min + (max - min) * ran.nextDouble();
       String formattedTime = String.format("%.2f", randomNumber);
         formattedTime = formattedTime.replace(",", ".");
          time = Double.parseDouble(formattedTime);
       }else{
-      double min = 1.30; 
-      double max = 1.59; 
+      double min = 2.00; 
+      double max = 2.40; 
       double randomNumber = min + (max - min) * ran.nextDouble();
       String formattedTime = String.format("%.2f", randomNumber);
         formattedTime = formattedTime.replace(",", ".");
@@ -238,15 +241,15 @@ Competition competition;
          
       } else if(length == 100) {
       double min = 1.00; 
-      double max = 1.30; 
+      double max = 1.45; 
       double randomNumber = min + (max - min) * ran.nextDouble();
       String formattedTime = String.format("%.2f", randomNumber);
         formattedTime = formattedTime.replace(",", ".");
          time = Double.parseDouble(formattedTime);
          
       }else{
-      double min = 1.30; 
-      double max = 1.59; 
+      double min = 2.00; 
+      double max = 2.40; 
       double randomNumber = min + (max - min) * ran.nextDouble();
       String formattedTime = String.format("%.2f", randomNumber);
         formattedTime = formattedTime.replace(",", ".");
@@ -334,6 +337,7 @@ Competition competition;
     }
   }
   
+  // method for printing out youth competitor competition results
   public void showYouthCompetitionResults(){ 
   System.out.println("For which competitor do you want to see competition results?"); 
  
@@ -365,7 +369,8 @@ Competition competition;
       }
     }
   } 
- 
+  
+  // method for printing out senior competitor competition results
   public void showSeniorCompetitionResults(){ 
   System.out.println("For which competitor do you want to see competition results?"); 
  

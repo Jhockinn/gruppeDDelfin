@@ -13,44 +13,9 @@ public static ArrayList<Competitor> seniorCompetitors = new ArrayList<Competitor
 // Scanner & random
 Scanner scan = new Scanner(System.in); 
 Random ran = new Random(); 
+
 //Memberlists lists = new Memberlists();
 Chairman chair = new Chairman();
-// Method for adding new competitors 
-public void addCompetitor(){
-   System.out.println("What is the members name?"); 
-   String name = scan.next(); 
-   System.out.println("What is the members age?"); 
-   int age = scan.nextInt(); 
-   System.out.println("How many swimming disciplines does the member participate in?"); 
-   int choice = scan.nextInt(); 
-   
-   
-   ArrayList<String> disciplines = new ArrayList<String>(); 
-   
-   for(int i=0; i<choice; i++){
-   System.out.println("Enter the swimming disciplines one at a time: ");
-   System.out.println("The four disciplines are [Freestyle], [Butterfly], [Backstroke], [Breaststroke]"); 
-   String discipline = scan.next().toLowerCase();  
-   discipline = discipline.substring(0,1).toUpperCase() + discipline.substring(1);
-   if(discipline.equalsIgnoreCase("Freestyle") || discipline.equalsIgnoreCase("Butterfly") || 
-   discipline.equalsIgnoreCase("Backstroke") || discipline.equalsIgnoreCase("Breastroke")){
-   disciplines.add(discipline);
-    }else{
-   System.out.println("Invalid input - please try to enter the swimming discipline again"); 
-   i--;
-   }
-   
-   Competitor competitor = new Competitor(age,name,disciplines);
-   
-   if(competitor.getAge() < 18){
-      youthCompetitors.add(competitor); 
-      showYouthCompetitors();
-   }else{
-      seniorCompetitors.add(competitor);
-      showSeniorCompetitors();
-   } 
-  }
-}
 
 // method for showing youth competitors 
 public void showYouthCompetitors(){
@@ -90,15 +55,15 @@ for(Members member : list){
    if(member.getCompetitor() && member.getAge()<=18){
       Competitor youthCompetitor = new Competitor(member.getID(), member.getAge(), member.getName(), chair.chooseGender(member)); // creates a competitor with age and name
       Discipline discipline = new Discipline();
-         youthCompetitor.setDiscipline(discipline.getRandomDiscipline());  // gives the competitor a random discipline
-         youthCompetitors.add(youthCompetitor); // adds the competitor to the arrayList
+         youthCompetitor.setDiscipline(discipline.getRandomDiscipline());  // gives the competitor a random discipline 
+         youthCompetitors.add(youthCompetitor); // adds the competitor to the arrayList 
          youthCompetitors.get(youthCompetitors.size()-1).setID(youthCompetitors.size()); 
  
    }else if(member.getCompetitor() && member.getAge()>18){
       Competitor seniorCompetitor = new Competitor(member.getID(),member.getAge(), member.getName(), chair.chooseGender(member)); 
       Discipline discipline = new Discipline();
-         seniorCompetitor.setDiscipline(discipline.getRandomDiscipline());  
-         seniorCompetitors.add(seniorCompetitor);
+         seniorCompetitor.setDiscipline(discipline.getRandomDiscipline());
+         seniorCompetitors.add(seniorCompetitor); 
          int totalCompetitors = youthCompetitors.size() + seniorCompetitors.size(); 
          seniorCompetitors.get(seniorCompetitors.size()-1).setID(totalCompetitors);
    }else{  
@@ -276,32 +241,6 @@ for(Members member : list){
              }
            } 
          }
-    
-    // method for finding top 5 swimmers for all competitors
-    public ArrayList<Competitor> findTopFiveSwimmers(String discipline, int length) {
-    ArrayList<Competitor> topFiveSwimmers = new ArrayList<>();
-        
-        ArrayList<Competitor> allCompetitors = new ArrayList<>(); // creates a new arraylist with both senior and youth competitors 
-        allCompetitors.addAll(youthCompetitors); 
-        allCompetitors.addAll(seniorCompetitors);
-          
-        for (Competitor competitor : allCompetitors) { 
-            if (competitor.getDiscipline().contains(discipline)) {
-            topFiveSwimmers.add(competitor);
-           }
-        }
-        
-        // Sort the topFiveSwimmers by their best time for the specified length
-        Collections.sort(topFiveSwimmers, (swimmer1, swimmer2) ->
-                Double.compare(getBestTime(swimmer1, discipline, length), getBestTime(swimmer2, discipline, length)));
-                
-        // Take only the top five swimmers
-        if (topFiveSwimmers.size() > 5) { 
-            return new ArrayList<>(topFiveSwimmers.subList(0, 5)); // If it is greater than 5, it returns the trimmed sublist containing only the top five swimmers.
-        } else {
-            return topFiveSwimmers;
-        }
-      }
     
     // method for finding top 5 swimmers for youth competitors
     public ArrayList<Competitor> findTopFiveSwimmersYouth(String discipline, int length) {
