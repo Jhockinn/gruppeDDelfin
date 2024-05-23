@@ -116,6 +116,13 @@ public class Chairman {
             unactive(newMember);
             list.add(newMember); // Add new member to the member list
             lists.AddtoList(list); // Persist the updated list
+            if(memberAge<18 && competitive == true){
+               com.youthCompetitors.add(new Competitor(com.youthCompetitors.size()+1, newMember.getAge(), name, chooseGender(newMember)));
+            }
+            else if(memberAge>18 && competitive == true){
+               com.seniorCompetitors.add(new Competitor((com.youthCompetitors.size()+com.seniorCompetitors.size()+1), newMember.getAge(), name, chooseGender(newMember)));
+               
+            }
         }
     }
 

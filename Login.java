@@ -94,6 +94,7 @@ public class Login{
                break;
                }//Switch*/
             }while(logout);
+
          }
          //Cashier login
          if(username.equals(cashUser) && password.equals(cashPass)){
