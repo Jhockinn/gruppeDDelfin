@@ -16,7 +16,7 @@ public class Members{
    private boolean gender;
    private String discipline; 
    private int ID;
-   int year = LocalDate.now().getYear(); 
+   private int year = LocalDate.now().getYear(); 
      //Constructor 
    public Members(int age,String name){
       this.age = age;

@@ -29,10 +29,16 @@ public class Login{
       chairman.add(lists.memberList);
       competition.sortCompetitors(lists.memberList);
       do{
-      System.out.println("Welcome to the system");
+      //System.out.println("Welcome to the system");
+      System.out.println(" _       __     __                        ");
+      System.out.println("| |     / /__  / /____ ___  ____ ___  ___ ");
+      System.out.println("| | /| / / _ \\/ / ___/ __ \\/ __  __ \\/ _ \\");
+      System.out.println("| |/ |/ /  __/ / /__/ /_/ / / / / / /  __/");
+      System.out.println("|__/|__/ \\___/_/\\___\\____/_/ /_/ /_/\\___/ ");
       do{
-         System.out.println("1: Type login to login");
-         System.out.println("2: type close to exit");
+         System.out.println();
+         System.out.println("Type login to login");
+         System.out.println("Type close to exit");
          close = scan.nextLine();
             if(close.equals("close")){
                System.exit(0);
