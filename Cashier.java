@@ -9,7 +9,7 @@ public class Cashier {
     public void managePayments() {
         Scanner scanner = new Scanner(System.in);
         Payments payments = new Payments(this);
-        boolean isRunning = true;
+        boolean isRunning = true; // UI boolean
 
         while (isRunning) {
             System.out.println("\nCashier UI Options:");
@@ -30,7 +30,7 @@ public class Cashier {
                     membershipfee.printMembershipFeetoFile("membership_fees.txt");
                     break;
 
-                case 3:
+                case 3: //return to login page
                     isRunning = false;
                     break;
 
@@ -39,7 +39,6 @@ public class Cashier {
                     break;
             }
         }
-        //scanner.close();
         System.out.println("Cashier logged out.");
     }
 }
