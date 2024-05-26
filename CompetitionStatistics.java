@@ -33,7 +33,7 @@ public CompetitionStatistics(Competition competition){
    for(Competitor competitor : competition.youthCompetitors){
        if(competitor.getID() == competitorID){
        found = true; 
-       submitTrainingResults(competitor);   
+       submitTrainingResults(competitor); // adding training result to a youth competitor 
        break; 
       }
    }
@@ -42,7 +42,7 @@ public CompetitionStatistics(Competition competition){
    for(Competitor competitor : competition.seniorCompetitors){
       if(competitor.getID() == competitorID){
       found = true; 
-      submitTrainingResults(competitor);    
+      submitTrainingResults(competitor); // adding training result to a senior competitor
       break;    
       }
      }
@@ -72,7 +72,7 @@ public CompetitionStatistics(Competition competition){
       for(Competitor competitor : competition.youthCompetitors){
          if(competitor.getID() == competitorID){
          found = true; 
-         submitCompetitionResults(competitor); 
+         submitCompetitionResults(competitor); // adding competition result to a youth competitor 
          break; 
       }
    }
@@ -81,7 +81,7 @@ public CompetitionStatistics(Competition competition){
       for(Competitor competitor : competition.seniorCompetitors){
          if(competitor.getID() == competitorID){
          found = true; 
-         submitCompetitionResults(competitor); 
+         submitCompetitionResults(competitor); // adding competition result to a senior competitor 
          break;    
       }
      }
@@ -100,6 +100,7 @@ public CompetitionStatistics(Competition competition){
  public void submitTrainingResults(Competitor competitor){
  System.out.println("Enter the training results for " + competitor.getName() + " for each discipline"); 
  
+ // for every discipline.. 
  for(String discipline : competitor.getDiscipline()){
    System.out.println(discipline + " - Please add the length of the disciplinec [meters]: ");
    System.out.println("You can choose between [50], [100], [200] meter");  
@@ -110,9 +111,10 @@ public CompetitionStatistics(Competition competition){
    System.out.println("Please add the date of the training result [dd-MM-yyyy]");
    String date = scan.next(); 
    
-   TrainingResult trainingResult = new TrainingResult(discipline, length, time, date); 
-   competitor.addTrainingResult(trainingResult);
+   TrainingResult trainingResult = new TrainingResult(discipline, length, time, date); // creates a new trainingResult object 
+   competitor.addTrainingResult(trainingResult); // adds the training result to a list in competitor 
   
+   // print out the training result for the competitor 
    System.out.println("Training Results: "); 
    System.out.println(); 
    System.out.println("The competitor : " + competitor.getName()); 
@@ -130,7 +132,8 @@ public CompetitionStatistics(Competition competition){
  // method for submitting competition results 
  public void submitCompetitionResults(Competitor competitor){
  System.out.println("Enter the competition results for " + competitor.getName() + " for each discipline"); 
-
+ 
+ // for every discipline.. 
  for(String discipline : competitor.getDiscipline()){
    System.out.println(discipline + " - Please add the length of the disciplinec [meters]: "); 
    System.out.println("You can choose between [50], [100], [200] meter");  
@@ -143,10 +146,10 @@ public CompetitionStatistics(Competition competition){
    System.out.println("Please add the location of the competition: "); 
    String location = scan.next(); 
    
-   CompetitionResult competitionResult = new CompetitionResult(discipline, length, time, placement, location); 
-   competitor.addCompetitionResult(competitionResult); 
+   CompetitionResult competitionResult = new CompetitionResult(discipline, length, time, placement, location); // creates a new competition object 
+   competitor.addCompetitionResult(competitionResult); // adds the competition result to a list in competitor 
   
-  
+   // print out the competition result for the competitor
    System.out.println("Competition Results: "); 
    System.out.println(); 
    System.out.println("The competitor : " + competitor.getName()); 
@@ -167,13 +170,17 @@ public CompetitionStatistics(Competition competition){
    allCompetitors.addAll(competition.youthCompetitors); 
    allCompetitors.addAll(competition.seniorCompetitors);
    
-   String[] disciplines = {"FREESTYLE", "BUTTERFLY", "BACKSTROKE", "BREASTSTROKE"};
-   int[] lengths = {50, 100, 200};
    
+   String[] disciplines = {"FREESTYLE", "BUTTERFLY", "BACKSTROKE", "BREASTSTROKE"}; // new Array of disciplines
+   int[] lengths = {50, 100, 200}; // new Array of lengths for each discipline
+   
+   // for every competitor and their discipline + length
    for(Competitor competitor : allCompetitors){
       for(String discipline : competitor.getDiscipline()){
         for(int length : lengths){
-        double time;
+      
+      // assigns each length with a random time   
+      double time;
       if(length == 50){
       double min = 0.30; 
       double max = 0.59; 
@@ -197,9 +204,9 @@ public CompetitionStatistics(Competition competition){
          time = Double.parseDouble(formattedTime);
       }
       
-      int placement = ran.nextInt(1,10); 
+      int placement = ran.nextInt(1,10); // assigns a random placement for the competition
       
-      int random2 = ran.nextInt(4)+1; 
+      int random2 = ran.nextInt(4)+1;  // assigns a random location for the competition
       String location;
       if(random2 == 1){
       location = "København"; 
@@ -211,8 +218,8 @@ public CompetitionStatistics(Competition competition){
       location = "Odense"; 
       }
       
-      CompetitionResult competitionResult = new CompetitionResult(discipline, length, time, placement, location); 
-      competitor.addCompetitionResult(competitionResult);  
+      CompetitionResult competitionResult = new CompetitionResult(discipline, length, time, placement, location); // creates a new competitonResult object
+      competitor.addCompetitionResult(competitionResult); // adds the competition result to a list in competitor 
      }
     }
    }
@@ -220,17 +227,18 @@ public CompetitionStatistics(Competition competition){
    
    // method for adding random training results for competitors
    public void addRandomTrainingResults(){
-   ArrayList<Competitor> allCompetitors = new ArrayList<>(); // creates a new arraylist with both senior and youth competitors 
    allCompetitors.addAll(competition.youthCompetitors); 
    allCompetitors.addAll(competition.seniorCompetitors);
    
-   String[] disciplines = {"FREESTYLE", "BUTTERFLY", "BACKSTROKE", "BREASTSTROKE"};
-   int[] lengths = {50, 100, 200};
+   String[] disciplines = {"FREESTYLE", "BUTTERFLY", "BACKSTROKE", "BREASTSTROKE"}; // new array of disciplines
+   int[] lengths = {50, 100, 200}; // new array of lengths 
    
    for(Competitor competitor : allCompetitors){
       for(String discipline : competitor.getDiscipline()){
         for(int length : lengths){
-        double time;
+      
+      // assigns each length with a random time  
+      double time;
       if(length == 50){
       double min = 0.30; 
       double max = 0.59; 
@@ -256,15 +264,15 @@ public CompetitionStatistics(Competition competition){
          time = Double.parseDouble(formattedTime);
       }
       
-      // Generate a random date
+      // Generates a random date for the training result
       Random rand = new Random(); 
       LocalDate randomDate = LocalDate.of(rand.nextInt(2018, 2024), rand.nextInt(1, 13), rand.nextInt(1, 29));
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
       String date = randomDate.format(formatter);
       
-      TrainingResult trainingResult = new TrainingResult(discipline, length, time, date); 
-      competitor.addTrainingResult(trainingResult);     
+      TrainingResult trainingResult = new TrainingResult(discipline, length, time, date); // creates a training result object
+      competitor.addTrainingResult(trainingResult); // adds the training result to a list in competitor 
      }
     }
    }

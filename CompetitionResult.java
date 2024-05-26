@@ -1,12 +1,13 @@
 public class CompetitionResult{
 
+// attributes 
 private String discipline; 
 private int length; 
 private double time; 
 private String location; 
 private int placement; 
-private Competitor competitor; 
 
+ // constructor 
  public CompetitionResult(String discipline, int length, double time, int placement, String location){
    this.discipline = discipline; 
    this.length = length; 
@@ -18,13 +19,7 @@ private Competitor competitor;
  public CompetitionResult(){
  }
  
- public void setCompetitor(Competitor competitor) {
-   this.competitor = competitor;
- }
-
- public Competitor getCompetitor() {
-   return competitor;
- }
+ // getters & setters 
  
  public String getDiscipline(){
    return discipline; 

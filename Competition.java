@@ -27,8 +27,7 @@ public void showYouthCompetitors(){
       System.out.print(" Age: " + competitor.getAge()); 
       System.out.print(" Gender: " + competitor.getGender()); 
       System.out.print(" Disciplines " + competitor.getDiscipline());
-      System.out.println(); 
-      
+      System.out.println();   
    }
 }
 
@@ -54,16 +53,16 @@ public void sortCompetitors(ArrayList<Members> list){
 for(Members member : list){   
    if(member.getCompetitor() && member.getAge()<=18){
       Competitor youthCompetitor = new Competitor(member.getID(), member.getAge(), member.getName(), chair.chooseGender(member)); // creates a competitor with age and name
-      Discipline discipline = new Discipline();
+      Discipline discipline = new Discipline(); // creates a disicpline object 
          youthCompetitor.setDiscipline(discipline.getRandomDiscipline());  // gives the competitor a random discipline 
-         youthCompetitors.add(youthCompetitor); // adds the competitor to the arrayList 
+         youthCompetitors.add(youthCompetitor); // adds the competitor to the arrayList (youth)
          youthCompetitors.get(youthCompetitors.size()-1).setID(youthCompetitors.size()); 
  
    }else if(member.getCompetitor() && member.getAge()>18){
       Competitor seniorCompetitor = new Competitor(member.getID(),member.getAge(), member.getName(), chair.chooseGender(member)); 
-      Discipline discipline = new Discipline();
-         seniorCompetitor.setDiscipline(discipline.getRandomDiscipline());
-         seniorCompetitors.add(seniorCompetitor); 
+      Discipline discipline = new Discipline(); // creates a disicpline object 
+         seniorCompetitor.setDiscipline(discipline.getRandomDiscipline()); // gives the competitor a random discipline 
+         seniorCompetitors.add(seniorCompetitor); // adds the competitor to the arrayList (senior)
          int totalCompetitors = youthCompetitors.size() + seniorCompetitors.size(); 
          seniorCompetitors.get(seniorCompetitors.size()-1).setID(totalCompetitors);
    }else{  
@@ -79,7 +78,7 @@ for(Members member : list){
         System.out.println("TOP 5 YOUTH COMPETITORS"); 
         System.out.println(); 
         for (int length : lengths) {
-            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersYouth(discipline, length);
+            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersYouth(discipline, length); // calls the findTopFiveSwimmers method 
             if (topFiveSwimmers.isEmpty()) {
                 System.out.println("No swimmers found for " + length + " meters Freestyle.");
             } else {
@@ -98,7 +97,7 @@ for(Members member : list){
         System.out.println("TOP 5 SENIOR COMPETITORS"); 
         System.out.println(); 
         for (int length : lengths) {
-            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersSenior(discipline, length);
+            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersSenior(discipline, length); // calls the findTopFiveSwimmers method 
             if (topFiveSwimmers.isEmpty()) {
                 System.out.println("No swimmers found for " + length + " meters Freestyle.");
             } else {
@@ -121,7 +120,7 @@ for(Members member : list){
         System.out.println("TOP 5 YOUTH COMPETITORS"); 
         System.out.println(); 
         for (int length : lengths) {
-            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersYouth(discipline, length);
+            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersYouth(discipline, length); // calls the findTopFiveSwimmers method 
             if (topFiveSwimmers.isEmpty()) {
                 System.out.println("No swimmers found for " + length + " meters Butterfly.");
             } else {
@@ -140,7 +139,7 @@ for(Members member : list){
         System.out.println("TOP 5 SENIOR COMPETITORS"); 
         System.out.println(); 
         for (int length : lengths) {
-            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersSenior(discipline, length);
+            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersSenior(discipline, length); // calls the findTopFiveSwimmers method 
             if (topFiveSwimmers.isEmpty()) {
                 System.out.println("No swimmers found for " + length + " meters Butterfly.");
             } else {
@@ -164,7 +163,7 @@ for(Members member : list){
         System.out.println("TOP 5 YOUTH COMPETITORS"); 
         System.out.println(); 
         for (int length : lengths) {
-            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersYouth(discipline, length);
+            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersYouth(discipline, length); // calls the findTopFiveSwimmers method 
             if (topFiveSwimmers.isEmpty()) {
                 System.out.println("No swimmers found for " + length + " meters Backstroke.");
             } else {
@@ -183,7 +182,7 @@ for(Members member : list){
          System.out.println("TOP 5 SENIOR COMPETITORS"); 
          System.out.println(); 
          for (int length : lengths) {
-            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersSenior(discipline, length);
+            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersSenior(discipline, length); // calls the findTopFiveSwimmers method 
             if (topFiveSwimmers.isEmpty()) {
                 System.out.println("No swimmers found for " + length + " meters Backstroke.");
             } else {
@@ -207,7 +206,7 @@ for(Members member : list){
         System.out.println("TOP 5 YOUTH COMPETITORS"); 
         System.out.println(); 
         for (int length : lengths) {
-            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersYouth(discipline, length);
+            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersYouth(discipline, length); // calls the findTopFiveSwimmers method 
             if (topFiveSwimmers.isEmpty()) {
                 System.out.println("No swimmers found for " + length + " meters Breaststroke.");
             } else {
@@ -226,7 +225,7 @@ for(Members member : list){
          System.out.println("TOP 5 SENIOR COMPETITORS"); 
          System.out.println(); 
          for (int length : lengths) {
-            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersSenior(discipline, length);
+            ArrayList<Competitor> topFiveSwimmers = findTopFiveSwimmersSenior(discipline, length); // calls the findTopFiveSwimmers method 
             if (topFiveSwimmers.isEmpty()) {
                 System.out.println("No swimmers found for " + length + " meters Breaststroke.");
             } else {
@@ -244,17 +243,17 @@ for(Members member : list){
     
     // method for finding top 5 swimmers for youth competitors
     public ArrayList<Competitor> findTopFiveSwimmersYouth(String discipline, int length) {
-    ArrayList<Competitor> topFiveSwimmers = new ArrayList<>();
+    ArrayList<Competitor> topFiveSwimmers = new ArrayList<>(); // new ArrayList with top five swimmers 
        
         for (Competitor youths : youthCompetitors) { 
-           if (youths.getDiscipline().contains(discipline)) {
+           if (youths.getDiscipline().contains(discipline)) { // if the competitior has the specific discipline - add them to the list
            topFiveSwimmers.add(youths);
           }
         }
         
         // Sort the topFiveSwimmers by their best time for the specified length
         Collections.sort(topFiveSwimmers, (swimmer1, swimmer2) ->
-                Double.compare(getBestTime(swimmer1, discipline, length), getBestTime(swimmer2, discipline, length)));
+                Double.compare(getBestTime(swimmer1, discipline, length), getBestTime(swimmer2, discipline, length))); // calls on the getBestTime method 
                 
         // Take only the top five swimmers
         if (topFiveSwimmers.size() > 5) { 
@@ -266,17 +265,17 @@ for(Members member : list){
     
     // method for finding top 5 swimmers for senior competitors
     public ArrayList<Competitor> findTopFiveSwimmersSenior(String discipline, int length) {
-    ArrayList<Competitor> topFiveSwimmers = new ArrayList<>();
+    ArrayList<Competitor> topFiveSwimmers = new ArrayList<>(); // new ArrayList with top five swimmers 
        
-        for (Competitor senior : seniorCompetitors) { // Assuming allCompetitors is a list containing all competitors
-            if (senior.getDiscipline().contains(discipline)) {
+        for (Competitor senior : seniorCompetitors) { 
+            if (senior.getDiscipline().contains(discipline)) { // if the competitior has the specific discipline - add them to the list
             topFiveSwimmers.add(senior);
            }
         }
         
         // Sort the topFiveSwimmers by their best time for the specified length
         Collections.sort(topFiveSwimmers, (swimmer1, swimmer2) ->
-                Double.compare(getBestTime(swimmer1, discipline, length), getBestTime(swimmer2, discipline, length)));
+                Double.compare(getBestTime(swimmer1, discipline, length), getBestTime(swimmer2, discipline, length))); // calls on the getBestTime method 
                 
         // Take only the top five swimmers
         if (topFiveSwimmers.size() > 5) { 
@@ -288,14 +287,16 @@ for(Members member : list){
     
    // method for finding a competitors best time for a discipline
    private double getBestTime(Competitor competitor, String discipline, int length){
-   double bestTime = Double.MAX_VALUE; 
+   double bestTime = Double.MAX_VALUE; // a large value that any actual time will be less than, so any valid time will replace this value
       
+      // for competition result
       for(CompetitionResult result : competitor.getCompetitionResults()){
          if(result.getDiscipline().equals(discipline) && result.getLength() == length && result.getTime() < bestTime){
          bestTime = result.getTime(); 
        }
      }
       
+      // for training result 
       for(TrainingResult result : competitor.getTrainingResults()){
          if(result.getDiscipline().equals(discipline) && result.getLength() == length && result.getTime() < bestTime){
          bestTime = result.getTime(); 

@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Competitor{
 
+// attributes 
 private String name; 
 private int age; 
 public int ID; 
@@ -10,7 +11,7 @@ private List<TrainingResult> trainingResults; // list to save training results
 private List<CompetitionResult> competitionResults; // list to save competition results
 private ArrayList<String> discipline = new ArrayList<String>(); // list to add new disciplines in Competition
 
-  // being used in the competition class
+  // constructor being used in the competition class
    public Competitor(int ID, int age,String name, String gender){
       this.ID = ID; 
       this.age = age; 
@@ -22,6 +23,7 @@ private ArrayList<String> discipline = new ArrayList<String>(); // list to add n
      
    }
   
+  // constructor being used in the sort competitors method
   public Competitor(int age,String name, ArrayList<String> disciplines){
       this.age = age; 
       this.name = name;  
@@ -38,13 +40,6 @@ private ArrayList<String> discipline = new ArrayList<String>(); // list to add n
    }
    
    // getters & setters
-   public List<TrainingResult> getTrainingResults(){
-   return trainingResults;
-   }
-
-   public List<CompetitionResult> getCompetitionResults(){
-   return competitionResults;
-   }
     
    public void setAge(int age){
       this.age = age;
@@ -86,15 +81,23 @@ private ArrayList<String> discipline = new ArrayList<String>(); // list to add n
       this.ID = ID;
    
    }
+   
+   public List<TrainingResult> getTrainingResults(){
+   return trainingResults;
+   }
 
-      // method for adding training results to a list 
+   public List<CompetitionResult> getCompetitionResults(){
+   return competitionResults;
+   }
+
+   // method for adding training results to a list (sumbitTrainingResult)
    public void addTrainingResult(TrainingResult trainingResult){
    if(trainingResults != null){
    trainingResults.add(trainingResult); 
       }
    }
    
-   // method for adding competition results to a list 
+   // method for adding competition results to a list (sumbitCompetitionResult)
    public void addCompetitionResult(CompetitionResult competitionResult){
    if(competitionResults != null){
    competitionResults.add(competitionResult); 
