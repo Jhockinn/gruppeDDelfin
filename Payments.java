@@ -56,7 +56,7 @@ public class Payments {
         }
     }
 
-    
+    // loop through memberlist.txt with memberlist integers and strings
       public static void addAllLatePaymentMembers(ArrayList<Members> list) {
            for (Members member : list) {
                if (member.getRestance()==true) {
@@ -65,6 +65,8 @@ public class Payments {
            }
            updateLatePaymentFile();
        }
+       
+       // manual adding to late payment list
        public static void addPeopleToLatePaymentList() {
         scanner.nextLine();
         System.out.println("Enter name of person to add to late payment list:");
@@ -80,7 +82,7 @@ public class Payments {
 
         System.out.println(person + " (ID: " + ID + ") added to late payment list.");
 
-        try (FileWriter writer = new FileWriter("late_payment_people.txt", true)) {
+        try (FileWriter writer = new FileWriter("late_payment_people.txt", true)) { //true means user can directly add people
             writer.write(person + "\n");
             System.out.println("Late payment person added to the list in the notepad.");
         } catch (IOException e) {
@@ -93,9 +95,9 @@ public class Payments {
         System.out.println("List before removal: " + latePayments);
 
         boolean found = false;
-        for (Members person : latePayments) {
+        for (Members person : latePayments) { //Members is from memberlist file
             if (person.getName().equalsIgnoreCase(personToRemove)) {
-                latePayments.remove(person);
+                latePayments.remove(person); //removes the name from the list
                 System.out.println(personToRemove + " removed from late payment list.");
                 found = true;
                 break;
@@ -117,7 +119,7 @@ public class Payments {
         try {
             File file = new File(filePath);
             Scanner fileScanner = new Scanner(file);
-            ArrayList<String> updatedLatePayments = new ArrayList<>();
+            ArrayList<String> updatedLatePayments = new ArrayList<>(); //the notepad document has a feedback from the ArrayList line 9
 
             while (fileScanner.hasNextLine()) {
                 String person = fileScanner.nextLine();
@@ -146,7 +148,7 @@ public class Payments {
     public static void updateLatePaymentFile() {
         try (FileWriter writer = new FileWriter("late_payment_people.txt")) {
             for (Members person : latePayments) {
-                writer.write("ID: " + person.getID() +" Name: " +person.getName() + "\n");
+                writer.write("ID: " + person.getID() +" Name: " +person.getName() + "\n"); //each new entry is a different line
             }
             System.out.println("Late payment people list updated in the file.");
         } catch (IOException e) {
@@ -175,7 +177,7 @@ public class Payments {
             File file = new File(filePath);
             Scanner fileScanner = new Scanner(file);
 
-            System.out.println("Late payment list:");
+            System.out.println("Late payment list:"); // loops through every line of the document
             while (fileScanner.hasNextLine()) {
                 String person = fileScanner.nextLine();
                 System.out.println(person);
@@ -190,13 +192,13 @@ public class Payments {
 
     public static void readMemberList(String filePath) {
         try {
-            File file = new File(filePath);
+            File file = new File(filePath); // each new use is a new instance
             Scanner fileScanner = new Scanner(file);
 
             System.out.println("Member List:");
             while (fileScanner.hasNextLine()) {
                 String member = fileScanner.nextLine();
-                System.out.println(member);
+                System.out.println(member); //member is the same string used in memberlist file
             }
 
             fileScanner.close();
@@ -211,13 +213,13 @@ public class Payments {
         scanner.nextLine(); // consume the remaining newline
 
         System.out.println("What member ID do you want to copy data from?");
-        String memberId = scanner.nextLine();
+        String memberId = scanner.nextLine(); //each ID is a seperate line
 
-        String memberData = getMemberDataById(filePath, memberId);
+        String memberData = getMemberDataById(filePath, memberId); //see method line 228
 
         if (memberData != null) {
             System.out.println("Copied Data: " + memberData);
-            addMemberDataToLatePaymentList(memberData);
+            addMemberDataToLatePaymentList(memberData); // re-using an existing method
         } else {
             System.out.println("Member ID not found.");
         }
@@ -229,19 +231,19 @@ public class Payments {
 
         try {
             reader = new BufferedReader(new FileReader(filePath));
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split("\\|");
-                if (parts.length > 0 && parts[0].trim().equals(memberId)) {
-                    return line;
+            while ((line = reader.readLine()) != null) { // line is the central part in making the list
+                String[] parts = line.split("\\|"); //this makes it so that the | parts gets removed from the lines
+                if (parts.length > 0 && parts[0].trim().equals(memberId)) { // only returns if the ID is present
+                    return line; // line is updated if there is relevant data
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (reader != null) {
+        } finally { // the last part of the method returns nothing 
+            if (reader != null) { // if not equal to null
                 try {
-                    reader.close();
-                } catch (IOException e) {
+                    reader.close(); // closes the normal null
+                } catch (IOException e) { // prints close errors
                     e.printStackTrace();
                 }
             }
@@ -250,17 +252,17 @@ public class Payments {
     }
 
     public static void addMemberDataToLatePaymentList(String memberData) {
-        String[] parts = memberData.split("\\|");
-        if (parts.length >= 3) {
-            int id = Integer.parseInt(parts[0].trim());
-            String name = parts[1].trim();
-            int age = Integer.parseInt(parts[2].trim());
+        String[] parts = memberData.split("\\|"); // gets rid of the straight lines
+        if (parts.length >= 3) {                         //trim removes spaces from the targeted line
+            int id = Integer.parseInt(parts[0].trim()); // index[0] is the ID, parseInt converts to an integer
+            String name = parts[1].trim(); // index[1] is the name part on the memberlist
+            int age = Integer.parseInt(parts[2].trim()); // index [2] is the age
 
             Members member = new Members(age, name);
             member.setID(id);
             latePayments.add(member);
 
-            try (FileWriter writer = new FileWriter("late_payment_people.txt", true)) {
+            try (FileWriter writer = new FileWriter("late_payment_people.txt", true)) { // writes the data onto a new notepad
                 writer.write(name + "\n");
                 System.out.println(name + " (ID: " + id + ") added to late payment list and file.");
             } catch (IOException e) {

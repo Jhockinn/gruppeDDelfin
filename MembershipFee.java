@@ -8,6 +8,7 @@ public class MembershipFee {
     private double SeniorMembershipFee = 1600;
     private double ElderMembershipFee;
 
+   // elderly have a 25% discount based of senior fee
     public MembershipFee() {
         double discount = 0.25;
         ElderMembershipFee = SeniorMembershipFee * (1 - discount);
