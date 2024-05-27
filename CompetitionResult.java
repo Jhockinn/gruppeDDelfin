@@ -40,6 +40,5 @@ private int placement;
  public int getPlacement(){
    return placement; 
  }
-
 }
  

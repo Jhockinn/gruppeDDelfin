@@ -13,11 +13,12 @@ disciplines.add("BUTTERFLY");
 disciplines.add("BACKSTROKE"); 
 disciplines.add("BREASTSTROKE"); 
 
-int randomIndex = ran.nextInt(disciplines.size());  
+// finds a random discipline from the Arraylist 
+int randomIndex = ran.nextInt(disciplines.size()); 
    ArrayList<String> randomDiscipline = new ArrayList<>();
    randomDiscipline.add(disciplines.get(randomIndex));
 
-return randomDiscipline; 
+return randomDiscipline; // returns the randoms discipline 
 
    }
 }
