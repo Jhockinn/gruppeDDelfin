@@ -3,6 +3,7 @@ import java.util.Random;
 import java.util.ArrayList; 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
 
 public class CompetitionStatistics{
 
@@ -105,14 +106,28 @@ public CompetitionStatistics(Competition competition){
    System.out.println(discipline + " - Please add the length of the disciplinec [meters]: ");
    System.out.println("You can choose between [50], [100], [200] meter");  
    int length = scan.nextInt(); 
+   
    if(length == 50 || length == 100 || length == 200){
    System.out.println(discipline + " - Please add the time of the discipline [minutes,seconds]: "); 
-   double time = scan.nextDouble();
+   double time = 0.0; 
+   boolean validTime = false; 
+   
+   while(!validTime){
+   try{
+   time = scan.nextDouble();
+   validTime = true; 
+   }catch(InputMismatchException e){
+   System.out.println("Please enter a number with a comma as the decimal"); 
+   scan.next(); 
+      }
+   }
+ 
    System.out.println("Please add the date of the training result [dd-MM-yyyy]");
    String date = scan.next(); 
    
    TrainingResult trainingResult = new TrainingResult(discipline, length, time, date); // creates a new trainingResult object 
    competitor.addTrainingResult(trainingResult); // adds the training result to a list in competitor 
+   
   
    // print out the training result for the competitor 
    System.out.println("Training Results: "); 
@@ -138,9 +153,22 @@ public CompetitionStatistics(Competition competition){
    System.out.println(discipline + " - Please add the length of the disciplinec [meters]: "); 
    System.out.println("You can choose between [50], [100], [200] meter");  
    int length = scan.nextInt(); 
+   
    if(length == 50 || length == 100 || length == 200){
    System.out.println(discipline + " - Please add the time of the discipline [minutes,seconds]: "); 
-   double time = scan.nextDouble(); 
+   double time = 0.0; 
+   boolean validTime = false; 
+   
+   while(!validTime){
+   try{
+   time = scan.nextDouble(); 
+   validTime = true; 
+   }catch(InputMismatchException e){
+   System.out.println("Please enter a number with a comma as the decimal");
+   scan.next();  
+    }
+   }
+   
    System.out.println("Please add placement for the competitor: "); 
    int placement = scan.nextInt(); 
    System.out.println("Please add the location of the competition: "); 
@@ -281,7 +309,7 @@ public CompetitionStatistics(Competition competition){
  
  // method for printing out youth competitor training results
  public void showYouthTrainingResults(){ 
- System.out.println("For which competitor do you want to see training results?"); 
+ System.out.println("For which competitor do you want to see training results [ID]?"); 
  
  int competitorID = scan.nextInt();
  
@@ -314,7 +342,7 @@ public CompetitionStatistics(Competition competition){
  
   // method for printing out senior competitor training results
   public void showSeniorTrainingResults(){ 
-  System.out.println("For which competitor do you want to see training results?"); 
+  System.out.println("For which competitor do you want to see training results [ID]?"); 
   
   int competitorID = scan.nextInt();
  
@@ -347,7 +375,7 @@ public CompetitionStatistics(Competition competition){
   
   // method for printing out youth competitor competition results
   public void showYouthCompetitionResults(){ 
-  System.out.println("For which competitor do you want to see competition results?"); 
+  System.out.println("For which competitor do you want to see competition results [ID]?"); 
  
   int competitorID = scan.nextInt();
  
@@ -380,7 +408,7 @@ public CompetitionStatistics(Competition competition){
   
   // method for printing out senior competitor competition results
   public void showSeniorCompetitionResults(){ 
-  System.out.println("For which competitor do you want to see competition results?"); 
+  System.out.println("For which competitor do you want to see competition results [ID]?"); 
  
   int competitorID = scan.nextInt();
  

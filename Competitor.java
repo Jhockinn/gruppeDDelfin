@@ -101,7 +101,7 @@ private ArrayList<String> discipline = new ArrayList<String>(); // list to add n
    public void addCompetitionResult(CompetitionResult competitionResult){
    if(competitionResults != null){
    competitionResults.add(competitionResult); 
-      }
    }
+  }
 }
 

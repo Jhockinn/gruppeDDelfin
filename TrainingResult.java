@@ -10,33 +10,31 @@ private String location;
 private int placement; 
 private String date; 
 
-// constructor
-public TrainingResult(String discipline, int length, double time, String date){ // + dato 
-this.discipline = discipline; 
-this.length = length; 
-this.time = time; 
-this.date = date; 
-}
+ // constructor
+ public TrainingResult(String discipline, int length, double time, String date){ // + dato 
+  this.discipline = discipline; 
+  this.length = length; 
+  this.time = time; 
+  this.date = date; 
+ }
 
-public TrainingResult(){
+ public TrainingResult(){
+ } 
 
-} 
+ // getters & setters 
+ public String getDiscipline(){
+ return discipline; 
+ }
 
-// getters & setters 
-public String getDiscipline(){
-return discipline; 
-}
+ public int getLength(){
+ return length; 
+ }
 
-public int getLength(){
-return length; 
-}
+ public double getTime(){
+ return time; 
+ }
 
-public double getTime(){
-return time; 
-}
-
-public String getDate(){
-return date; 
-}
-
+ public String getDate(){
+ return date; 
+ }
 }
