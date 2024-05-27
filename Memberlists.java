@@ -8,7 +8,6 @@ public class Memberlists{
    public void createFiles() {
     try {
         File memberListFile = new File("MemberList.txt");
-        File competitionFile = new File("Competition.txt");
         File late_payment_peopleFile = new File("late_payment_people.txt");
 
         if (memberListFile.createNewFile()) {
@@ -16,13 +15,6 @@ public class Memberlists{
         } else {
             System.out.println("File already exists: " + memberListFile.getName());
         }
-
-        if (competitionFile.createNewFile()) {
-            System.out.println("File Created: " + competitionFile.getName());
-        } else {
-            System.out.println("File already exists: " + competitionFile.getName());
-        }
-
         if (late_payment_peopleFile.createNewFile()) {
             System.out.println("File Created: " + late_payment_peopleFile.getName());
         } else {

@@ -172,6 +172,7 @@ public class Chairman {
                 } while (!competitor.equals("Regular") && !competitor.equals("Competitor"));
                 if (competitor.equals("Competitor")) {
                     list.get(id - 1).setCompetitor(true);
+                    list.get(id - 1).setActive(true);
                     do {
                         do {
                             System.out.println("Choose Discipline");
@@ -198,6 +199,7 @@ public class Chairman {
                     } while (!discipline.equals("Butterfly") && !discipline.equals("Freestyle") && !discipline.equals("Backstroke") && !discipline.equals("Breaststroke"));
                 } else {
                     list.get(id - 1).setCompetitor(false);
+                    list.get(id - 1).setDiscipline("null");
                 }
                 break;
             default:
