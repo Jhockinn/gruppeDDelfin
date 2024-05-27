@@ -29,7 +29,6 @@ public class Login{
       chairman.add(lists.memberList);
       competition.sortCompetitors(lists.memberList);
       do{
-      //System.out.println("Welcome to the system");
       System.out.println(" _       __     __                        ");
       System.out.println("| |     / /__  / /____ ___  ____ ___  ___ ");
       System.out.println("| | /| / / _ \\/ / ___/ __ \\/ __  __ \\/ _ \\");
@@ -54,7 +53,7 @@ public class Login{
       //Chairman login
          if(username.equals(chairUser) && password.equals(chairPass)){
             do{
-            
+            //Chairman Ui options
             System.out.println("Welcome Chairman");
             System.out.println("What would you like to do?");
             System.out.println("1: Add Member");

@@ -116,6 +116,7 @@ public class Chairman {
             unactive(newMember);
             list.add(newMember); // Add new member to the member list
             lists.AddtoList(list); // Persist the updated list
+            //adds new member to competitor lists
             if(memberAge<18 && competitive == true){
                com.youthCompetitors.add(new Competitor(com.youthCompetitors.size()+1, newMember.getAge(), name, chooseGender(newMember)));
             }
@@ -206,7 +207,6 @@ public class Chairman {
 
     // Adds different classes to the memberList (ArrayList)
     public void add(ArrayList<Members> memberList) {
-        // lists.loadList();
         if (memberList.isEmpty()) {
             String name1;
             try {
@@ -260,7 +260,7 @@ public class Chairman {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+            //Uses methods from Active and Memberlists classes
             setup.active(memberList);
             lists.writeToList(memberList);
         } else {
